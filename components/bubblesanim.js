@@ -15,7 +15,7 @@ export default function BubblesAnimation({ count = 20 }) {
   }, [count, maxPageHeight]);
 
   return (
-    <div className="absolute top-0 left-0 w-full -z-10 overflow-hidden" style={{ height: `${maxPageHeight}px` }}>
+    <div className="absolute top-0 left-0 w-full z-100 overflow-hidden" style={{ height: `${maxPageHeight}px` }}>
       {bubbles.map((bubble, index) => (
         <img
           key={index}
