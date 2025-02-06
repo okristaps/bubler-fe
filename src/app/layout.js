@@ -23,11 +23,10 @@ export default function RootLayout({ children }) {
         <h1 className="text-[59px] text-center mt-10  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
           BUBBLER
         </h1>
-        <BubblesAnimation count={25} />
+        <BubblesAnimation count={50} />
 
         <main>{children}</main>
       </body>
-      <BubblesAnimation count={25} />
     </html>
   );
 }
