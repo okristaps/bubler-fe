@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-export default function BubblesAnimation({ count = 20 }) {
+export default function BubblesAnimation({ count = 100 }) {
   const bubbles = useMemo(() => {
     return Array.from({ length: count }).map(() => {
       const size = Math.random() * 50 + 20;

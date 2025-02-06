@@ -8,12 +8,24 @@
 }
 
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+* {
+  box-sizing: border-box; /* Ensures elements are correctly sized */
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Disable horizontal scrolling */
+  width: 100%; /* Make sure they take full width */
+}
+
+body {
+  overflow-x: hidden; /* Ensure no overflow on body */
+}
+
+main {
+  width: 100%;
+}
 @keyframes rise {
   0% {
     transform: translateY(0) scale(1);

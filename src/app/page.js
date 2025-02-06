@@ -13,10 +13,6 @@ export default function Home() {
         <div className="absolute bottom-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-green-400 blur-3xl opacity-30 animate-pulse"></div>
 
         <div className="text-center">
-          <h1 className="text-5xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-pink-300 drop-shadow-lg animate-bounce">
-            BUBBLER
-          </h1>
-
           <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-4">
             The Meme Catcher on <span className="text-yellow-300">ICP Chain</span>
           </p>

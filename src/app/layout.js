@@ -15,13 +15,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <meta name="theme-color" content="#D16BFF" />
       <body
         className={`${bubbles.variable} h-full w-full font-fuzzy antialiased bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 relative`}
       >
         <BubblesAnimation count={20} />
-        {children}
+
+        <header className="sticky top-10 z-10 bg-gradient-to-r from-purple-500 to-indigo-500 bg-opacity-80 text-white p-4 sm:p-6 text-center mx-4 sm:mx-8 rounded-xl shadow-lg">
+          <h1 className="text-3xl sm:text-6xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce mt-5">
+            BUBBLER
+          </h1>
+        </header>
+
+        <main>{children}</main>
       </body>
     </html>
   );
