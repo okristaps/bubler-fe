@@ -5,7 +5,7 @@ export default function BubblesAnimation({ count = 100 }) {
     return Array.from({ length: count }).map(() => {
       const size = Math.random() * 50 + 20;
       const left = Math.random() * 100;
-      const bottom = Math.random() * 100;
+      const bottom = Math.random() * 500;
       const duration = Math.random() * 10 + 10;
       const delay = Math.random() * 5;
       return { size, left, bottom, duration, delay };
