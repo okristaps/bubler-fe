@@ -11,22 +11,22 @@ import bublerImage from "../../public/image3.png";
 export default function Home() {
   return (
     <div>
-      <section className="relative flex flex-col items-center justify-start pt-10 sm:pt-12 md:pt-16  text-white p-6 sm:p-8 rounded-xl mx-auto max-w-4xl">
+      <section className="relative flex flex-col items-center justify-start   text-white  rounded-xl mx-auto max-w-4xl">
         <div className="absolute  left-4 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400 blur-3xl opacity-30 animate-pulse"></div>
         <div className="absolute bottom-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-green-400 blur-3xl opacity-30 animate-pulse"></div>
         <motion.div
           animate={{
-            scale: [1, 1.1, 1], // Image grows and shrinks continuously
+            scale: [1, 1.05, 1],
           }}
           transition={{
-            duration: 1, // Duration of the pulse cycle
-            repeat: Infinity, // Keeps repeating the pulse
-            repeatType: "loop", // Loops the animation infinitely
-            ease: "easeInOut", // Smooth transition
+            duration: 7,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "easeInOut",
           }}
           className="flex justify-center"
         >
-          <Image src={bublerImage} alt="BUBLER Meme" width={400} height={400} className="rounded-xl" />
+          <Image src={bublerImage} alt="BUBBLER Meme" width={400} height={400} className="rounded-xl" />
         </motion.div>
         <div className="text-center">
           <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-4">
