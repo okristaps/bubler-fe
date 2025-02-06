@@ -6,9 +6,7 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/**/*.{html,js,jsx,ts,tsx}",
   ],
-  daisyui: {
-    themes: ["light", "dark", "cupcake", "bumblebee", "lofi", "cyberpunk"],
-  },
+
   theme: {
     extend: {
       fontFamily: {
@@ -20,5 +18,5 @@ export default {
       },
     },
   },
-  plugins: [require("daisyui"), require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require("@tailwindcss/typography")],
 };
