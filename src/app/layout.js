@@ -16,10 +16,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      {" "}
       <meta name="theme-color" content="#D16BFF" />
       <body
-        className={`${bubbles.variable} h-full w-full font-fuzzy antialiased bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 relative overflow-x-hidden`}
+        className={`${bubbles.variable} min-h-screen  font-fuzzy antialiased bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 relative overflow-x-hidden overflow-y-auto`}
       >
         <BubblesAnimation count={100} />
 
@@ -29,7 +28,9 @@ export default function RootLayout({ children }) {
             BUBBLER
           </h1>
         </header>
-        {children}
+
+        {/* Content section */}
+        <main className="mt-16">{children}</main>
       </body>
     </html>
   );
