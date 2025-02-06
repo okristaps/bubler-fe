@@ -1,13 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Fuzzy_Bubbles } from "next/font/google";
 import "./globals.css";
+import BubblesAnimation from "../../components/bubblesanim";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const bubbles = Fuzzy_Bubbles({
+  weight: ["400", "700"],
+  variable: "--font-fuzzy-bubbles",
   subsets: ["latin"],
 });
 
@@ -19,9 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <meta name="theme-color" content="#D16BFF" />
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${bubbles.variable} h-full w-full font-fuzzy antialiased bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 relative`}
       >
+        <BubblesAnimation count={20} />
         {children}
       </body>
     </html>

@@ -7,15 +7,69 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Base bubble class */
+.bubble {
+  animation: rise linear infinite;
+}
+
+@keyframes bounce-x {
+  0% {
+    transform: translateX(0) translateY(0) scaleX(1);
+  }
+  25% {
+    transform: translateX(25vw) translateY(-30px) scaleX(1);
+  }
+  50% {
+    transform: translateX(50vw) translateY(0) scaleX(1);
+  }
+  75% {
+    transform: translateX(75vw) translateY(-30px) scaleX(1);
+  }
+  100% {
+    transform: translateX(100vw) translateY(0) scaleX(-1);
+  }
+}
+
+@keyframes bounce-x-reverse {
+  0% {
+    transform: translateX(100vw) translateY(0) scaleX(-1);
+  }
+  25% {
+    transform: translateX(75vw) translateY(-30px) scaleX(-1);
+  }
+  50% {
+    transform: translateX(50vw) translateY(0) scaleX(-1);
+  }
+  75% {
+    transform: translateX(25vw) translateY(-30px) scaleX(-1);
+  }
+  100% {
+    transform: translateX(0) translateY(0) scaleX(1);
+  }
+}
+
+.animate-bounce-x {
+  animation: bounce-x 3s ease-in-out infinite alternate,
+             bounce-x-reverse 3s ease-in-out infinite alternate-reverse;
 }
