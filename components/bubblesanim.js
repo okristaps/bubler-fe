@@ -1,21 +1,19 @@
 import { useMemo } from "react";
 
 export default function BubblesAnimation({ count = 20 }) {
-  const maxPageHeight = 3000;
-
   const bubbles = useMemo(() => {
     return Array.from({ length: count }).map(() => {
       const size = Math.random() * 50 + 20;
       const left = Math.random() * 100;
-      const bottom = Math.random() * maxPageHeight;
+      const bottom = Math.random() * 100; // using percentage for debug
       const duration = Math.random() * 10 + 10;
       const delay = Math.random() * 5;
       return { size, left, bottom, duration, delay };
     });
-  }, [count, maxPageHeight]);
+  }, [count]);
 
   return (
-    <div className="absolute top-0 left-0 w-full z-100 overflow-hidden" style={{ height: `${maxPageHeight}px` }}>
+    <div className="fixed inset-0 -z-10 overflow-hidden w-full h-full bg-red-100">
       {bubbles.map((bubble, index) => (
         <img
           key={index}
@@ -26,7 +24,7 @@ export default function BubblesAnimation({ count = 20 }) {
             width: `${bubble.size}px`,
             height: `${bubble.size}px`,
             left: `${bubble.left}%`,
-            bottom: `${bubble.bottom}px`,
+            bottom: `${bubble.bottom}%`,
             animationDuration: `${bubble.duration}s`,
             animationDelay: `${bubble.delay}s`,
           }}
