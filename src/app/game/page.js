@@ -9,7 +9,7 @@ export default function GamePage() {
 
   return (
     <div>
-      <section className="max-w-4xl mx-auto px-6 sm:px-8 py-10 text-center text-white">
+      <section className="w-full mx-auto px-6 sm:px-8 py-10 text-center text-white">
         <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
           The Game is Coming Soon!
         </h2>
