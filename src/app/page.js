@@ -1,14 +1,19 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import AboutBubler from "../../components/about-bubble";
+import AboutBUBLER from "../../components/about-bubble";
 import GameplayHighlights from "../../components/gameplay-highlights";
 import FutureVision from "../../components/future-vision";
 import LegalDisclaimer from "../../components/legal-disclaimer";
 import TopSection from "../../components/top-section";
 import Image from "next/image";
-import bublerImage from "../../public/image3.png";
+import BUBLERImage from "../../public/image3.png";
+import Footer from "../../components/footer";
+import SocialsSection from "../../components/socials";
+import { useRouter } from "next/navigation";
+import BubblesAnimation from "../../components/bubblesanim";
 export default function Home() {
+  const router = useRouter();
   return (
     <div>
       <section className="relative flex flex-col items-center justify-start   text-white  rounded-xl mx-auto max-w-4xl">
@@ -26,23 +31,31 @@ export default function Home() {
           }}
           className="flex justify-center"
         >
-          <Image src={bublerImage} alt="BUBBLER Meme" width={400} height={400} className="rounded-xl" />
+          <Image src={BUBLERImage} alt="BUBLER Meme" width={400} height={300} className="rounded-xl" />
         </motion.div>
         <div className="text-center">
-          <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-4">
+          <p className="text-xl sm:text-2xl md:text-3xl font-bold">
             The Meme Catcher on <span className="text-yellow-300">ICP Chain</span>
           </p>
           <p className="mt-2 text-base sm:text-lg md:text-xl text-gray-200 italic">
             Where Memes Meet Gameplay Rewards! 🚀🎮
           </p>
-          <button className="mt-6 px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-bold text-black bg-white rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
-            Start Catching Memes
-          </button>
+          <div className="mt-6 flex justify-center space-x-4">
+            <button
+              onClick={() => router.push("/game")}
+              className="px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-bold text-black bg-white rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+            >
+              Start Catching Memes
+            </button>
+            <button className="px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-bold text-white bg-yellow-400 hover:bg-yellow-500 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+              Buy Here
+            </button>
+          </div>
         </div>
       </section>
       <section className="max-w-4xl mx-auto px-6 sm:px-8 py-10 text-center text-white">
-        <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400 drop-shadow-lg">
-          Welcome to BUBBLER!
+        <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
+          Welcome to BUBLER!
         </h2>
         <p className="mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
           The playful meme token on the <span className="text-yellow-300">$ICP</span> blockchain that’s here to
@@ -50,10 +63,12 @@ export default function Home() {
           real rewards.
         </p>
       </section>
-      <AboutBubler />
+      <AboutBUBLER />
       <GameplayHighlights />
       <FutureVision />
+      <SocialsSection />
       <LegalDisclaimer />
+      <Footer />
     </div>
   );
 }

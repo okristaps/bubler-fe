@@ -7,7 +7,7 @@ const TopSection = () => {
 
         <div className="text-center">
           <h1 className="text-5xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-pink-300 drop-shadow-lg animate-bounce">
-            BUBBLER
+            BUBLER
           </h1>
 
           <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-4">
@@ -23,7 +23,7 @@ const TopSection = () => {
       </section>
       <section className="max-w-4xl mx-auto px-6 sm:px-8 py-10 text-center text-white">
         <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400 drop-shadow-lg">
-          Welcome to BUBBLER!
+          Welcome to BUBLER!
         </h2>
         <p className="mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
           The playful meme token on the <span className="text-yellow-300">$ICP</span> blockchain that’s here to

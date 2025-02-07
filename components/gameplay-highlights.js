@@ -11,7 +11,7 @@ const GameplayHighlights = () => {
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-pink-400 drop-shadow-lg">
+      <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
         Gameplay Highlights
       </h2>
       <div className="mt-6 space-y-6 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">

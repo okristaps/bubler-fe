@@ -18,10 +18,10 @@ export default function RootLayout({ children }) {
     <html lang="en" className="overflow-x-hidden">
       <meta name="theme-color" content="#D16BFF" />
       <body
-        className={`${bubbles.variable} font-fuzzy antialiased bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 relative overflow-x-hidden overflow-y-auto`}
+        className={`${bubbles.variable} font-fuzzy antialiased bg-gradient-to-r from-pink-500 via-pink-500 via-purple-600 to-blue-700 relative overflow-x-hidden overflow-y-auto`}
       >
         <h1 className="text-[59px] text-center mt-10  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
-          BUBBLER
+          BUBLER
         </h1>
         <BubblesAnimation count={50} />
 

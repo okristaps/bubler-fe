@@ -1,17 +1,22 @@
 "use client";
 import { motion } from "framer-motion";
-
+import BUBLERImage from "../public/image2.png";
+import Image from "next/image";
 const FutureVision = () => {
   return (
     <motion.section
       id="future-vision"
-      className="max-w-4xl mx-auto px-6 sm:px-8 py-10 text-center text-white"
+      className="max-w-4xl mx-auto px-6 sm:px-8  text-center text-white"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-500 drop-shadow-lg">
+      <div className="flex justify-center md:justify-start w-full md:w-1/3">
+        <Image src={BUBLERImage} alt="BUBLER Meme" width={400} height={400} className="rounded-xl" />
+      </div>
+
+      <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
         Future Vision: AI Token Launch
       </h2>
       <div className="mt-6 space-y-6 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
