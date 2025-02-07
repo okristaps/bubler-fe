@@ -1,7 +1,7 @@
 import { Fuzzy_Bubbles } from "next/font/google";
 import "./globals.css";
 import BubblesAnimation from "../../components/bubblesanim";
-
+import { Analytics } from "@vercel/analytics/react";
 const bubbles = Fuzzy_Bubbles({
   weight: ["400", "700"],
   variable: "--font-fuzzy-bubbles",
@@ -88,7 +88,10 @@ export default function RootLayout({ children }) {
         </h1>
 
         <main>
-          <BubblesAnimation count={50}>{children}</BubblesAnimation>
+          <BubblesAnimation count={50}>
+            {children}
+            <Analytics />
+          </BubblesAnimation>
         </main>
       </body>
     </html>
