@@ -80,7 +80,7 @@ export default function App() {
 
   // store the best score in LocalStorage
   useEffect(() => {
-    localStorage.setItem("best score", JSON.stringify(bestScore));
+    localStorage?.setItem("best score", JSON.stringify(bestScore));
   }, [bestScore]);
 
   // push best score in allScores array on initial load
