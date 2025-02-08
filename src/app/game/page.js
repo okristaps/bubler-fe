@@ -6,7 +6,7 @@ import GameEnd from "./components/GameEnd/GameEnd";
 import "./game.css";
 
 export default function App() {
-  const [windowSize, setWindowSize] = useState(getWindowSize());
+  const [windowSize, setWindowSize] = useState({ innerWidth: 0, innerHeight: 0 });
   const [playing, setPlaying] = useState(false);
   const [gameEnd, setGameEnd] = useState(false);
   const [score, setScore] = useState(0);
@@ -41,6 +41,21 @@ export default function App() {
     setScore((prev) => prev + 10);
     event.target.remove();
   };
+
+  useEffect(() => {
+    function getWindowSize() {
+      return { innerWidth: window.innerWidth, innerHeight: window.innerHeight };
+    }
+
+    setWindowSize(getWindowSize()); // Set initial size on mount
+
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
   // Inside useEffect, update to support touch events
   useEffect(() => {
