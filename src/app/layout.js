@@ -87,7 +87,6 @@ export default function RootLayout({ children }) {
       >
         <HeaderBUBLER />
         <main>
-          <BubblesAnimation count={50} />
           {children}
           <Analytics />
         </main>
