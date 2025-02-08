@@ -1,65 +1,53 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
-const Bubble = ({
-  windowSize,
-  bubble,
-  popBubble,
-  id,
-  failCount,
-  setFailCount,
-  failBubble,
-}) => {
+const Bubble = ({ bubble, popBubble, id, failBubble, setFailCount }) => {
   const bubbleRef = useRef();
   const { size, position } = bubble;
-  const [y, setY] = useState(0);
 
-  const bubbleVariants = {
-    top: { x: position.x, y: position.y },
-    bottom: { x: position.x, y: windowSize.innerHeight - size },
-  };
+  const bubbleSize = Number(size) || 50;
+  const bubbleX = Number(position?.x) || Math.floor(Math.random() * window.innerWidth);
+
+  const fallDuration = Math.random() * 5 + 3;
 
   useEffect(() => {
-    if (size) {
-      bubbleRef.current.style.width = `${size}px`;
-      bubbleRef.current.style.height = `${size}px`;
+    if (bubbleRef.current) {
+      bubbleRef.current.style.width = `${bubbleSize}px`;
+      bubbleRef.current.style.height = `${bubbleSize}px`;
+      bubbleRef.current.style.left = `${bubbleX}px`;
     }
-  }, []);
-
-  useEffect(() => {
-    if (y === windowSize.innerHeight - size) {
-      setFailCount(failCount + 1);
-      failBubble(id);
-    }
-  }, [y]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const y = bubbleRef.current.getBoundingClientRect().y;
-      setY(y);
-      //   console.log('window size: ', windowSize, 'y:', y, 'size', size);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+  }, [bubbleSize, bubbleX]);
 
   return (
     <motion.div
-      whileTap={{ scale: [1.1, 0], boxShadow: ['rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset', 'none'] }}
-      onClick={(e) => {
-        popBubble(id);
+      whileTap={{
+        scale: [1.1, 0],
+        boxShadow: [
+          "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
+          "none",
+        ],
       }}
+      onClick={() => popBubble(id)}
       ref={bubbleRef}
-      variants={bubbleVariants}
-      initial='top'
-      animate='bottom'
+      initial={{ y: "-10%" }}
+      animate={{ y: "100vh" }}
       transition={{
-        type: 'tween',
-        duration: 8,
-        scale: { type: 'spring', duration: 0.5 },
+        duration: fallDuration,
+        ease: "linear",
       }}
-      className='bubble'
-    ></motion.div>
+      onAnimationComplete={() => {
+        console.log(`Bubble ${id} fell down!`);
+        setFailCount((prev) => prev + 1);
+        failBubble(id);
+      }}
+      className="bubble"
+      style={{
+        position: "absolute",
+        left: `${bubbleX}px`,
+        width: `${bubbleSize}px`,
+        height: `${bubbleSize}px`,
+      }}
+    />
   );
 };
 
