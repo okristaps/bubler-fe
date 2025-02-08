@@ -12,7 +12,7 @@ export default function App() {
   const [score, setScore] = useState(0);
   const [failCount, setFailCount] = useState(0);
   const [allScores, setAllScores] = useState([]);
-  const [bestScore, setBestScore] = useState(JSON.parse(localStorage.getItem("best score")));
+  const [bestScore, setBestScore] = useState(JSON.parse(localStorage?.getItem("best score")));
 
   // starting new game
   const handleNewGame = () => {
