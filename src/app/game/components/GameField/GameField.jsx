@@ -1,15 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Bubble from '../Bubble/Bubble';
-import { v4 as uuid } from 'uuid';
-import { motion, useAnimation } from 'framer-motion';
+import React, { useEffect, useRef, useState } from "react";
+import Bubble from "../Bubble/Bubble";
+import { v4 as uuid } from "uuid";
+import { motion, useAnimation } from "framer-motion";
 
-const GameField = ({
-  windowSize,
-  score,
-  setScore,
-  failCount,
-  setFailCount,
-}) => {
+const GameField = ({ windowSize, score, setScore, failCount, setFailCount }) => {
   const [bubbles, setBubbles] = useState([]);
   const [time, setTime] = useState({ max: 3000, min: 100 });
   const { max, min } = time;
@@ -30,11 +24,9 @@ const GameField = ({
 
   const createBubble = () => {
     const maxSize = windowSize.innerWidth / 7;
-    const minSize = maxSize / 4;
+    const minSize = maxSize / 2;
     const size = Math.floor(Math.random() * (maxSize - minSize) + minSize);
-    const x = Math.floor(
-      Math.random() * (windowSize.innerWidth - (size / 2 + 10))
-    );
+    const x = Math.floor(Math.random() * (windowSize.innerWidth - (size / 2 + 10)));
     const y = -size;
     const id = uuid();
     setBubbles([...bubbles, { size: size, id: id, position: { x: x, y: y } }]);
@@ -49,7 +41,6 @@ const GameField = ({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log('aa');
       createBubble();
     }, randomTime);
     return () => clearInterval(interval);
@@ -76,7 +67,7 @@ const GameField = ({
   const failVariants = {
     scale: {
       scale: 1.5,
-      color: 'red',
+      color: "red",
       transition: {
         duration: 0.5,
       },
@@ -91,14 +82,14 @@ const GameField = ({
       return;
     } else {
       setShake(shake === true ? false : true);
-      controls.start('start');
-      controls.start('scale');
-      gameFieldRef.current.style.backgroundColor = 'rgba(255, 0, 0, 0.4)';
+      controls.start("start");
+      controls.start("scale");
+      gameFieldRef.current.style.backgroundColor = "rgba(255, 0, 0, 0.4)";
       setTimeout(() => {
         controls.stop();
-        controls.set('reset');
-        controls.set('resetScale');
-        gameFieldRef.current.style.backgroundColor = '#bde0fe';
+        controls.set("reset");
+        controls.set("resetScale");
+        gameFieldRef.current.style.backgroundColor = "#bde0fe";
       }, 500);
     }
   }, [failCount]);
@@ -106,26 +97,25 @@ const GameField = ({
   return (
     <motion.div
       style={{
-        overflow: 'hidden',
-        height: '100vh',
-        position: 'relative',
-        backgroundColor: '#bde0fe',
+        overflow: "hidden",
+        height: "100vh",
+        position: "relative",
       }}
       variants={variants}
       animate={controls}
       ref={gameFieldRef}
     >
-      <div style={{ margin: '3rem 0 0 3rem', position: 'relative' }}>
+      <div style={{ margin: "3rem 0 0 3rem", position: "relative" }}>
         <motion.h1 style={{ margin: 0 }}>Fails: </motion.h1>
         <motion.h1
           style={{
-            fontSize: '4rem',
-            display: 'inline',
-            transformOrigin: 'center',
-            position: 'absolute',
+            fontSize: "4rem",
+            display: "inline",
+            transformOrigin: "center",
+            position: "absolute",
             margin: 0,
-            left: '7rem',
-            top: '-1.5rem',
+            left: "7rem",
+            top: "-1.5rem",
           }}
           initial={{ scale: 1 }}
           variants={failVariants}
@@ -135,28 +125,19 @@ const GameField = ({
           {failCount}
         </motion.h1>
       </div>
-      <div className='field-data'>
+      <div className="field-data">
         <motion.span
+          className="text-[59px] text-center mt-10  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl"
           animate={{
-            color: [
-              '#ff0000',
-              '#ff7300',
-              '#fffb00',
-              '#48ff00',
-              '#00ffd5',
-              '#002bff',
-              '#7a00ff',
-              '#ff00c8',
-              '#ff0000',
-            ],
+            color: ["#ff0000", "#ff7300", "#fffb00", "#48ff00", "#00ffd5", "#002bff", "#7a00ff", "#ff00c8", "#ff0000"],
           }}
           transition={{
-            color: { repeat: Infinity, duration: 2, ease: 'linear' },
+            color: { repeat: Infinity, duration: 2, ease: "linear" },
           }}
         >
-          BubblePop
+          BUBLER
         </motion.span>
-        <h1 className='score'>{score}</h1>
+        <h1 className="score">{score}</h1>
       </div>
 
       {bubbles.map((bubble) => (

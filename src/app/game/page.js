@@ -36,6 +36,28 @@ export default function App() {
     }
   }, [failCount]);
 
+  const handleBubbleClick = (event) => {
+    event.preventDefault(); // Prevent touch zooming
+    setScore((prev) => prev + 10);
+    event.target.remove();
+  };
+
+  // Inside useEffect, update to support touch events
+  useEffect(() => {
+    const bubbles = document.querySelectorAll(".bubble");
+    bubbles.forEach((bubble) => {
+      bubble.addEventListener("click", handleBubbleClick);
+      bubble.addEventListener("touchstart", handleBubbleClick); // Support for mobile
+    });
+
+    return () => {
+      bubbles.forEach((bubble) => {
+        bubble.removeEventListener("click", handleBubbleClick);
+        bubble.removeEventListener("touchstart", handleBubbleClick);
+      });
+    };
+  }, []);
+
   // set the best score
   useEffect(() => {
     allScores.length > 0 && setBestScore(Math.max(...allScores));
