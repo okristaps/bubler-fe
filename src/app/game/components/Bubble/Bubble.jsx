@@ -1,22 +1,39 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const Bubble = ({ bubble, popBubble, id, failBubble, setFailCount }) => {
+const Bubble = ({ windowSize, bubble, popBubble, id, failCount, setFailCount, failBubble }) => {
   const bubbleRef = useRef();
   const { size, position } = bubble;
+  const [y, setY] = useState(0);
 
-  const bubbleSize = Number(size) || 50;
-  const bubbleX = Number(position?.x) || Math.floor(Math.random() * window.innerWidth);
-
-  const fallDuration = Math.random() * 5 + 3;
+  const bubbleVariants = {
+    top: { x: position.x, y: position.y },
+    bottom: { x: position.x, y: windowSize.innerHeight - size },
+  };
 
   useEffect(() => {
-    if (bubbleRef.current) {
-      bubbleRef.current.style.width = `${bubbleSize}px`;
-      bubbleRef.current.style.height = `${bubbleSize}px`;
-      bubbleRef.current.style.left = `${bubbleX}px`;
+    if (size) {
+      bubbleRef.current.style.width = `${size}px`;
+      bubbleRef.current.style.height = `${size}px`;
     }
-  }, [bubbleSize, bubbleX]);
+  }, []);
+
+  useEffect(() => {
+    if (y === windowSize.innerHeight - size) {
+      setFailCount(failCount + 1);
+      failBubble(id);
+    }
+  }, [y]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const y = bubbleRef.current.getBoundingClientRect().y;
+      setY(y);
+      //   console.log('window size: ', windowSize, 'y:', y, 'size', size);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.div
@@ -27,27 +44,20 @@ const Bubble = ({ bubble, popBubble, id, failBubble, setFailCount }) => {
           "none",
         ],
       }}
-      onClick={() => popBubble(id)}
-      ref={bubbleRef}
-      initial={{ y: "-10%" }}
-      animate={{ y: "100vh" }}
-      transition={{
-        duration: fallDuration,
-        ease: "linear",
+      onClick={(e) => {
+        popBubble(id);
       }}
-      onAnimationComplete={() => {
-        console.log(`Bubble ${id} fell down!`);
-        setFailCount((prev) => prev + 1);
-        failBubble(id);
+      ref={bubbleRef}
+      variants={bubbleVariants}
+      initial="top"
+      animate="bottom"
+      transition={{
+        type: "tween",
+        duration: 8,
+        scale: { type: "spring", duration: 0.5 },
       }}
       className="bubble"
-      style={{
-        position: "absolute",
-        left: `${bubbleX}px`,
-        width: `${bubbleSize}px`,
-        height: `${bubbleSize}px`,
-      }}
-    />
+    ></motion.div>
   );
 };
 

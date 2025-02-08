@@ -1,0 +1,57 @@
+.game-container {
+  text-align: center;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #bde0fe;
+  overflow: hidden;
+}
+
+.bubble-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.bubble {
+  position: absolute;
+  background-color: rgba(255, 0, 0, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.1s ease-out;
+  animation: fall linear forwards;
+}
+
+.bubble:hover {
+  transform: scale(1.1);
+}
+
+/* ✅ Falling Animation - Slower Movement */
+@keyframes fall {
+  from {
+    top: -50px; /* ✅ Start bubbles above the screen */
+  }
+  to {
+    top: 100vh; /* ✅ Move bubbles to the bottom of the screen */
+  }
+}
+.score-display {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.lives-display {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 10px;
+}
+
+.game-over {
+  font-size: 24px;
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  margin-top: 20px;
+}
