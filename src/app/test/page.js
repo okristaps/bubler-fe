@@ -12,7 +12,7 @@ export default function WebSocketClient() {
   const wallet = "0x1234567890abcdef";
 
   const startGame = () => {
-    const ws = new WebSocket("ws://127.0.0.1:8787");
+    const ws = new WebSocket("wss://bubler-ws.okristaps1.workers.dev");
 
     ws.onopen = () => {
       ws.send(JSON.stringify({ type: "join", username, wallet }));
