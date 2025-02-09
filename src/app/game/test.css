@@ -1,11 +1,24 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  user-select: none; 
+  touch-action: none; 
+}
+
+
 .game-container {
   text-align: center;
-  position: relative;
+  position: fixed;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   background-color: #bde0fe;
   overflow: hidden;
 }
+
 
 .bubble-container {
   position: absolute;
@@ -26,26 +39,24 @@
   transform: scale(1.1);
 }
 
-/* ✅ Falling Animation - Slower Movement */
 @keyframes fall {
   from {
-    top: -50px; /* ✅ Start bubbles above the screen */
+    top: -50px; 
   }
   to {
-    top: 100vh; /* ✅ Move bubbles to the bottom of the screen */
+    top: 100vh; 
   }
 }
-.score-display {
+
+
+.score-display, .lives-display {
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .lives-display {
-  font-size: 20px;
-  font-weight: bold;
   color: red;
-  margin-bottom: 10px;
 }
 
 .game-over {
