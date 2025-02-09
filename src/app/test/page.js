@@ -6,13 +6,14 @@ export default function WebSocketClient() {
   const [bubbles, setBubbles] = useState([]);
   const [socket, setSocket] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  const [gameState, setGameState] = useState("");
   const [score, setScore] = useState(0);
-
+  const [lives, setLives] = useState(20);
   const username = "TestPlayer";
   const wallet = "0x1234567890abcdef";
 
   const startGame = () => {
-    const ws = new WebSocket("wss://bubler-ws.okristaps1.workers.dev");
+    const ws = new WebSocket("ws://127.0.0.1:8787");
 
     ws.onopen = () => {
       ws.send(JSON.stringify({ type: "join", username, wallet }));
@@ -24,8 +25,12 @@ export default function WebSocketClient() {
       try {
         const data = JSON.parse(event.data);
 
-        if (data.type === "bubble-update") {
+        if (data.type === "game-state") {
           console.log("🫧 Updating bubbles:", data.bubbles);
+
+          if (data.lives) {
+            setLives(data.lives);
+          }
 
           setBubbles((prevBubbles) => {
             const existingBubbles = new Map(prevBubbles.map((b) => [b.id, b]));
@@ -70,16 +75,10 @@ export default function WebSocketClient() {
     const interval = setInterval(() => {
       setBubbles((prevBubbles) =>
         prevBubbles.filter((bubble) => {
-          const elapsedTime = Date.now() - bubble.createdAt;
-          if (elapsedTime >= 10000) {
-            console.log(`❌ Bubble missed! Deducting points.`);
-            socket?.send(JSON.stringify({ type: "missed-bubble", bubbleId: bubble.id }));
-            return false;
-          }
           return true;
         })
       );
-    }, 1000);
+    }, 100);
 
     return () => clearInterval(interval);
   }, [socket]);
@@ -89,9 +88,11 @@ export default function WebSocketClient() {
       {!gameStarted ? (
         <button onClick={startGame}>Start Game</button>
       ) : (
-        <div className="game-container">
+        <div className="game-container pr-12">
           <h2>Bubble Popping Game</h2>
-          <h3 className="score-display">Score: {score}</h3>
+          <h3 className="score-display">
+            Score: {score} / {lives}
+          </h3>
           <div className="bubble-container">
             {bubbles.map((bubble) => (
               <div
