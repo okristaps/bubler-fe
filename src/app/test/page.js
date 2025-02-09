@@ -5,7 +5,6 @@ import "./test.css";
 export default function WebSocketClient() {
   const [bubbles, setBubbles] = useState([]);
   const [socket, setSocket] = useState(null);
-  const [gameStarted, setGameStarted] = useState(false);
   const [gameState, setGameState] = useState("");
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(20);
@@ -32,6 +31,14 @@ export default function WebSocketClient() {
             setLives(data.lives);
           }
 
+          if (data.score) {
+            setScore(data.score);
+          }
+
+          if (data.currentState) {
+            setGameState(data.currentState);
+          }
+
           setBubbles((prevBubbles) => {
             const existingBubbles = new Map(prevBubbles.map((b) => [b.id, b]));
 
@@ -48,18 +55,12 @@ export default function WebSocketClient() {
             return Array.from(existingBubbles.values());
           });
         }
-
-        if (data.type === "bubble-popped") {
-          setScore(data.score);
-        }
       } catch (error) {
         console.error("❌ Invalid WebSocket message:", event.data);
       }
     };
 
     ws.onclose = () => console.log("❌ WebSocket disconnected");
-
-    setGameStarted(true);
   };
 
   const popBubble = (bubbleId) => {
@@ -85,32 +86,35 @@ export default function WebSocketClient() {
 
   return (
     <div>
-      {!gameStarted ? (
-        <button onClick={startGame}>Start Game</button>
-      ) : (
-        <div className="game-container pr-12">
-          <h2>Bubble Popping Game</h2>
-          <h3 className="score-display">
-            Score: {score} / {lives}
-          </h3>
-          <div className="bubble-container">
-            {bubbles.map((bubble) => (
-              <div
-                key={bubble.id}
-                className="bubble"
-                style={{
-                  width: `${bubble.size}px`,
-                  height: `${bubble.size}px`,
-                  left: `${bubble.x}%`,
-                  top: `-50px`,
-                  animationDuration: `${bubble.fallTime}s`,
-                }}
-                onClick={() => popBubble(bubble.id)}
-              />
-            ))}
+      {!gameState && <button onClick={startGame}>Start Game</button>}
+      {gameState === "playing" && (
+        <>
+          <div className="game-container mr-24" style={{ paddingRight: 25 }}>
+            <h2>Bubble Popping Game</h2>
+            <h3 className="score-display">
+              Score: {score} / {lives}
+            </h3>
+
+            <div className="bubble-container">
+              {bubbles.map((bubble) => (
+                <div
+                  key={bubble.id}
+                  className="bubble"
+                  style={{
+                    width: `${bubble.size}px`,
+                    height: `${bubble.size}px`,
+                    left: `${bubble.x}%`,
+                    top: `-50px`,
+                    animationDuration: `${bubble.fallTime}s`,
+                  }}
+                  onClick={() => popBubble(bubble.id)}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
+      {gameState === "finished" && <div className="bubble-container">Game over Score {score}</div>}
     </div>
   );
 }
