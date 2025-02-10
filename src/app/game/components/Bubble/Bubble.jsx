@@ -29,7 +29,6 @@ const Bubble = ({ windowSize, bubble, popBubble, id, failCount, setFailCount, fa
     const interval = setInterval(() => {
       const y = bubbleRef.current.getBoundingClientRect().y;
       setY(y);
-      //   console.log('window size: ', windowSize, 'y:', y, 'size', size);
     }, 1000);
 
     return () => clearInterval(interval);

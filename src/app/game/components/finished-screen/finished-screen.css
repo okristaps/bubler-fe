@@ -1,0 +1,40 @@
+.finished-screen {
+    text-align: center;
+    width: 100vw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, #bde0fe, #ffb3c1);
+  }
+  
+  .game-over-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: red;
+    margin-bottom: 10px;
+  }
+  
+  .final-score, .final-time {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 8px 0;
+  }
+  
+  .play-again-btn {
+    background-color: #ff4081;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+  }
+  
+  .play-again-btn:hover {
+    background-color: #e91e63;
+  }
+  

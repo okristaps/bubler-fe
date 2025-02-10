@@ -1,0 +1,94 @@
+@keyframes rgbFade {
+  0% { background: rgb(255, 99, 71); }   
+  14% { background: rgb(135, 206, 235); } 
+  28% { background: rgb(144, 238, 144); } 
+  42% { background: rgb(255, 182, 193); } 
+  56% { background: rgb(255, 165, 0); }  
+  70% { background: rgb(173, 216, 230); } 
+  84% { background: rgb(255, 215, 0); }   
+  100% { background: rgb(255, 99, 71); }  
+}
+
+.game-area {
+  text-align: center;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: rgbFade 50s infinite linear;
+}
+
+
+
+  .game-info {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .score-display, .lives-display, .timer-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+  }
+  
+  .lives-display {
+    color: red;
+  }
+
+  .bubble-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+    animation: fall linear forwards;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+  @keyframes fall {
+    from { top: -50px; }
+    to { top: 100vh; }
+  }
+  
+
+  @keyframes pulseLogo {
+    0% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.05); }
+    100% { opacity: 0.1; transform: scale(1); }
+  }
+  .background-logo-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 250px;
+    height: 250px;
+    background-image: url("/image6.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+    animation: pulseLogo 8s infinite ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+  }
