@@ -11,8 +11,6 @@
 
 .game-area {
 
-  width: 100vw;
-  height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,8 +23,6 @@
 .game-area::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3); 
@@ -34,26 +30,6 @@
 }
 
 
-  .game-info {
-    position: absolute;
-    top: 10px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .score-display, .lives-display, .timer-display {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 6px 12px;
-    border-radius: 8px;
-    backdrop-filter: blur(5px);
-  }
-  
-  .lives-display {
-    color: red;
-  }
 
   .bubble-container {
     position: absolute;
@@ -89,17 +65,15 @@
   }
   .background-logo-container {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     background-image: url("../../../../../public/bubble2.png"); 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     transform: translate(-50%, -50%);
     opacity: 0.1;
-    animation: pulseLogo 8s infinite ease-in-out;
+    animation: pulseLogo 5s infinite ease-in-out;
     pointer-events: none;
     z-index: -1;
   }

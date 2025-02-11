@@ -1,12 +1,11 @@
 "use client";
 import React, { useEffect } from "react";
-import "./game-page.css"; // Import the CSS file
+import "./game-page.css";
 import usePreventNavigation from "@/hooks/usePreventNavigation";
 import useGameWebSocket from "./useGameSocket";
 import GameLobby from "./components/lobby/lobby";
 import GameArea from "./components/game-area/game-area";
 import FinishedScreen from "./components/finished-screen/finished-screen";
-import { Helmet } from "react-helmet";
 import Head from "next/head";
 
 export default function Game() {
@@ -49,6 +48,7 @@ export default function Game() {
         {gameState === "playing" && (
           <GameArea score={score} lives={lives} elapsedTime={elapsedTime} bubbles={bubbles} popBubble={popBubble} />
         )}
+        {/* <GameArea score={score} lives={lives} elapsedTime={elapsedTime} bubbles={bubbles} popBubble={popBubble} /> */}
         {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
       </div>
     </>

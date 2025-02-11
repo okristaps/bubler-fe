@@ -74,6 +74,7 @@ export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble
           </div>
         ))}
       </div>
+      <GameInfo score={score} elapsedTime={elapsedTime} lives={lives} />
     </div>
   );
 }
