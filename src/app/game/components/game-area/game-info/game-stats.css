@@ -31,7 +31,7 @@
 .bottom-center {
   left: 50%;
   transform: translateX(-50%);
-  bottom: 30px !important;
+  /* bottom: 30px !important; */
   border: 2px solid #ffdd57;
   background: linear-gradient(to bottom, #ffdd57, #c49a02);
   box-shadow: 0 0 10px rgba(255, 221, 87, 0.7);
@@ -48,6 +48,6 @@
 
   .bottom-center {
     bottom: 60px; 
-    bottom: 100px !important;
+    /* bottom: 100px !important; */
   }
 }
