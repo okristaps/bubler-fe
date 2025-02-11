@@ -14,6 +14,7 @@
   top: 10%;
   left: 10%;
   animation: 4s linear infinite;
+  z-index: -1;
 }
 div .dot {
   height: 10px;

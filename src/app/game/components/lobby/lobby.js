@@ -18,13 +18,10 @@ export default function GameLobby({ startGame, connected }) {
 
   return (
     <div>
-      <BubbleBackground />
-
-      <h1 className="text-[59px] text-center mt-10  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
-        BUBLER
-      </h1>
-
       <div className="game-lobby-container">
+        <h1 className="text-[59px] text-center  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
+          BUBLER
+        </h1>
         <p className="game-subtitle">Enter your player details to start!</p>
 
         <form onSubmit={handleSubmit(onSubmit)} className="game-form">
@@ -64,6 +61,7 @@ export default function GameLobby({ startGame, connected }) {
 
         <p className="internet-warning">Ensure a stable internet connection while playing to avoid disconnections.</p>
       </div>
+      <BubbleBackground />
     </div>
   );
 }
