@@ -13,12 +13,12 @@ export default function Game() {
     useGameWebSocket();
 
   return (
-    <div className="game-container">
+    <>
       {gameState === "" && <GameLobby startGame={startGame} connected={connected} />}
       {gameState === "playing" && (
         <GameArea score={score} lives={lives} elapsedTime={elapsedTime} bubbles={bubbles} popBubble={popBubble} />
       )}
       {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
-    </div>
+    </>
   );
 }

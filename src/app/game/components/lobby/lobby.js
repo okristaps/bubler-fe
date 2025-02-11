@@ -1,6 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import "./game-lobby.css";
+import BubbleBackground from "../../../../../components/bubble-bg";
 
 export default function GameLobby({ startGame, connected }) {
   const {
@@ -16,7 +17,9 @@ export default function GameLobby({ startGame, connected }) {
   };
 
   return (
-    <div className="game-lobby-wrapper">
+    <div>
+      <BubbleBackground />
+
       <h1 className="text-[59px] text-center mt-10  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
         BUBLER
       </h1>

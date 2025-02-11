@@ -9,7 +9,6 @@
   margin-bottom: 20px;
 }
 
-/* RGB Animation */
 @keyframes rgbText {
   0% { color: #ff006e; }
   25% { color: #00f5d4; }
@@ -20,17 +19,23 @@
 
 
 .game-lobby-container {
-  max-width: 450px;
-  padding: 30px;
-  margin-right: 20px;
-  margin-left: 20px;
-  background: linear-gradient(145deg, #1a1a2e, #16213e);
-  border-radius: 15px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  position: fixed; 
+  padding: 40px;
+  top: 100;
+  left: 0;
+  width: 100vw; 
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   color: #ffffff;
+  overflow: hidden; 
   font-family: "Press Start 2P", cursive;
+  padding-bottom: 200px;
 }
+
 
 
 .game-subtitle {
@@ -125,4 +130,3 @@
   margin-top: 20px;
   text-shadow: 0px 0px 5px rgba(0, 245, 212, 0.7);
 }
-

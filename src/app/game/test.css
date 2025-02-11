@@ -1,27 +1,16 @@
 
-@keyframes rgbFade {
-  0% { background: rgb(255, 99, 71); }   
-  14% { background: rgb(135, 206, 235); } 
-  28% { background: rgb(144, 238, 144); } 
-  42% { background: rgb(255, 182, 193); } 
-  56% { background: rgb(255, 165, 0); }  
-  70% { background: rgb(173, 216, 230); } 
-  84% { background: rgb(255, 215, 0); }   
-  100% { background: rgb(255, 99, 71); }  
-}
-
 
 .game-container {
   text-align: center;
   position: fixed;
   width: 100vw;
-  height: 100dvh;
+  height: 120dvh;
   overflow: hidden;
-  display: flex;
+
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: rgbFade 50s infinite linear;
+
 }
 
 .bubble-container {
