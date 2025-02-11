@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: rgbFade 50s infinite linear;
+  animation: rgbFade 10s infinite linear;
 }
 
 
@@ -82,7 +82,7 @@
     left: 50%;
     width: 250px;
     height: 250px;
-    background-image: url("/image6.png"); 
+    background-image: url("../../../../../public/bubble2.png"); 
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
