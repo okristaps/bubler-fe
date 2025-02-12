@@ -14,7 +14,7 @@
 
 
 .top-left {
-  top: 40px !important;
+  top: 50px; 
   left: 15px;
   border: 2px solid #40e0d0;
   background: linear-gradient(to bottom, #40e0d0, #008b8b);
@@ -23,7 +23,7 @@
 
 
 .top-right {
-  top: 40px !important;
+  top: 50px;
   right: 15px;
   border: 2px solid #ff4d4d;
   background: linear-gradient(to bottom, #ff4d4d, #8b0000);
@@ -31,7 +31,7 @@
 }
 
 .bottom-center {
-  bottom: 40px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   border: 2px solid #ffdd57;
@@ -39,36 +39,38 @@
   box-shadow: 0 0 10px rgba(255, 221, 87, 0.7);
 }
 
+
 @supports (padding: env(safe-area-inset-top)) {
   .top-left {
-    top: calc(15px + env(safe-area-inset-top));
+    top: calc(20px + env(safe-area-inset-top)); 
   }
   .top-right {
-    top: calc(15px + env(safe-area-inset-top)); 
+    top: calc(20px + env(safe-area-inset-top)); 
   }
 }
 
 @supports (padding: env(safe-area-inset-bottom)) {
   .bottom-center {
-    bottom: calc(40px + env(safe-area-inset-bottom)); 
+    bottom: calc(50px + env(safe-area-inset-bottom));
   }
 }
 
+/* 📱 Mobile Adjustments */
 @media (max-width: 768px) {
   .stat-box {
     font-size: 14px;
     padding: 4px 8px;
     gap: 5px;
-    /* bottom: 0px !important; */
   }
 
+
   .bottom-center {
-    bottom: 20px !important;
+    bottom: 100px !important; 
   }
 
   @supports (padding: env(safe-area-inset-bottom)) {
     .bottom-center {
-      bottom: calc(80px + env(safe-area-inset-bottom)); 
+      bottom: calc(100px + env(safe-area-inset-bottom)); 
     }
   }
 }
