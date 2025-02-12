@@ -14,7 +14,7 @@
 
 
 .top-left {
-  top: 15px;
+  top: 40px !important;
   left: 15px;
   border: 2px solid #40e0d0;
   background: linear-gradient(to bottom, #40e0d0, #008b8b);
@@ -23,7 +23,7 @@
 
 
 .top-right {
-  top: 15px;
+  top: 40px !important;
   right: 15px;
   border: 2px solid #ff4d4d;
   background: linear-gradient(to bottom, #ff4d4d, #8b0000);
@@ -59,10 +59,11 @@
     font-size: 14px;
     padding: 4px 8px;
     gap: 5px;
+    /* bottom: 0px !important; */
   }
 
   .bottom-center {
-    bottom: 80px; 
+    bottom: 20px !important;
   }
 
   @supports (padding: env(safe-area-inset-bottom)) {
