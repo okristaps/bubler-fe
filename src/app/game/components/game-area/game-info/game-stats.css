@@ -15,7 +15,7 @@
 
 
 .top-left {
-  top: 30px !important;
+  top: 30px;
   left: 15px;
   min-width: 100px;
   border: 2px solid #40e0d0;
@@ -25,7 +25,7 @@
 
 
 .top-right {
-  top: 30px !important;
+  top: 30px;
   right: 15px;
   min-width: 100px;
   border: 2px solid #ff4d4d;
@@ -67,11 +67,19 @@
   }
 
   .bottom-center {
-    bottom: 100px !important;
+    bottom: 35px !important;
   }
 
   .top-middle {
-    top: 15% !important;
+    top: 25% !important;
+  }
+
+  .top-left {
+    top: 100px !important;
+  }
+
+  .top-right {
+    top: 100px !important;
   }
 
   @supports (padding: env(safe-area-inset-bottom)) {
