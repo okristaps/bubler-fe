@@ -50,6 +50,9 @@ const Bubble = ({ windowSize, bubble, popBubble, id, failCount, setFailCount, fa
       variants={bubbleVariants}
       initial="top"
       animate="bottom"
+      style={{
+        padding: 100,
+      }}
       transition={{
         type: "tween",
         duration: 8,
