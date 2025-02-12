@@ -10,12 +10,14 @@
   border-radius: 10px;
   padding: 6px 12px;
   z-index: 9999;
+  justify-content: center;
 }
 
 
 .top-left {
-  top: 50px; 
+  top: 30px !important;
   left: 15px;
+  min-width: 100px;
   border: 2px solid #40e0d0;
   background: linear-gradient(to bottom, #40e0d0, #008b8b);
   box-shadow: 0 0 10px rgba(64, 224, 208, 0.7);
@@ -23,54 +25,80 @@
 
 
 .top-right {
-  top: 50px;
+  top: 30px !important;
   right: 15px;
+  min-width: 100px;
   border: 2px solid #ff4d4d;
   background: linear-gradient(to bottom, #ff4d4d, #8b0000);
   box-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
 }
 
 .bottom-center {
-  bottom: 50px;
+  bottom: 40px;
   left: 50%;
+  min-width: 100px;
   transform: translateX(-50%);
   border: 2px solid #ffdd57;
   background: linear-gradient(to bottom, #ffdd57, #c49a02);
   box-shadow: 0 0 10px rgba(255, 221, 87, 0.7);
 }
 
-
 @supports (padding: env(safe-area-inset-top)) {
   .top-left {
-    top: calc(20px + env(safe-area-inset-top)); 
+    top: calc(15px + env(safe-area-inset-top));
   }
   .top-right {
-    top: calc(20px + env(safe-area-inset-top)); 
+    top: calc(15px + env(safe-area-inset-top)); 
   }
 }
 
 @supports (padding: env(safe-area-inset-bottom)) {
   .bottom-center {
-    bottom: calc(50px + env(safe-area-inset-bottom));
+    bottom: calc(40px + env(safe-area-inset-bottom)); 
   }
 }
 
-/* 📱 Mobile Adjustments */
 @media (max-width: 768px) {
   .stat-box {
     font-size: 14px;
     padding: 4px 8px;
     gap: 5px;
+    /* bottom: 0px !important; */
   }
 
-
   .bottom-center {
-    bottom: 100px !important; 
+    bottom: 100px !important;
+  }
+
+  .top-middle {
+    top: 15% !important;
   }
 
   @supports (padding: env(safe-area-inset-bottom)) {
     .bottom-center {
-      bottom: calc(100px + env(safe-area-inset-bottom)); 
+      bottom: calc(80px + env(safe-area-inset-bottom)); 
     }
   }
 }
+
+
+
+
+.top-middle {
+  position:fixed;
+  opacity: 0.6;
+  top: 30px;
+  font-size: 50px;
+  font-weight: 800;
+  text-align: center;
+  background-clip: text;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #ffcc00, #ff66ff);
+  color: transparent;
+  text-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+  animation: bounce 1.5s infinite;
+}
+
+
+
+
