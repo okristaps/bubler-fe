@@ -124,3 +124,25 @@
   margin-top: 20px;
   text-shadow: 0px 0px 5px rgba(0, 245, 212, 0.7);
 }
+
+.rules-button {
+  background: linear-gradient(45deg, #ff4081, #ff6f61);
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 15px rgba(255, 64, 129, 0.3);
+  width: 100%;
+  max-width: 300px;
+
+  display: block;
+  text-align: center;
+}
+
+.rules-button:hover {
+  background: linear-gradient(to right, #e91e63, #ff4081);
+  transform: scale(1.05);
+}

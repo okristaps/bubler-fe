@@ -2,8 +2,14 @@
 import { useForm } from "react-hook-form";
 import "./game-lobby.css";
 import BubbleBackground from "../../../../../components/bubble-bg";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import RulesModal from "../../../../../components/modals/rules-modal/rules-modal";
 
 export default function GameLobby({ startGame, connected }) {
+  const router = useRouter();
+  const [showRules, setShowRules] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -19,7 +25,7 @@ export default function GameLobby({ startGame, connected }) {
   return (
     <div>
       <div className="game-lobby-container">
-        <h1 className="text-[59px] text-center  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
+        <h1 className="text-[59px] text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
           BUBLER
         </h1>
         <p className="game-subtitle">Enter your player details to start!</p>
@@ -59,9 +65,24 @@ export default function GameLobby({ startGame, connected }) {
           </button>
         </form>
 
+        <button
+          className="leaderboard-button"
+          style={{ marginTop: 20, marginBottom: 20 }}
+          onClick={() => router.push("/game/leaderboard")}
+        >
+          📊 View Leaderboard
+        </button>
+
+        <button className="rules-button" onClick={() => setShowRules(true)}>
+          📜 View Rules
+        </button>
+
         <p className="internet-warning">Ensure a stable internet connection while playing to avoid disconnections.</p>
       </div>
+
       <BubbleBackground />
+
+      {showRules && <RulesModal onClose={() => setShowRules(false)} />}
     </div>
   );
 }
