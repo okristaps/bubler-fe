@@ -42,7 +42,7 @@ export default function Game() {
       <BackgroundAudio />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
-        <meta name="theme-color" content="#ADD8E6" /> {/* Light Blue */}
+        <meta name="theme-color" content="#ADD8E6" />
       </Head>
 
       <div className="game-container">
@@ -50,7 +50,6 @@ export default function Game() {
         {gameState === "playing" && (
           <GameArea score={score} lives={lives} elapsedTime={elapsedTime} bubbles={bubbles} popBubble={popBubble} />
         )}
-        {/* <GameArea score={score} lives={lives} elapsedTime={elapsedTime} bubbles={bubbles} popBubble={popBubble} /> */}
         {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
       </div>
     </>
