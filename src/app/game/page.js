@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./game-page.css";
 import usePreventNavigation from "@/hooks/usePreventNavigation";
 import useGameWebSocket from "./useGameSocket";
@@ -11,26 +11,45 @@ import BackgroundAudio from "../../../components/audio-player";
 
 export default function Game() {
   usePreventNavigation();
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Function to toggle fullscreen
+  const toggleFullscreen = () => {
+    const gameContainer = document.getElementById("game-container");
+
+    if (!document.fullscreenElement && !document.webkitFullscreenElement) {
+      if (gameContainer.requestFullscreen) {
+        gameContainer.requestFullscreen();
+      } else if (gameContainer.webkitRequestFullscreen) {
+        gameContainer.webkitRequestFullscreen();
+      } else if (gameContainer.msRequestFullscreen) {
+        gameContainer.msRequestFullscreen();
+      }
+      setIsFullscreen(true);
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      setIsFullscreen(false);
+    }
+  };
 
   useEffect(() => {
-    const preventZoom = (event) => {
-      if (event.ctrlKey || event.metaKey || event.deltaY !== undefined) {
-        event.preventDefault();
-      }
+    // Detect fullscreen exit and update state
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement || !!document.webkitFullscreenElement);
     };
 
-    const disableKeyZoom = (event) => {
-      if (event.ctrlKey || event.metaKey) {
-        event.preventDefault();
-      }
-    };
-
-    document.addEventListener("wheel", preventZoom, { passive: false });
-    document.addEventListener("keydown", disableKeyZoom, { passive: false });
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
 
     return () => {
-      document.removeEventListener("wheel", preventZoom);
-      document.removeEventListener("keydown", disableKeyZoom);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      document.removeEventListener("webkitfullscreenchange", handleFullscreenChange);
     };
   }, []);
 
@@ -45,12 +64,17 @@ export default function Game() {
         <meta name="theme-color" content="#ADD8E6" />
       </Head>
 
-      <div className="game-container">
+      <div id="game-container" className={`game-container ${isFullscreen ? "fullscreen-active" : ""}`}>
         {gameState === "" && <GameLobby startGame={startGame} connected={connected} />}
         {gameState === "playing" && (
           <GameArea score={score} lives={lives} elapsedTime={elapsedTime} bubbles={bubbles} popBubble={popBubble} />
         )}
         {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
+
+        {/* Fullscreen Button */}
+        <button className="fullscreen-button" onClick={toggleFullscreen}>
+          {isFullscreen ? "🔳 Exit Fullscreen" : "🔲 Fullscreen"}
+        </button>
       </div>
     </>
   );
