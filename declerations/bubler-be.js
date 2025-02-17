@@ -11,6 +11,8 @@ export const idlFactory = ({ IDL }) => {
   });
   return IDL.Service({
     addAdmin: IDL.Func([IDL.Principal], [IDL.Bool], []),
+    clearCompletedGames: IDL.Func([], [IDL.Bool], []),
+    clearLeaderboard: IDL.Func([], [IDL.Bool], []),
     finishGame: IDL.Func([IDL.Text, IDL.Nat, IDL.Text], [IDL.Bool], []),
     getAdmins: IDL.Func([], [IDL.Opt(IDL.Vec(IDL.Principal))], []),
     getGameSessions: IDL.Func(
@@ -24,10 +26,14 @@ export const idlFactory = ({ IDL }) => {
       ["query"]
     ),
     getPlayers: IDL.Func([], [IDL.Vec(IDL.Tuple(IDL.Text, IDL.Text))], ["query"]),
+    getTopLeaderboard: IDL.Func(
+      [IDL.Bool],
+      [IDL.Vec(IDL.Tuple(IDL.Text, IDL.Text, IDL.Text, IDL.Nat, IDL.Nat, IDL.Text))],
+      ["query"]
+    ),
     removeAdmin: IDL.Func([IDL.Principal], [IDL.Bool], []),
     savePlayer: IDL.Func([IDL.Text, IDL.Text], [IDL.Bool], []),
     startGame: IDL.Func([IDL.Text], [IDL.Opt(GameSession)], []),
-    updateScore: IDL.Func([IDL.Text, IDL.Nat, IDL.Text], [IDL.Bool], []),
   });
 };
 export const init = ({ IDL }) => {

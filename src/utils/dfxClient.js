@@ -3,8 +3,8 @@ import { idlFactory } from "../../declerations/bubler-be";
 
 class DfxClient {
   constructor() {
-    this.canisterId = process.env.NEXT_PUBLIC_CANISTER_ID;
-    this.host = process.env.NEXT_PUBLIC_DFX_HOST || "http://127.0.0.1:4943";
+    this.canisterId = process.env.NEXT_PUBLIC_CANISTER_ID ?? "123455";
+    this.host = process.env.NEXT_PUBLIC_DFX_HOST || "https://ic0.app";
 
     this.agent = new HttpAgent({ host: this.host });
 
@@ -20,13 +20,24 @@ class DfxClient {
     });
   }
 
-  async getLeaderboard() {
+  async getTop10AllTime() {
     try {
-      const leaderboard = await this.backend.getLeaderboard();
-      console.log("Leaderboard Data:", leaderboard);
+      const leaderboard = await this.backend.getTopLeaderboard(false);
+      console.log("Top 10 All-Time Leaderboard:", leaderboard);
       return leaderboard;
     } catch (error) {
-      console.error("Error fetching leaderboard:", error);
+      console.error("Error fetching all-time leaderboard:", error);
+      return [];
+    }
+  }
+
+  async getTop10CurrentWeek() {
+    try {
+      const leaderboard = await this.backend.getTopLeaderboard(true);
+      console.log("Top 10 Current Week Leaderboard:", leaderboard);
+      return leaderboard;
+    } catch (error) {
+      console.error("Error fetching weekly leaderboard:", error);
       return [];
     }
   }

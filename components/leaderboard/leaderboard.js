@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { dfxClient } from "@/utils/dfxClient";
 import "./leaderboard.css";
 
 const colors = ["#FFD700", "#C0C0C0", "#CD7F32", "#0078D7", "#0099BC"];
@@ -8,34 +9,44 @@ const colors = ["#FFD700", "#C0C0C0", "#CD7F32", "#0078D7", "#0099BC"];
 const Leaderboard = () => {
   const [leaders, setLeaders] = useState([]);
   const [maxScore, setMaxScore] = useState(500);
+  const [isWeekly, setIsWeekly] = useState(false);
   const router = useRouter();
 
-  const getData = () => {
-    let data = {
-      success: true,
-      leaders: [
-        { id: 1, name: "Uenify", score: 350 },
-        { id: 2, name: "Kekland", score: 275 },
-        { id: 3, name: "Madopew", score: 220 },
-        { id: 4, name: "Yussend", score: 200 },
-        { id: 5, name: "Admin", score: 175 },
-      ],
-      maxScore: 500,
-    };
-    setLeaders(data.leaders);
-    setMaxScore(data.maxScore);
+  const fetchLeaderboard = async () => {
+    try {
+      let leaderboardData = isWeekly ? await dfxClient.getTop10CurrentWeek() : await dfxClient.getTop10AllTime();
+
+      if (leaderboardData.length > 0) {
+        setLeaders(
+          leaderboardData.map((el, i) => ({
+            id: i + 1,
+            name: el[2],
+            score: Number(el[4]),
+          }))
+        );
+
+        setMaxScore(Math.max(...leaderboardData.map((el) => Number(el[4])), 0));
+      } else {
+        setLeaders([]);
+      }
+    } catch (error) {
+      console.error("Error fetching leaderboard:", error);
+    }
   };
 
   useEffect(() => {
-    getData();
-    const interval = setInterval(getData, 180000);
+    fetchLeaderboard();
+    const interval = setInterval(fetchLeaderboard, 180000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isWeekly]);
 
   return (
     <>
       <div className="leaderboard">
         <h1 className="leaderboard-title">Leaderboard</h1>
+        <button className="toggle-button" onClick={() => setIsWeekly(!isWeekly)}>
+          {isWeekly ? "Show All-Time" : "Show Weekly"}
+        </button>
         <div className="leaders">
           {leaders.length > 0 ? (
             leaders.map((el, i) => (
