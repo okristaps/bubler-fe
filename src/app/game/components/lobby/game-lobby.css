@@ -147,3 +147,15 @@
   background: linear-gradient(to right, #e91e63, #ff4081);
   transform: scale(1.05);
 }
+
+.back-to-home {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.back-to-home:hover {
+  color: #fff;
+}

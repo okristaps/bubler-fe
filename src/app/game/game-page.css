@@ -8,7 +8,8 @@ html, body {
     overscroll-behavior: contain;
     font-size: 16px; 
     transform-origin: center;
-    background-color: #ADD8E6; 
+    background: #119dff !important;
+    /* background-color: #ADD8E6;  */
 
 }
 

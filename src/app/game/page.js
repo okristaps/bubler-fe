@@ -10,7 +10,8 @@ import Head from "next/head";
 import BackgroundAudio from "../../../components/audio-player";
 
 export default function Game() {
-  usePreventNavigation();
+  const { gameState, score, lives, elapsedTime, bubbles, startGame, popBubble, resetGame, connected } =
+    useGameWebSocket();
 
   useEffect(() => {
     const preventZoom = (event) => {
@@ -33,9 +34,6 @@ export default function Game() {
       document.removeEventListener("keydown", disableKeyZoom);
     };
   }, []);
-
-  const { gameState, score, lives, elapsedTime, bubbles, startGame, popBubble, resetGame, connected } =
-    useGameWebSocket();
 
   return (
     <>

@@ -3,7 +3,7 @@ import { useState, useRef, useCallback } from "react";
 export default function useGameWebSocket() {
   const [gameState, setGameState] = useState("");
   const [score, setScore] = useState(0);
-  const [lives, setLives] = useState(20);
+  const [lives, setLives] = useState(5);
   const [elapsedTime, setElapsedTime] = useState(0);
   const [bubbles, setBubbles] = useState([]);
   const [connected, setConnected] = useState(false);
