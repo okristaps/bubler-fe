@@ -61,7 +61,7 @@ export default function GameLobby({ startGame, connected }) {
           </div>
 
           <button type="submit" disabled={connected} className="game-button">
-            {connected ? "Connecting..." : "🚀 Start Game"}
+            {"🚀 Start Game"}
           </button>
         </form>
 

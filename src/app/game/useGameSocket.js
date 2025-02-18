@@ -67,7 +67,8 @@ export default function useGameWebSocket() {
   const resetGame = () => {
     setGameState("");
     setScore(0);
-    setLives(3);
+    setConnected(false);
+    setLives(5);
     setElapsedTime(0);
     setBubbles([]);
   };

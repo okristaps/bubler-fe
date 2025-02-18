@@ -10,9 +10,11 @@ const Leaderboard = () => {
   const [leaders, setLeaders] = useState([]);
   const [maxScore, setMaxScore] = useState(500);
   const [isWeekly, setIsWeekly] = useState(false);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
 
   const fetchLeaderboard = async () => {
+    setLoading(true);
     try {
       let leaderboardData = isWeekly ? await dfxClient.getTop10CurrentWeek() : await dfxClient.getTop10AllTime();
 
@@ -24,7 +26,6 @@ const Leaderboard = () => {
             score: Number(el[4]),
           }))
         );
-
         setMaxScore(Math.max(...leaderboardData.map((el) => Number(el[4])), 0));
       } else {
         setLeaders([]);
@@ -32,6 +33,7 @@ const Leaderboard = () => {
     } catch (error) {
       console.error("Error fetching leaderboard:", error);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -44,28 +46,32 @@ const Leaderboard = () => {
     <>
       <div className="leaderboard">
         <h1 className="leaderboard-title">Leaderboard</h1>
-        <button className="toggle-button" onClick={() => setIsWeekly(!isWeekly)}>
-          {isWeekly ? "Show All-Time" : "Show Weekly"}
+        <button className={`toggle-button ${isWeekly ? "weekly" : "all-time"}`} onClick={() => setIsWeekly(!isWeekly)}>
+          {isWeekly ? "📅 Weekly Leaderboard" : "🏆 All-Time Leaderboard"}
         </button>
-        <div className="leaders">
-          {leaders.length > 0 ? (
-            leaders.map((el, i) => (
-              <div key={el.id} className={`leader ${i < 3 ? "top-leader" : ""}`}>
-                <div className="leader-wrap">
-                  <div className="leader-rank" style={{ backgroundColor: i < 3 ? colors[i] : "transparent" }}>
-                    {i + 1}
+        {loading ? (
+          <div className="spinner"></div>
+        ) : (
+          <div className="leaders">
+            {leaders.length > 0 ? (
+              leaders.map((el, i) => (
+                <div key={el.id} className={`leader ${i < 3 ? "top-leader" : ""}`}>
+                  <div className="leader-wrap">
+                    <div className="leader-rank" style={{ backgroundColor: i < 3 ? colors[i] : "transparent" }}>
+                      {i + 1}
+                    </div>
+                    <div className="leader-name">{el.name}</div>
                   </div>
-                  <div className="leader-name">{el.name}</div>
+                  <div className="leader-score">
+                    🏆 <span className="leader-score_title">{el.score}</span>
+                  </div>
                 </div>
-                <div className="leader-score">
-                  🏆 <span className="leader-score_title">{el.score}</span>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="empty">No data available</div>
-          )}
-        </div>
+              ))
+            ) : (
+              <div className="empty">No data available</div>
+            )}
+          </div>
+        )}
       </div>
       <button className="game-button" onClick={() => router.push("/game")}>
         ▶️ Play

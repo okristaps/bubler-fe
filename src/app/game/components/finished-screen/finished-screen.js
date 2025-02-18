@@ -18,10 +18,10 @@ export default function FinishedScreen({ score, elapsedTime, resetGame }) {
         Game over!
       </h1>
       <p className="final-score">🏆 Score: {score}</p>
-      <p className="final-time">⏳ Time: {formatTime(elapsedTime)}</p>
+      <p className="final-time">⏳ Time: {elapsedTime}</p>
 
       <div className="button-container">
-        <button className="game-button" onClick={resetGame}>
+        <button className="game-button" onClick={() => resetGame()}>
           🔄 Play Again
         </button>
         <button className="leaderboard-button" onClick={() => router.push("/game/leaderboard")}>

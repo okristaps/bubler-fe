@@ -15,7 +15,7 @@
   font-weight: 800;
   color: #ff9a9e;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 
@@ -106,4 +106,46 @@
   background: linear-gradient(to right, #e91e63, #ff4081);
   transform: scale(1.05);
   box-shadow: 0px 6px 20px rgba(255, 64, 129, 0.5);
+}
+
+
+.spinner {
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  border-top: 6px solid #0078D7;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.toggle-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toggle-button.weekly {
+  background-color: #0078D7;
+  color: white;
+}
+
+.toggle-button.all-time {
+  background-color: #FFD700;
+  color: black;
+}
+
+.toggle-button:hover {
+  transform: scale(1.05);
 }
