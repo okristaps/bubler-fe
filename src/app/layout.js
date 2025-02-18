@@ -10,10 +10,10 @@ const bubbles = Fuzzy_Bubbles({
   subsets: ["latin"],
 });
 
-const APP_NAME = "PWA App";
-const APP_DEFAULT_TITLE = "My Awesome PWA App";
-const APP_TITLE_TEMPLATE = "%s - PWA App";
-const APP_DESCRIPTION = "Best PWA app in the world!";
+const APP_NAME = "Bubker";
+const APP_DEFAULT_TITLE = "Bubler Club";
+const APP_TITLE_TEMPLATE = "Bubler";
+const APP_DESCRIPTION = "BUBLER: Meme Catcher on ICP Chain";
 
 export const metadata = {
   title: "BUBLER: Meme Catcher on ICP Chain",
@@ -110,7 +110,7 @@ export const metadata = {
     },
     {
       name: "theme-color",
-      content: "#000000",
+      background_color: "#9a6026",
     },
   ],
 };
@@ -118,13 +118,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <meta name="theme-color" content="#D16BFF" />
-      <body
-        className={`${bubbles.variable} font-fuzzy antialiased bg-[#119dff] relative overflow-x-hidden overflow-y-auto`}
-      >
-        <HeaderBUBLER />
+      <meta name="theme-color" content="#119dff" />
+      <body className={`${bubbles.variable} font-fuzzy antialiased relative   overflow-x-hidden overflow-y-auto`}>
         <main>
           {children}
+          <InstallPrompt />
           <Analytics />
         </main>
         <Footer />
