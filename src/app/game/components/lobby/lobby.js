@@ -35,7 +35,7 @@ export default function GameLobby({ startGame, connected }) {
             <input
               type="text"
               placeholder="Enter Nickname"
-              {...register("username", { required: "Nickname is required", minLength: 3 })}
+              {...register("username", { required: "Nickname is required", minLength: 3, maxLength: 10 })}
               className={`game-input ${errors.username ? "input-error" : ""}`}
             />
             {errors.username && <p className="error-text">{errors.username.message}</p>}

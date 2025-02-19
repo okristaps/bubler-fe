@@ -4,6 +4,10 @@ import { useRouter } from "next/navigation";
 import { dfxClient } from "@/utils/dfxClient";
 import "./leaderboard.css";
 
+const truncateText = (text, maxLength = 15) => {
+  return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+};
+
 const colors = ["#FFD700", "#C0C0C0", "#CD7F32", "#0078D7", "#0099BC"];
 
 const Leaderboard = () => {
@@ -60,7 +64,7 @@ const Leaderboard = () => {
                     <div className="leader-rank" style={{ backgroundColor: i < 3 ? colors[i] : "transparent" }}>
                       {i + 1}
                     </div>
-                    <div className="leader-name">{el.name}</div>
+                    <div className="leader-name">{truncateText(el?.name)}</div>
                   </div>
                   <div className="leader-score">
                     🏆 <span className="leader-score_title">{el.score}</span>
