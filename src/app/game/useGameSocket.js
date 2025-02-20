@@ -4,7 +4,7 @@ export default function useGameWebSocket() {
   const [gameState, setGameState] = useState("");
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(5);
-  const [elapsedTime, setElapsedTime] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState("0:00 / 5:00");
   const [bubbles, setBubbles] = useState([]);
   const [connected, setConnected] = useState(false);
   const socketRef = useRef(null);
@@ -33,7 +33,7 @@ export default function useGameWebSocket() {
             setScore(data.score);
             setLives(data.lives);
             setGameState(data.currentState || "playing");
-            setElapsedTime(data.elapsedTime);
+            setElapsedTime(`${data.elapsedTime} / ${data?.timeLimit}`);
 
             setBubbles((prevBubbles) => {
               const updatedBubbles = new Map(prevBubbles.map((b) => [b.id, b]));
