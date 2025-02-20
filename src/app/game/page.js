@@ -7,7 +7,7 @@ import GameLobby from "./components/lobby/lobby";
 import GameArea from "./components/game-area/game-area";
 import FinishedScreen from "./components/finished-screen/finished-screen";
 import Head from "next/head";
-import BackgroundAudio from "../../../components/audio-player";
+import BackgroundAudio from "@/components/audio-player";
 
 export default function Game() {
   const { gameState, score, lives, elapsedTime, bubbles, startGame, popBubble, resetGame, connected } =

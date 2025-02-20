@@ -1,8 +1,8 @@
 import { Fuzzy_Bubbles } from "next/font/google";
 import "./globals.css";
-import BubblesAnimation from "../components/bubblesanim";
+
 import { Analytics } from "@vercel/analytics/react";
-import HeaderBUBLER from "@/components/header";
+
 import Footer from "@/components/footer";
 const bubbles = Fuzzy_Bubbles({
   weight: ["400", "700"],
@@ -122,10 +122,8 @@ export default function RootLayout({ children }) {
       <body className={`${bubbles.variable} font-fuzzy antialiased relative   overflow-x-hidden overflow-y-auto`}>
         <main>
           {children}
-          <InstallPrompt />
           <Analytics />
         </main>
-        <Footer />
       </body>
     </html>
   );

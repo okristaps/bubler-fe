@@ -1,10 +1,11 @@
 "use client";
 import { useForm } from "react-hook-form";
 import "./game-lobby.css";
-import BubbleBackground from "../../../../../components/bubble-bg";
+
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import RulesModal from "../../../../../components/modals/rules-modal/rules-modal";
+import RulesModal from "../modals/rules-modal/rules-modal";
+import BubbleBackground from "@/components/bubble-bg";
 
 export default function GameLobby({ startGame, connected }) {
   const router = useRouter();

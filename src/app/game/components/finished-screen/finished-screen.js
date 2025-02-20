@@ -1,7 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
-import BubbleBackground from "../../../../../components/bubble-bg";
+
 import "./finished-screen.css";
+import BubbleBackground from "@/components/bubble-bg";
 
 export default function FinishedScreen({ score, elapsedTime, resetGame }) {
   const router = useRouter();
