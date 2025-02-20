@@ -8,6 +8,7 @@ import GameArea from "./components/game-area/game-area";
 import FinishedScreen from "./components/finished-screen/finished-screen";
 import Head from "next/head";
 import BackgroundAudio from "@/components/audio-player";
+import InstallPrompt from "./components/pwa/pwa-wrapper";
 
 export default function Game() {
   const { gameState, score, lives, elapsedTime, bubbles, startGame, popBubble, resetGame, connected } =
@@ -37,6 +38,7 @@ export default function Game() {
 
   return (
     <>
+      <InstallPrompt />
       <BackgroundAudio />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
