@@ -1,7 +1,9 @@
 import { Fuzzy_Bubbles } from "next/font/google";
 import "./globals.css";
-import BubblesAnimation from "../../components/bubblesanim";
+import BubblesAnimation from "../components/bubblesanim";
 import { Analytics } from "@vercel/analytics/react";
+import HeaderBUBLER from "@/components/header";
+import Footer from "@/components/footer";
 const bubbles = Fuzzy_Bubbles({
   weight: ["400", "700"],
   variable: "--font-fuzzy-bubbles",
@@ -39,7 +41,7 @@ export const metadata = {
   },
 
   robots: "index, follow",
-  viewport: "width=device-width, initial-scale=1",
+  // viewport: "width=device-width, initial-scale=1",
 
   structuredData: {
     "@context": "https://schema.org",
@@ -81,18 +83,15 @@ export default function RootLayout({ children }) {
     <html lang="en" className="overflow-x-hidden">
       <meta name="theme-color" content="#D16BFF" />
       <body
-        className={`${bubbles.variable} font-fuzzy antialiased bg-gradient-to-r from-pink-500 via-pink-500 via-purple-600 to-blue-700 relative overflow-x-hidden overflow-y-auto`}
+        className={`${bubbles.variable} font-fuzzy antialiased bg-[#119dff] relative overflow-x-hidden overflow-y-auto`}
       >
-        <h1 className="text-[59px] text-center mt-10  font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
-          BUBLER
-        </h1>
-
+        <HeaderBUBLER />
         <main>
-          <BubblesAnimation count={50}>
-            {children}
-            <Analytics />
-          </BubblesAnimation>
+          <BubblesAnimation count={50} />
+          {children}
+          <Analytics />
         </main>
+        <Footer />
       </body>
     </html>
   );

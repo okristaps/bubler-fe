@@ -13,7 +13,7 @@ export default function BubblesAnimation({ count = 20, children }) {
   }, [count]);
 
   return (
-    <div className="absolute inset-0 -z-10 overflow-hidden w-full h-full">
+    <div className="absolute inset-0 -z-10 overflow-hidden  ">
       {bubbles.map((bubble, index) => (
         <img
           key={index}

@@ -2,8 +2,8 @@ const TopSection = () => {
   return (
     <>
       <section className="relative flex flex-col items-center justify-start pt-10 sm:pt-12 md:pt-16  text-white p-6 sm:p-8 rounded-xl mx-auto max-w-4xl">
-        <div className="absolute top-4 left-4 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400 blur-3xl opacity-30 animate-pulse"></div>
-        <div className="absolute bottom-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-green-400 blur-3xl opacity-30 animate-pulse"></div>
+        <div className=" top-4 left-4 w-12 h-12 sm:w-16 sm:h-16 bg-yellow-400 blur-3xl opacity-30 animate-pulse"></div>
+        <div className=" bottom-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-green-400 blur-3xl opacity-30 animate-pulse"></div>
 
         <div className="text-center">
           <h1 className="text-5xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-pink-300 drop-shadow-lg animate-bounce">
