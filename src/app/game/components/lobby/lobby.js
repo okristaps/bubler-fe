@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import RulesModal from "../modals/rules-modal/rules-modal";
 import BubbleBackground from "@/components/bubble-bg";
+import BackgroundAudio from "@/components/audio-player";
 
 export default function GameLobby({ startGame, connected }) {
   const router = useRouter();

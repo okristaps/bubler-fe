@@ -4,6 +4,7 @@ import "./game-area.css";
 import BubbleBackground from "../../../../components/bubble-bg";
 import GameInfo from "./game-info/game-info";
 import usePreventNavigation from "@/hooks/usePreventNavigation";
+import BackgroundAudio from "@/components/audio-player";
 
 export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble }) {
   const audioContextRef = useRef(null);
@@ -50,6 +51,7 @@ export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble
 
   return (
     <div className="game-area">
+      <BackgroundAudio />
       <GameInfo score={score} elapsedTime={elapsedTime} lives={lives} />
       <BubbleBackground />
       <div className="background-logo-container z-100">
