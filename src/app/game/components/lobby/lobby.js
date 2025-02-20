@@ -80,9 +80,9 @@ export default function GameLobby({ startGame, connected }) {
 
         <p className="internet-warning">Ensure a stable internet connection while playing to avoid disconnections.</p>
 
-        <div style={{ marginTop: 20, marginBottom: 20 }} className="back-to-home" onClick={() => router.replace("/")}>
+        <a style={{ marginTop: 20, marginBottom: 20 }} className="back-to-home" href="/">
           Back to home
-        </div>
+        </a>
       </div>
 
       <BubbleBackground />

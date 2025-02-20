@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import "./game-page.css";
-import usePreventNavigation from "@/hooks/usePreventNavigation";
 import useGameWebSocket from "./useGameSocket";
 import GameLobby from "./components/lobby/lobby";
 import GameArea from "./components/game-area/game-area";
