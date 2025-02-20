@@ -58,6 +58,22 @@
   }
 }
 
+.top-middle {
+  position:fixed;
+  opacity: 0.6;
+  top:30%;
+  font-size: 50px;
+  font-weight: 800;
+  text-align: center;
+  background-clip: text;
+  text-transform: uppercase;
+  background-image: linear-gradient(to right, #ffcc00, #ff66ff);
+  color: transparent;
+  text-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+  animation: bounce 1.5s infinite;
+}
+
+
 @media (max-width: 768px) {
   .stat-box {
     font-size: 14px;
@@ -70,6 +86,13 @@
     bottom: 35px !important;
   }
 
+  
+.top-middle {
+
+  top:20%;
+
+}
+
 
   @supports (padding: env(safe-area-inset-bottom)) {
     .bottom-center {
@@ -79,20 +102,6 @@
 }
 
 
-.top-middle {
-  position:fixed;
-  opacity: 0.6;
-  top: 30px;
-  font-size: 50px;
-  font-weight: 800;
-  text-align: center;
-  background-clip: text;
-  text-transform: uppercase;
-  background-image: linear-gradient(to right, #ffcc00, #ff66ff);
-  color: transparent;
-  text-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
-  animation: bounce 1.5s infinite;
-}
 
 
 
