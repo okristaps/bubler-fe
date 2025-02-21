@@ -1,12 +1,12 @@
-"use client";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import "./game-area.css";
 import BubbleBackground from "../../../../components/bubble-bg";
 import GameInfo from "./game-info/game-info";
 import usePreventNavigation from "@/hooks/usePreventNavigation";
 import BackgroundAudio from "@/components/audio-player";
+import PauseOverlay from "./pause-overlay/pause-overlay";
 
-export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble }) {
+export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble, isPaused, pauseGame, resumeGame }) {
   const audioContextRef = useRef(null);
   const popBufferRef = useRef(null);
 
@@ -25,12 +25,14 @@ export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble
         .catch((err) => console.error("Audio loading error:", err));
 
       const unlockAudio = () => {
-        const bufferSource = audioContextRef.current.createBufferSource();
-        bufferSource.buffer = popBufferRef.current;
-        bufferSource.connect(audioContextRef.current.destination);
-        bufferSource.start();
-        window.removeEventListener("touchstart", unlockAudio);
-        window.removeEventListener("click", unlockAudio);
+        if (popBufferRef.current) {
+          const bufferSource = audioContextRef.current.createBufferSource();
+          bufferSource.buffer = popBufferRef.current;
+          bufferSource.connect(audioContextRef.current.destination);
+          bufferSource.start();
+          window.removeEventListener("touchstart", unlockAudio);
+          window.removeEventListener("click", unlockAudio);
+        }
       };
 
       window.addEventListener("touchstart", unlockAudio, { once: true });
@@ -45,37 +47,46 @@ export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble
       bufferSource.connect(audioContextRef.current.destination);
       bufferSource.start();
     }
-
     popBubble(bubbleId);
   };
 
   return (
-    <div className="game-area">
-      <BackgroundAudio />
-      <GameInfo score={score} elapsedTime={elapsedTime} lives={lives} />
-      <BubbleBackground />
-      <div className="background-logo-container z-100">
-        <img src="/image6.png" alt="Game Logo" className="background-logo" />
+    <>
+      <PauseOverlay
+        isPaused={isPaused}
+        onTogglePause={() => (isPaused ? resumeGame() : pauseGame())}
+        onEndGame={() => window.location.reload()}
+      />
+
+      <div className="game-area">
+        <BackgroundAudio />
+        <GameInfo score={score} elapsedTime={elapsedTime} lives={lives} />
+        <BubbleBackground />
+
+        <div className="background-logo-container z-1">
+          <img src="/image6.png" alt="Game Logo" className="background-logo" />
+        </div>
+        <div className="bubble-container">
+          {bubbles.map((bubble) => (
+            <div
+              key={bubble.id}
+              id={`bubble-${bubble.id}`}
+              className="bubble"
+              data-type={bubble.type}
+              style={{
+                width: `${bubble.size}px`,
+                height: `${bubble.size}px`,
+                left: `${bubble.x}%`,
+                animation: `fall ${bubble.fallTime}s linear infinite`,
+                animationPlayState: isPaused ? "paused" : "running",
+              }}
+              onClick={() => handleBubblePop(bubble.id)}
+            >
+              <img src={`/game-bubbles/${bubble.image}.png`} alt={bubble.type} className="bubble-image" />
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="bubble-container">
-        {bubbles.map((bubble) => (
-          <div
-            key={bubble.id}
-            className="bubble"
-            data-type={bubble.type}
-            style={{
-              width: `${bubble.size}px`,
-              height: `${bubble.size}px`,
-              left: `${bubble.x}%`,
-              top: `${bubble.y}%`,
-              animationDuration: `${bubble.fallTime}s`,
-            }}
-            onClick={() => handleBubblePop(bubble.id)}
-          >
-            <img src={`/game-bubbles/${bubble.image}.png`} alt={bubble.type} className="bubble-image" />
-          </div>
-        ))}
-      </div>
-    </div>
+    </>
   );
 }

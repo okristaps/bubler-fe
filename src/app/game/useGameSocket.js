@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 
 export default function useGameWebSocket() {
+  const [isPaused, setIsPaused] = useState(false);
   const [gameState, setGameState] = useState("");
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(5);
@@ -30,26 +31,36 @@ export default function useGameWebSocket() {
           const data = JSON.parse(event.data);
 
           if (data.type === "game-state") {
-            setScore(data.score);
-            setLives(data.lives);
-            setGameState(data.currentState || "playing");
-            setElapsedTime(`${data.elapsedTime} / ${data?.timeLimit}`);
+            if (!isPaused) {
+              setScore(data.score);
+              setLives(data.lives);
+              setGameState(data.currentState || "playing");
+              setElapsedTime(`${data.elapsedTime} / ${data?.timeLimit}`);
 
-            setBubbles((prevBubbles) => {
-              const updatedBubbles = new Map(prevBubbles.map((b) => [b.id, b]));
+              setBubbles((prevBubbles) => {
+                const updatedBubbles = new Map(prevBubbles.map((b) => [b.id, b]));
 
-              data.bubbles.forEach((bubble) => {
-                if (!updatedBubbles.has(bubble.id)) {
-                  updatedBubbles.set(bubble.id, {
-                    ...bubble,
-                    createdAt: Date.now(),
-                    fallTime: 10 - bubble.speed + 4,
-                  });
-                }
+                data.bubbles.forEach((bubble) => {
+                  if (!updatedBubbles.has(bubble.id)) {
+                    updatedBubbles.set(bubble.id, {
+                      ...bubble,
+                      createdAt: Date.now(),
+                      fallTime: 10 - bubble.speed + 4,
+                    });
+                  }
+                });
+
+                return Array.from(updatedBubbles.values());
               });
+            }
+          }
 
-              return Array.from(updatedBubbles.values());
-            });
+          if (data.type === "game-paused") {
+            setIsPaused(true);
+          }
+
+          if (data.type === "game-resumed") {
+            setIsPaused(false);
           }
         } catch (error) {
           console.error("❌ Invalid WebSocket message:", event.data);
@@ -61,7 +72,7 @@ export default function useGameWebSocket() {
         setGameState("finished");
       };
     },
-    [connected]
+    [connected, isPaused]
   );
 
   const resetGame = () => {
@@ -69,16 +80,47 @@ export default function useGameWebSocket() {
     setScore(0);
     setConnected(false);
     setLives(5);
-    setElapsedTime(0);
+    setElapsedTime("0:00 / 5:00");
     setBubbles([]);
+    setIsPaused(false);
   };
 
-  const popBubble = useCallback((bubbleId) => {
+  const pauseGame = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
-      socketRef.current.send(JSON.stringify({ type: "pop", bubbleId }));
-      setBubbles((prev) => prev.filter((b) => b.id !== bubbleId));
+      socketRef.current.send(JSON.stringify({ type: "pause" }));
+      setIsPaused(true);
     }
-  }, []);
+  };
 
-  return { gameState, score, lives, elapsedTime, bubbles, startGame, popBubble, connected, resetGame };
+  const resumeGame = () => {
+    if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+      socketRef.current.send(JSON.stringify({ type: "resume" }));
+      setIsPaused(false);
+    }
+  };
+
+  const popBubble = useCallback(
+    (bubbleId) => {
+      if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN && !isPaused) {
+        socketRef.current.send(JSON.stringify({ type: "pop", bubbleId }));
+        setBubbles((prev) => prev.filter((b) => b.id !== bubbleId));
+      }
+    },
+    [isPaused]
+  );
+
+  return {
+    gameState,
+    score,
+    lives,
+    elapsedTime,
+    bubbles,
+    startGame,
+    popBubble,
+    connected,
+    resetGame,
+    isPaused,
+    pauseGame,
+    resumeGame,
+  };
 }

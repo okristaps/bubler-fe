@@ -9,8 +9,20 @@ import Head from "next/head";
 import InstallPrompt from "./components/pwa/pwa-wrapper";
 
 export default function Game() {
-  const { gameState, score, lives, elapsedTime, bubbles, startGame, popBubble, resetGame, connected } =
-    useGameWebSocket();
+  const {
+    gameState,
+    score,
+    lives,
+    elapsedTime,
+    bubbles,
+    startGame,
+    popBubble,
+    resetGame,
+    connected,
+    isPaused,
+    pauseGame,
+    resumeGame,
+  } = useGameWebSocket();
 
   useEffect(() => {
     const preventZoom = (event) => {
@@ -46,7 +58,16 @@ export default function Game() {
       <div className="game-container">
         {gameState === "" && <GameLobby startGame={startGame} connected={connected} />}
         {gameState === "playing" && (
-          <GameArea score={score} lives={lives} elapsedTime={elapsedTime} bubbles={bubbles} popBubble={popBubble} />
+          <GameArea
+            score={score}
+            lives={lives}
+            elapsedTime={elapsedTime}
+            bubbles={bubbles}
+            popBubble={popBubble}
+            isPaused={isPaused}
+            resumeGame={resumeGame}
+            pauseGame={pauseGame}
+          />
         )}
         {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
       </div>

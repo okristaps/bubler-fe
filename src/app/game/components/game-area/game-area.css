@@ -30,7 +30,6 @@
     border-radius: 50%;
     cursor: pointer;
     transition: transform 0.1s ease-out;
-    animation: fall linear forwards;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,11 +40,17 @@
     object-fit: contain;
     border-radius: 50%;
   }
-
+  
+  /* Use transform via keyframes to animate the fall */
   @keyframes fall {
-    from { top: -50px; }
-    to { top: 100vh; }
+    from {
+      transform: translateY(-50px);
+    }
+    to {
+      transform: translateY(calc(100vh + 50px));
+    }
   }
+  
   
 
   @keyframes pulseLogo {

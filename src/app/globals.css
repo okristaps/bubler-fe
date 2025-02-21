@@ -41,9 +41,11 @@ main {
 }
 
 /* Base bubble class */
-.bubble {
-  animation: rise linear infinite;
-}
+/* .bubble {
+  position: absolute;
+  animation: none; 
+  z-index: 100;
+} */
 
 @keyframes jump {
   0% {
