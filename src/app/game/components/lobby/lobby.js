@@ -1,12 +1,10 @@
 "use client";
 import { useForm } from "react-hook-form";
-import "./game-lobby.css";
-
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import RulesModal from "../modals/rules-modal/rules-modal";
 import BubbleBackground from "@/components/bubble-bg";
-import BackgroundAudio from "@/components/audio-player";
+import "./game-lobby.css";
 
 export default function GameLobby({ startGame, connected }) {
   const router = useRouter();
@@ -16,10 +14,26 @@ export default function GameLobby({ startGame, connected }) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
+
+  useEffect(() => {
+    const storedUsername = localStorage.getItem("username");
+    const storedWallet = localStorage.getItem("wallet");
+
+    if (storedUsername) {
+      setValue("username", storedUsername);
+    }
+    if (storedWallet) {
+      setValue("wallet", storedWallet);
+    }
+  }, [setValue]);
 
   const onSubmit = (data) => {
     if (data.username && data.wallet) {
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("wallet", data.wallet);
+
       startGame(data.username, data.wallet);
     }
   };
@@ -37,7 +51,17 @@ export default function GameLobby({ startGame, connected }) {
             <input
               type="text"
               placeholder="Enter Nickname"
-              {...register("username", { required: "Nickname is required", minLength: 3, maxLength: 10 })}
+              {...register("username", {
+                required: "Nickname is required",
+                minLength: {
+                  value: 3,
+                  message: "Nickname must be at least 3 characters",
+                },
+                maxLength: {
+                  value: 10,
+                  message: "Nickname must be at most 10 characters",
+                },
+              })}
               className={`game-input ${errors.username ? "input-error" : ""}`}
             />
             {errors.username && <p className="error-text">{errors.username.message}</p>}
