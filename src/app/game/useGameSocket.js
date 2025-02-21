@@ -4,6 +4,7 @@ export default function useGameWebSocket() {
   const [isPaused, setIsPaused] = useState(false);
   const [isFrozen, setIsFrozen] = useState(false);
   const [gameState, setGameState] = useState("");
+  const [isDark, setIsDark] = useState(false);
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(5);
   const [elapsedTime, setElapsedTime] = useState("0:00 / 5:00");
@@ -30,7 +31,6 @@ export default function useGameWebSocket() {
       ws.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
-          console.log("data", data);
 
           if (data.type === "game-state") {
             if (!isPaused) {
@@ -70,6 +70,13 @@ export default function useGameWebSocket() {
           if (data.type === "freeze-ended") {
             setIsFrozen(false);
           }
+
+          if (data.type === "darkness-active") {
+            setIsDark(true);
+          }
+          if (data.type === "darkness-ended") {
+            setIsDark(false);
+          }
         } catch (error) {
           console.error("❌ Invalid WebSocket message:", event.data);
         }
@@ -91,6 +98,7 @@ export default function useGameWebSocket() {
     setElapsedTime("0:00 / 5:00");
     setBubbles([]);
     setIsPaused(false);
+    setIsDark(false);
     setIsFrozen(false);
   };
 
@@ -131,6 +139,7 @@ export default function useGameWebSocket() {
     isPaused,
     pauseGame,
     resumeGame,
-    isFrozen, // Expose freeze state
+    isDark,
+    isFrozen,
   };
 }

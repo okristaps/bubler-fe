@@ -23,7 +23,6 @@ class DfxClient {
   async getTop10AllTime() {
     try {
       const leaderboard = await this.backend.getTopLeaderboard(false);
-      console.log("Top 10 All-Time Leaderboard:", leaderboard);
       return leaderboard;
     } catch (error) {
       console.error("Error fetching all-time leaderboard:", error);
@@ -34,7 +33,6 @@ class DfxClient {
   async getTop10CurrentWeek() {
     try {
       const leaderboard = await this.backend.getTopLeaderboard(true);
-      console.log("Top 10 Current Week Leaderboard:", leaderboard);
       return leaderboard;
     } catch (error) {
       console.error("Error fetching weekly leaderboard:", error);

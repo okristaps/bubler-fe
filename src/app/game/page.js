@@ -23,6 +23,7 @@ export default function Game() {
     pauseGame,
     resumeGame,
     isFrozen,
+    isDark,
   } = useGameWebSocket();
 
   useEffect(() => {
@@ -60,6 +61,7 @@ export default function Game() {
         {gameState === "" && <GameLobby startGame={startGame} connected={connected} />}
         {gameState === "playing" && (
           <GameArea
+            isDark={isDark}
             isFrozen={isFrozen}
             score={score}
             lives={lives}

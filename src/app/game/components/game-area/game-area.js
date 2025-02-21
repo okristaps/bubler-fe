@@ -16,6 +16,7 @@ export default function GameArea({
   pauseGame,
   resumeGame,
   isFrozen,
+  isDark,
 }) {
   const audioContextRef = useRef(null);
   const popBufferRef = useRef(null);
@@ -60,6 +61,8 @@ export default function GameArea({
     popBubble(bubbleId);
   };
 
+  console.log("isDark", isDark);
+
   return (
     <>
       <PauseOverlay
@@ -68,6 +71,7 @@ export default function GameArea({
         onEndGame={() => window.location.reload()}
       />
       {isFrozen && <div className="frozen-overlay" />}
+      {isDark && <div className="darkness-overlay" />}
 
       <div className="game-area">
         <BackgroundAudio />
