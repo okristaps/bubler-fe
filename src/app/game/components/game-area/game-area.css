@@ -1,5 +1,6 @@
 
 .game-area {
+  margin-top: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,6 +18,19 @@
   z-index: -3;
 }
 
+
+.frozen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; 
+  background: url("../../../../../public/game-assets/frozen.png") no-repeat center center;
+  background-size: cover;
+  opacity: 0.1; 
+}
 
 
   .bubble-container {

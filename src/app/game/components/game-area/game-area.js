@@ -6,7 +6,17 @@ import usePreventNavigation from "@/hooks/usePreventNavigation";
 import BackgroundAudio from "@/components/audio-player";
 import PauseOverlay from "./pause-overlay/pause-overlay";
 
-export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble, isPaused, pauseGame, resumeGame }) {
+export default function GameArea({
+  score,
+  lives,
+  elapsedTime,
+  bubbles,
+  popBubble,
+  isPaused,
+  pauseGame,
+  resumeGame,
+  isFrozen,
+}) {
   const audioContextRef = useRef(null);
   const popBufferRef = useRef(null);
 
@@ -57,6 +67,7 @@ export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble
         onTogglePause={() => (isPaused ? resumeGame() : pauseGame())}
         onEndGame={() => window.location.reload()}
       />
+      {isFrozen && <div className="frozen-overlay" />}
 
       <div className="game-area">
         <BackgroundAudio />
@@ -66,6 +77,7 @@ export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble
         <div className="background-logo-container z-1">
           <img src="/image6.png" alt="Game Logo" className="background-logo" />
         </div>
+
         <div className="bubble-container">
           {bubbles.map((bubble) => (
             <div
@@ -78,7 +90,8 @@ export default function GameArea({ score, lives, elapsedTime, bubbles, popBubble
                 height: `${bubble.size}px`,
                 left: `${bubble.x}%`,
                 animation: `fall ${bubble.fallTime}s linear infinite`,
-                animationPlayState: isPaused ? "paused" : "running",
+                // Freeze or pause sets animation to paused
+                animationPlayState: isPaused || isFrozen ? "paused" : "running",
               }}
               onClick={() => handleBubblePop(bubble.id)}
             >

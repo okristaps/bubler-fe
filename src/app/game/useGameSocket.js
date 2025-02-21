@@ -2,6 +2,7 @@ import { useState, useRef, useCallback } from "react";
 
 export default function useGameWebSocket() {
   const [isPaused, setIsPaused] = useState(false);
+  const [isFrozen, setIsFrozen] = useState(false);
   const [gameState, setGameState] = useState("");
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(5);
@@ -29,6 +30,7 @@ export default function useGameWebSocket() {
       ws.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
+          console.log("data", data);
 
           if (data.type === "game-state") {
             if (!isPaused) {
@@ -62,6 +64,12 @@ export default function useGameWebSocket() {
           if (data.type === "game-resumed") {
             setIsPaused(false);
           }
+          if (data.type === "freeze-active") {
+            setIsFrozen(true);
+          }
+          if (data.type === "freeze-ended") {
+            setIsFrozen(false);
+          }
         } catch (error) {
           console.error("❌ Invalid WebSocket message:", event.data);
         }
@@ -83,6 +91,7 @@ export default function useGameWebSocket() {
     setElapsedTime("0:00 / 5:00");
     setBubbles([]);
     setIsPaused(false);
+    setIsFrozen(false);
   };
 
   const pauseGame = () => {
@@ -122,5 +131,6 @@ export default function useGameWebSocket() {
     isPaused,
     pauseGame,
     resumeGame,
+    isFrozen, // Expose freeze state
   };
 }
