@@ -1,19 +1,39 @@
-import { useState, useRef, useCallback } from "react";
+import { useReducer, useRef, useCallback } from "react";
+
+const initialState = {
+  isPaused: false,
+  isFrozen: false,
+  isDark: false,
+  gameStatus: "",
+  score: 0,
+  lives: 5,
+  elapsedTime: "0:00 / 5:00",
+  connected: false,
+  bubbles: [],
+  recentlyPopped: [],
+};
+
+function gameReducer(state, action) {
+  switch (action.type) {
+    case "MERGE_STATE":
+      return { ...state, ...action.payload };
+    case "RESET_GAME":
+      return { ...initialState };
+    default:
+      return state;
+  }
+}
 
 export default function useGameWebSocket() {
-  const [isPaused, setIsPaused] = useState(false);
-  const [isFrozen, setIsFrozen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
-  const [gameState, setGameState] = useState("");
-  const [score, setScore] = useState(0);
-  const [lives, setLives] = useState(5);
-  const [elapsedTime, setElapsedTime] = useState("0:00 / 5:00");
-  const [bubbles, setBubbles] = useState([]);
-  const [connected, setConnected] = useState(false);
-
-  const [recentlyPoppedIds, setRecentlyPoppedIds] = useState([]);
-
+  const [state, dispatch] = useReducer(gameReducer, initialState);
   const socketRef = useRef(null);
+
+  const { isPaused, isFrozen, isDark, gameStatus, score, lives, elapsedTime, connected, bubbles, recentlyPopped } =
+    state;
+
+  const mergeState = (partial) => {
+    dispatch({ type: "MERGE_STATE", payload: partial });
+  };
 
   const startGame = useCallback(
     (username, wallet) => {
@@ -27,8 +47,7 @@ export default function useGameWebSocket() {
 
       ws.onopen = () => {
         ws.send(JSON.stringify({ type: "join", username, wallet }));
-        setConnected(true);
-        setGameState("playing");
+        mergeState({ connected: true, gameStatus: "playing" });
       };
 
       ws.onmessage = (event) => {
@@ -37,85 +56,109 @@ export default function useGameWebSocket() {
 
           if (data.type === "game-state") {
             if (!isPaused) {
-              setScore(data.score);
-              setLives(data.lives);
-              setGameState(data.currentState || "playing");
-              setElapsedTime(`${data.elapsedTime} / ${data?.timeLimit}`);
-
-              setBubbles(() => {
-                const updatedBubbles = [];
-
-                data.bubbles.forEach((bubble) => {
-                  if (recentlyPoppedIds.includes(bubble.id)) {
-                    return;
-                  }
-                  updatedBubbles.push({
-                    ...bubble,
-                    createdAt: Date.now(),
-                    fallTime: 10 - bubble.speed + 4,
-                  });
-                });
-
-                return updatedBubbles;
+              mergeState({
+                score: data.score,
+                lives: data.lives,
+                gameStatus: data.currentState || "playing",
+                elapsedTime: `${data.elapsedTime} / ${data.timeLimit ?? ""}`,
               });
+
+              const now = Date.now();
+              const poppedIdsToSkip = recentlyPopped.filter((p) => now - p.poppedAt < 2000).map((p) => p.id);
+
+              console.log("[Client] poppedIdsToSkip (popped <2s ago):", poppedIdsToSkip);
+
+              const updatedBubblesMap = new Map();
+
+              data.bubbles.forEach((bubble) => {
+                if (poppedIdsToSkip.includes(bubble.id)) {
+                  return;
+                }
+                updatedBubblesMap.set(bubble.id, {
+                  ...bubble,
+                  createdAt: now,
+                  fallTime: 10 - bubble.speed + 4,
+                });
+              });
+
+              const updatedBubbles = Array.from(updatedBubblesMap.values());
+
+              console.log(
+                "[Client] final deduped bubble IDs:",
+                updatedBubbles.map((b) => b.id)
+              );
+
+              const filteredPopped = recentlyPopped.filter((p) => now - p.poppedAt < 2000);
+
+              mergeState({
+                bubbles: updatedBubbles,
+                recentlyPopped: filteredPopped,
+              });
+
+              console.log(
+                "[Client] final local bubble IDs after merge:",
+                updatedBubbles.map((b) => b.id)
+              );
+            } else {
+              console.log("[Client] Received 'game-state' but isPaused=true, ignoring.");
             }
           }
 
           if (data.type === "game-paused") {
-            setIsPaused(true);
+            console.log("[Client] 'game-paused' event from server.");
+            mergeState({ isPaused: true });
           }
           if (data.type === "game-resumed") {
-            setIsPaused(false);
+            console.log("[Client] 'game-resumed' event from server.");
+            mergeState({ isPaused: false });
           }
           if (data.type === "freeze-active") {
-            setIsFrozen(true);
+            console.log("[Client] 'freeze-active' event from server.");
+            mergeState({ isFrozen: true });
           }
           if (data.type === "freeze-ended") {
-            setIsFrozen(false);
+            console.log("[Client] 'freeze-ended' event from server.");
+            mergeState({ isFrozen: false });
           }
           if (data.type === "darkness-active") {
-            setIsDark(true);
+            console.log("[Client] 'darkness-active' event from server.");
+            mergeState({ isDark: true });
           }
           if (data.type === "darkness-ended") {
-            setIsDark(false);
+            console.log("[Client] 'darkness-ended' event from server.");
+            mergeState({ isDark: false });
           }
         } catch (error) {
-          console.error("❌ Invalid WebSocket message:", event.data);
+          console.error("[Client] ❌ Invalid WebSocket message:", event.data);
         }
       };
 
       ws.onclose = () => {
-        setConnected(false);
-        setGameState("finished");
+        console.log("[Client] WebSocket closed by server.");
+        mergeState({ connected: false, gameStatus: "finished" });
       };
     },
-    [connected, isPaused, recentlyPoppedIds]
+    [connected, isPaused, recentlyPopped]
   );
 
   const resetGame = () => {
-    setGameState("");
-    setScore(0);
-    setConnected(false);
-    setLives(5);
-    setElapsedTime("0:00 / 5:00");
-    setBubbles([]);
-    setIsPaused(false);
-    setIsDark(false);
-    setIsFrozen(false);
-    setRecentlyPoppedIds([]);
+    console.log("[Client] resetGame called.");
+    dispatch({ type: "RESET_GAME" });
   };
 
   const pauseGame = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+      console.log("[Client] Sending 'pause'.");
       socketRef.current.send(JSON.stringify({ type: "pause" }));
-      setIsPaused(true);
+      mergeState({ isPaused: true });
     }
   };
 
   const resumeGame = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+      console.log("[Client] Sending 'resume'.");
       socketRef.current.send(JSON.stringify({ type: "resume" }));
-      setIsPaused(false);
+      mergeState({ isPaused: false });
     }
   };
 
@@ -123,34 +166,40 @@ export default function useGameWebSocket() {
     (bubbleId) => {
       if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN && !isPaused) {
         socketRef.current.send(JSON.stringify({ type: "pop", bubbleId }));
-        setBubbles((prev) => prev.filter((b) => b.id !== bubbleId));
 
-        setRecentlyPoppedIds((prevIds) => {
-          const newIds = [...prevIds, bubbleId];
-          if (newIds.length > 10) {
-            newIds.shift();
-          }
-          return newIds;
-        });
+        const newBubbles = bubbles.filter((b) => b.id !== bubbleId);
+        console.log(
+          "[Client] local bubble IDs after removal:",
+          newBubbles.map((b) => b.id)
+        );
+
+        const now = Date.now();
+        const newPopped = [...recentlyPopped, { id: bubbleId, poppedAt: now }];
+        if (newPopped.length > 50) {
+          newPopped.shift();
+        }
+
+        mergeState({ bubbles: newBubbles, recentlyPopped: newPopped });
       }
     },
-    [isPaused]
+    [bubbles, isPaused, recentlyPopped]
   );
 
   return {
-    gameState,
+    gameState: gameStatus,
     score,
     lives,
     elapsedTime,
     bubbles,
-    startGame,
-    popBubble,
     connected,
-    resetGame,
     isPaused,
-    pauseGame,
-    resumeGame,
     isDark,
     isFrozen,
+
+    startGame,
+    popBubble,
+    resetGame,
+    pauseGame,
+    resumeGame,
   };
 }
