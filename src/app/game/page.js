@@ -26,6 +26,8 @@ export default function Game() {
     isDark,
   } = useGameWebSocket();
 
+  console.log("bubbles", bubbles);
+
   useEffect(() => {
     const preventZoom = (event) => {
       if (event.ctrlKey || event.metaKey || event.deltaY !== undefined) {

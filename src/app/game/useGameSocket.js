@@ -3,13 +3,16 @@ import { useState, useRef, useCallback } from "react";
 export default function useGameWebSocket() {
   const [isPaused, setIsPaused] = useState(false);
   const [isFrozen, setIsFrozen] = useState(false);
-  const [gameState, setGameState] = useState("");
   const [isDark, setIsDark] = useState(false);
+  const [gameState, setGameState] = useState("");
   const [score, setScore] = useState(0);
   const [lives, setLives] = useState(5);
   const [elapsedTime, setElapsedTime] = useState("0:00 / 5:00");
   const [bubbles, setBubbles] = useState([]);
   const [connected, setConnected] = useState(false);
+
+  const [recentlyPoppedIds, setRecentlyPoppedIds] = useState([]);
+
   const socketRef = useRef(null);
 
   const startGame = useCallback(
@@ -39,20 +42,21 @@ export default function useGameWebSocket() {
               setGameState(data.currentState || "playing");
               setElapsedTime(`${data.elapsedTime} / ${data?.timeLimit}`);
 
-              setBubbles((prevBubbles) => {
-                const updatedBubbles = new Map(prevBubbles.map((b) => [b.id, b]));
+              setBubbles(() => {
+                const updatedBubbles = [];
 
                 data.bubbles.forEach((bubble) => {
-                  if (!updatedBubbles.has(bubble.id)) {
-                    updatedBubbles.set(bubble.id, {
-                      ...bubble,
-                      createdAt: Date.now(),
-                      fallTime: 10 - bubble.speed + 4,
-                    });
+                  if (recentlyPoppedIds.includes(bubble.id)) {
+                    return;
                   }
+                  updatedBubbles.push({
+                    ...bubble,
+                    createdAt: Date.now(),
+                    fallTime: 10 - bubble.speed + 4,
+                  });
                 });
 
-                return Array.from(updatedBubbles.values());
+                return updatedBubbles;
               });
             }
           }
@@ -60,7 +64,6 @@ export default function useGameWebSocket() {
           if (data.type === "game-paused") {
             setIsPaused(true);
           }
-
           if (data.type === "game-resumed") {
             setIsPaused(false);
           }
@@ -70,7 +73,6 @@ export default function useGameWebSocket() {
           if (data.type === "freeze-ended") {
             setIsFrozen(false);
           }
-
           if (data.type === "darkness-active") {
             setIsDark(true);
           }
@@ -87,7 +89,7 @@ export default function useGameWebSocket() {
         setGameState("finished");
       };
     },
-    [connected, isPaused]
+    [connected, isPaused, recentlyPoppedIds]
   );
 
   const resetGame = () => {
@@ -100,6 +102,7 @@ export default function useGameWebSocket() {
     setIsPaused(false);
     setIsDark(false);
     setIsFrozen(false);
+    setRecentlyPoppedIds([]);
   };
 
   const pauseGame = () => {
@@ -121,6 +124,14 @@ export default function useGameWebSocket() {
       if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN && !isPaused) {
         socketRef.current.send(JSON.stringify({ type: "pop", bubbleId }));
         setBubbles((prev) => prev.filter((b) => b.id !== bubbleId));
+
+        setRecentlyPoppedIds((prevIds) => {
+          const newIds = [...prevIds, bubbleId];
+          if (newIds.length > 10) {
+            newIds.shift();
+          }
+          return newIds;
+        });
       }
     },
     [isPaused]
