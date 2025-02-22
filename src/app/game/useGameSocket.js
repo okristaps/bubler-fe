@@ -10,7 +10,6 @@ const initialState = {
   elapsedTime: "0:00 / 5:00",
   connected: false,
   bubbles: [],
-  recentlyPopped: [],
 };
 
 function gameReducer(state, action) {
@@ -27,9 +26,10 @@ function gameReducer(state, action) {
 export default function useGameWebSocket() {
   const [state, dispatch] = useReducer(gameReducer, initialState);
   const socketRef = useRef(null);
+  //  ref to track recently popped bubbles for immediate updates
+  const recentlyPoppedRef = useRef([]);
 
-  const { isPaused, isFrozen, isDark, gameStatus, score, lives, elapsedTime, connected, bubbles, recentlyPopped } =
-    state;
+  const { isPaused, isFrozen, isDark, gameStatus, score, lives, elapsedTime, connected, bubbles } = state;
 
   const mergeState = (partial) => {
     dispatch({ type: "MERGE_STATE", payload: partial });
@@ -64,12 +64,9 @@ export default function useGameWebSocket() {
               });
 
               const now = Date.now();
-              const poppedIdsToSkip = recentlyPopped.filter((p) => now - p.poppedAt < 2000).map((p) => p.id);
-
-              console.log("[Client] poppedIdsToSkip (popped <2s ago):", poppedIdsToSkip);
+              const poppedIdsToSkip = recentlyPoppedRef.current.filter((p) => now - p.poppedAt < 2000).map((p) => p.id);
 
               const updatedBubblesMap = new Map();
-
               data.bubbles.forEach((bubble) => {
                 if (poppedIdsToSkip.includes(bubble.id)) {
                   return;
@@ -83,49 +80,30 @@ export default function useGameWebSocket() {
 
               const updatedBubbles = Array.from(updatedBubblesMap.values());
 
-              console.log(
-                "[Client] final deduped bubble IDs:",
-                updatedBubbles.map((b) => b.id)
-              );
-
-              const filteredPopped = recentlyPopped.filter((p) => now - p.poppedAt < 2000);
+              recentlyPoppedRef.current = recentlyPoppedRef.current.filter((p) => now - p.poppedAt < 2000);
 
               mergeState({
                 bubbles: updatedBubbles,
-                recentlyPopped: filteredPopped,
               });
-
-              console.log(
-                "[Client] final local bubble IDs after merge:",
-                updatedBubbles.map((b) => b.id)
-              );
-            } else {
-              console.log("[Client] Received 'game-state' but isPaused=true, ignoring.");
             }
           }
 
           if (data.type === "game-paused") {
-            console.log("[Client] 'game-paused' event from server.");
             mergeState({ isPaused: true });
           }
           if (data.type === "game-resumed") {
-            console.log("[Client] 'game-resumed' event from server.");
             mergeState({ isPaused: false });
           }
           if (data.type === "freeze-active") {
-            console.log("[Client] 'freeze-active' event from server.");
             mergeState({ isFrozen: true });
           }
           if (data.type === "freeze-ended") {
-            console.log("[Client] 'freeze-ended' event from server.");
             mergeState({ isFrozen: false });
           }
           if (data.type === "darkness-active") {
-            console.log("[Client] 'darkness-active' event from server.");
             mergeState({ isDark: true });
           }
           if (data.type === "darkness-ended") {
-            console.log("[Client] 'darkness-ended' event from server.");
             mergeState({ isDark: false });
           }
         } catch (error) {
@@ -134,21 +112,19 @@ export default function useGameWebSocket() {
       };
 
       ws.onclose = () => {
-        console.log("[Client] WebSocket closed by server.");
         mergeState({ connected: false, gameStatus: "finished" });
       };
     },
-    [connected, isPaused, recentlyPopped]
+    [connected, isPaused]
   );
 
   const resetGame = () => {
-    console.log("[Client] resetGame called.");
     dispatch({ type: "RESET_GAME" });
+    recentlyPoppedRef.current = [];
   };
 
   const pauseGame = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
-      console.log("[Client] Sending 'pause'.");
       socketRef.current.send(JSON.stringify({ type: "pause" }));
       mergeState({ isPaused: true });
     }
@@ -156,7 +132,6 @@ export default function useGameWebSocket() {
 
   const resumeGame = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
-      console.log("[Client] Sending 'resume'.");
       socketRef.current.send(JSON.stringify({ type: "resume" }));
       mergeState({ isPaused: false });
     }
@@ -168,21 +143,16 @@ export default function useGameWebSocket() {
         socketRef.current.send(JSON.stringify({ type: "pop", bubbleId }));
 
         const newBubbles = bubbles.filter((b) => b.id !== bubbleId);
-        console.log(
-          "[Client] local bubble IDs after removal:",
-          newBubbles.map((b) => b.id)
-        );
-
         const now = Date.now();
-        const newPopped = [...recentlyPopped, { id: bubbleId, poppedAt: now }];
-        if (newPopped.length > 50) {
-          newPopped.shift();
+        recentlyPoppedRef.current.push({ id: bubbleId, poppedAt: now });
+        if (recentlyPoppedRef.current.length > 50) {
+          recentlyPoppedRef.current.shift();
         }
 
-        mergeState({ bubbles: newBubbles, recentlyPopped: newPopped });
+        mergeState({ bubbles: newBubbles });
       }
     },
-    [bubbles, isPaused, recentlyPopped]
+    [bubbles, isPaused]
   );
 
   return {
@@ -195,7 +165,6 @@ export default function useGameWebSocket() {
     isPaused,
     isDark,
     isFrozen,
-
     startGame,
     popBubble,
     resetGame,
