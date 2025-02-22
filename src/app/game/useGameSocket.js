@@ -1,39 +1,19 @@
-import { useReducer, useRef, useCallback } from "react";
-
-const initialState = {
-  isPaused: false,
-  isFrozen: false,
-  isDark: false,
-  gameStatus: "",
-  score: 0,
-  lives: 5,
-  elapsedTime: "0:00 / 5:00",
-  connected: false,
-  bubbles: [],
-  recentlyPoppedIds: [],
-};
-
-function gameReducer(state, action) {
-  switch (action.type) {
-    case "MERGE_STATE":
-      return { ...state, ...action.payload };
-    case "RESET_GAME":
-      return { ...initialState };
-    default:
-      return state;
-  }
-}
+import { useState, useRef, useCallback } from "react";
 
 export default function useGameWebSocket() {
-  const [state, dispatch] = useReducer(gameReducer, initialState);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isFrozen, setIsFrozen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const [gameState, setGameState] = useState("");
+  const [score, setScore] = useState(0);
+  const [lives, setLives] = useState(5);
+  const [elapsedTime, setElapsedTime] = useState("0:00 / 5:00");
+  const [bubbles, setBubbles] = useState([]);
+  const [connected, setConnected] = useState(false);
+
+  const [recentlyPoppedIds, setRecentlyPoppedIds] = useState([]);
+
   const socketRef = useRef(null);
-
-  const { isPaused, isFrozen, isDark, gameStatus, score, lives, elapsedTime, connected, bubbles, recentlyPoppedIds } =
-    state;
-
-  const mergeState = (partial) => {
-    dispatch({ type: "MERGE_STATE", payload: partial });
-  };
 
   const startGame = useCallback(
     (username, wallet) => {
@@ -47,7 +27,8 @@ export default function useGameWebSocket() {
 
       ws.onopen = () => {
         ws.send(JSON.stringify({ type: "join", username, wallet }));
-        mergeState({ connected: true, gameStatus: "playing" });
+        setConnected(true);
+        setGameState("playing");
       };
 
       ws.onmessage = (event) => {
@@ -56,45 +37,47 @@ export default function useGameWebSocket() {
 
           if (data.type === "game-state") {
             if (!isPaused) {
-              mergeState({
-                score: data.score,
-                lives: data.lives,
-                gameStatus: data.currentState || "playing",
-                elapsedTime: `${data.elapsedTime} / ${data.timeLimit ?? ""}`,
-              });
+              setScore(data.score);
+              setLives(data.lives);
+              setGameState(data.currentState || "playing");
+              setElapsedTime(`${data.elapsedTime} / ${data?.timeLimit}`);
 
-              // filter out recently popped to avoid duplicates on bubble gen
-              const updatedBubbles = [];
-              data.bubbles.forEach((bubble) => {
-                if (!recentlyPoppedIds.includes(bubble.id)) {
+              setBubbles(() => {
+                const updatedBubbles = [];
+
+                data.bubbles.forEach((bubble) => {
+                  if (recentlyPoppedIds.includes(bubble.id)) {
+                    return;
+                  }
                   updatedBubbles.push({
                     ...bubble,
                     createdAt: Date.now(),
                     fallTime: 10 - bubble.speed + 4,
                   });
-                }
+                });
+
+                return updatedBubbles;
               });
-              mergeState({ bubbles: updatedBubbles });
             }
           }
 
           if (data.type === "game-paused") {
-            mergeState({ isPaused: true });
+            setIsPaused(true);
           }
           if (data.type === "game-resumed") {
-            mergeState({ isPaused: false });
+            setIsPaused(false);
           }
           if (data.type === "freeze-active") {
-            mergeState({ isFrozen: true });
+            setIsFrozen(true);
           }
           if (data.type === "freeze-ended") {
-            mergeState({ isFrozen: false });
+            setIsFrozen(false);
           }
           if (data.type === "darkness-active") {
-            mergeState({ isDark: true });
+            setIsDark(true);
           }
           if (data.type === "darkness-ended") {
-            mergeState({ isDark: false });
+            setIsDark(false);
           }
         } catch (error) {
           console.error("❌ Invalid WebSocket message:", event.data);
@@ -102,27 +85,37 @@ export default function useGameWebSocket() {
       };
 
       ws.onclose = () => {
-        mergeState({ connected: false, gameStatus: "finished" });
+        setConnected(false);
+        setGameState("finished");
       };
     },
     [connected, isPaused, recentlyPoppedIds]
   );
 
   const resetGame = () => {
-    dispatch({ type: "RESET_GAME" });
+    setGameState("");
+    setScore(0);
+    setConnected(false);
+    setLives(5);
+    setElapsedTime("0:00 / 5:00");
+    setBubbles([]);
+    setIsPaused(false);
+    setIsDark(false);
+    setIsFrozen(false);
+    setRecentlyPoppedIds([]);
   };
 
   const pauseGame = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
       socketRef.current.send(JSON.stringify({ type: "pause" }));
-      mergeState({ isPaused: true });
+      setIsPaused(true);
     }
   };
 
   const resumeGame = () => {
     if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
       socketRef.current.send(JSON.stringify({ type: "resume" }));
-      mergeState({ isPaused: false });
+      setIsPaused(false);
     }
   };
 
@@ -130,32 +123,34 @@ export default function useGameWebSocket() {
     (bubbleId) => {
       if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN && !isPaused) {
         socketRef.current.send(JSON.stringify({ type: "pop", bubbleId }));
-        const newBubbles = bubbles.filter((b) => b.id !== bubbleId);
+        setBubbles((prev) => prev.filter((b) => b.id !== bubbleId));
 
-        const newIds = [...recentlyPoppedIds, bubbleId];
-        if (newIds.length > 10) newIds.shift();
-
-        mergeState({ bubbles: newBubbles, recentlyPoppedIds: newIds });
+        setRecentlyPoppedIds((prevIds) => {
+          const newIds = [...prevIds, bubbleId];
+          if (newIds.length > 10) {
+            newIds.shift();
+          }
+          return newIds;
+        });
       }
     },
-    [bubbles, isPaused, recentlyPoppedIds]
+    [isPaused]
   );
 
   return {
-    gameState: gameStatus,
+    gameState,
     score,
     lives,
     elapsedTime,
     bubbles,
-    connected,
-    isPaused,
-    isDark,
-    isFrozen,
-
     startGame,
     popBubble,
+    connected,
     resetGame,
+    isPaused,
     pauseGame,
     resumeGame,
+    isDark,
+    isFrozen,
   };
 }
