@@ -71,10 +71,6 @@ const HeaderBUBLER = () => {
             Game
           </a>
           <a
-<<<<<<< HEAD
-            target="_blank"
-            href="https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai"
-=======
             href="/rules"
             className="text-base mt-1 text-center sm:text-lg font-medium text-gray-300 hover:text-white transition"
           >
@@ -82,7 +78,6 @@ const HeaderBUBLER = () => {
           </a>
           <a
             href="/buy"
->>>>>>> 26d6f1e (rules btn)
             className="px-4 py-2 bg-yellow-400 text-black font-bold rounded-full shadow-md hover:bg-yellow-500 transition"
           >
             Buy
