@@ -80,14 +80,14 @@ export default function GameStats({ score, elapsedTime, lives }) {
         </div>
       </div>
 
-      <div className="absolute top-0 right-[-80] ">
+      <div className="absolute top-0 right-[-80px] ">
         <Image src="/vectors/lives2.svg" alt="Score Background" width={200} height={30} objectFit="cover" />
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
           <span className="text-white font-bold text-sm mt-3 mr-5  drop-shadow-md tracking-wide">{lives}</span>
         </div>
       </div>
 
-      <div className="absolute top-14 right-[-30] ">
+      <div className="absolute top-14 right-[-30px] ">
         <Image src="/vectors/time2.svg" alt="Score Background" width={200} height={30} objectFit="cover" />
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
           <span className="text-white font-bold text-sm mt-1 ml-8 drop-shadow-md tracking-wide">{displayTime}</span>

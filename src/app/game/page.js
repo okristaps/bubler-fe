@@ -80,7 +80,7 @@ export default function Game() {
             pauseGame={pauseGame}
           />
         )}
-        {gameState === "finished" && <Fi nishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
+        {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
       </div>
     </>
   );
