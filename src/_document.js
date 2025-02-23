@@ -6,6 +6,7 @@ export default function Document() {
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#000000" />
+        <link rel="preload" as="audio" href="/sounds/frost-sound.mp3" crossOrigin="anonymous" />
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
       </Head>
       <body>

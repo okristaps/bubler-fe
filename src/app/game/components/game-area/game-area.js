@@ -5,6 +5,8 @@ import GameInfo from "./game-info/game-info";
 import usePreventNavigation from "@/hooks/usePreventNavigation";
 import BackgroundAudio from "@/components/audio-player";
 import PauseOverlay from "./pause-overlay/pause-overlay";
+import FrozenOverlay from "../overlays/frozen-overlay/frozen-overlay";
+import DarknessOverlay from "../overlays/darkness/darkness-overlay";
 
 export default function GameArea({
   score,
@@ -61,8 +63,6 @@ export default function GameArea({
     popBubble(bubbleId);
   };
 
-  console.log("isDark", isDark);
-
   return (
     <>
       <PauseOverlay
@@ -70,8 +70,8 @@ export default function GameArea({
         onTogglePause={() => (isPaused ? resumeGame() : pauseGame())}
         onEndGame={() => window.location.reload()}
       />
-      {isFrozen && <div className="frozen-overlay" />}
-      {isDark && <div className="darkness-overlay" />}
+      <FrozenOverlay isFrozen={isFrozen} />
+      <DarknessOverlay isDark={isDark} />
 
       <div className="game-area">
         <BackgroundAudio />
