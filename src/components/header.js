@@ -36,7 +36,8 @@ const HeaderBUBLER = () => {
             Game
           </a>
           <a
-            href="/buy"
+            target="_blank"
+            href="https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai"
             className="px-4 py-2 bg-yellow-400 text-black font-bold rounded-full shadow-md hover:bg-yellow-500 transition text-center"
           >
             Buy
@@ -58,7 +59,8 @@ const HeaderBUBLER = () => {
             Game
           </a>
           <a
-            href="/buy"
+            target="_blank"
+            href="https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai"
             className="px-4 py-2 bg-yellow-400 text-black font-bold rounded-full shadow-md hover:bg-yellow-500 transition"
           >
             Buy

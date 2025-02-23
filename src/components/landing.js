@@ -45,9 +45,14 @@ const Landing = () => {
           >
             Start Catching Memes
           </button>
-          <button className="px-5 py-3 text-base sm:text-lg font-bold text-black bg-yellow-400 hover:bg-yellow-500 rounded-full shadow-lg hover:scale-105 transition-transform duration-300">
+
+          <a
+            className="px-5 py-3 text-base sm:text-lg font-bold text-black bg-yellow-400 hover:bg-yellow-500 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
+            target="_blank"
+            href="https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai"
+          >
             Buy Here
-          </button>
+          </a>
         </div>
       </div>
     </motion.section>
