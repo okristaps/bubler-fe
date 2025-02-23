@@ -35,6 +35,13 @@ export default function GameLobby({ startGame, connected }) {
       localStorage.setItem("wallet", data.wallet);
 
       startGame(data.username, data.wallet);
+
+      const bgAudio = document.getElementById("bg-audio");
+      if (bgAudio) {
+        bgAudio.muted = false;
+        bgAudio.volume = 0.4;
+        bgAudio.play().catch((err) => console.log("bg audio play error:", err));
+      }
     }
   };
 

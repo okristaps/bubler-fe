@@ -8,31 +8,29 @@ export default function FrozenOverlay({ isFrozen }) {
   const wasFrozenRef = useRef(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    if (typeof window === "undefined") return;
+    audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
 
-      fetch("/sounds/frost-sound.mp3")
-        .then((res) => res.arrayBuffer())
-        .then((arrayBuffer) => audioContextRef.current.decodeAudioData(arrayBuffer))
-        .then((decodedData) => {
-          frostBufferRef.current = decodedData;
-        })
-        .catch((err) => console.error("Frost sound loading error:", err));
+    fetch("/sounds/frost-sound.mp3")
+      .then((res) => res.arrayBuffer())
+      .then((data) => audioContextRef.current.decodeAudioData(data))
+      .then((decoded) => {
+        frostBufferRef.current = decoded;
+      })
+      .catch((err) => console.error("Frost sound loading error:", err));
 
-      const unlockAudio = () => {
-        if (frostBufferRef.current) {
-          const source = audioContextRef.current.createBufferSource();
-          source.buffer = frostBufferRef.current;
-          source.connect(audioContextRef.current.destination);
-          source.start(0, 0, 0.01);
-        }
-        window.removeEventListener("click", unlockAudio);
-        window.removeEventListener("touchstart", unlockAudio);
-      };
+    const unlockAudio = async () => {
+      if (audioContextRef.current.state === "suspended") {
+        try {
+          await audioContextRef.current.resume();
+        } catch (e) {}
+      }
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("touchstart", unlockAudio);
+    };
 
-      window.addEventListener("click", unlockAudio, { once: true });
-      window.addEventListener("touchstart", unlockAudio, { once: true });
-    }
+    window.addEventListener("click", unlockAudio, { once: true });
+    window.addEventListener("touchstart", unlockAudio, { once: true });
   }, []);
 
   useEffect(() => {

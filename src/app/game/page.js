@@ -7,6 +7,7 @@ import GameArea from "./components/game-area/game-area";
 import FinishedScreen from "./components/finished-screen/finished-screen";
 import Head from "next/head";
 import InstallPrompt from "./components/pwa/pwa-wrapper";
+import useGlobalAudio from "@/hooks/useGlobalAudio";
 
 export default function Game() {
   const {
@@ -25,6 +26,8 @@ export default function Game() {
     isFrozen,
     isDark,
   } = useGameWebSocket();
+
+  const { unlockAudio } = useGlobalAudio();
 
   useEffect(() => {
     const preventZoom = (event) => {
@@ -48,6 +51,11 @@ export default function Game() {
     };
   }, []);
 
+  const handleStart = async (username, wallet) => {
+    await unlockAudio();
+    await startGame(username, wallet);
+  };
+
   return (
     <>
       {process.env.NODE_ENV !== "development" && <InstallPrompt />}
@@ -57,7 +65,7 @@ export default function Game() {
       </Head>
 
       <div className="game-container">
-        {gameState === "" && <GameLobby startGame={startGame} connected={connected} />}
+        {gameState === "" && <GameLobby startGame={handleStart} connected={connected} />}
         {gameState === "playing" && (
           <GameArea
             isDark={isDark}

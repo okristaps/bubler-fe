@@ -34,14 +34,14 @@ export default function GameStats({ score, elapsedTime, lives }) {
       })
       .catch((err) => console.error("Audio loading error:", err));
 
-    const unlockAudio = () => {
-      const { livesAdd, livesDeduct } = buffersRef.current;
-      const testBuffer = livesAdd || livesDeduct;
-      if (testBuffer) {
-        const source = audioCtx.createBufferSource();
-        source.buffer = testBuffer;
-        source.connect(audioCtx.destination);
-        source.start(0, 0, 0.01);
+    // Resume audio context on first user gesture
+    const unlockAudio = async () => {
+      if (audioCtx.state === "suspended") {
+        try {
+          await audioCtx.resume();
+        } catch (e) {
+          console.log("AudioContext resume failed:", e);
+        }
       }
       window.removeEventListener("click", unlockAudio);
       window.removeEventListener("touchstart", unlockAudio);
@@ -54,8 +54,11 @@ export default function GameStats({ score, elapsedTime, lives }) {
   useEffect(() => {
     const oldLives = oldLivesRef.current;
     if (!audioContextRef.current) return;
-    if (lives > oldLives) playBuffer(buffersRef.current.livesAdd);
-    else if (lives < oldLives) playBuffer(buffersRef.current.livesDeduct);
+    if (lives > oldLives) {
+      playBuffer(buffersRef.current.livesAdd);
+    } else if (lives < oldLives) {
+      playBuffer(buffersRef.current.livesDeduct);
+    }
     oldLivesRef.current = lives;
   }, [lives]);
 
