@@ -71,3 +71,27 @@ main {
 .animate-jump {
   animation: jump 5s ease-in-out infinite;
 }
+
+.game-button {
+  background: linear-gradient(45deg, #ff006e, #fb5607);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 15px rgba(255, 64, 129, 0.3);
+  width: 100%;
+  max-width: 200px;
+  margin: 30px auto 0;
+  display: block;  
+  text-align: center;
+}
+
+.game-button:hover {
+  background: linear-gradient(to right, #e91e63, #ff4081);
+  transform: scale(1.05);
+  box-shadow: 0px 6px 20px rgba(255, 64, 129, 0.5);
+}

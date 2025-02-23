@@ -2,7 +2,6 @@
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
-import RulesModal from "../modals/rules-modal/rules-modal";
 import BubbleBackground from "@/components/bubble-bg";
 import "./game-lobby.css";
 
@@ -106,9 +105,9 @@ export default function GameLobby({ startGame, connected }) {
           📊 View Leaderboard
         </button>
 
-        <button className="rules-button" onClick={() => setShowRules(true)}>
+        <a className="rules-button" href="/rules">
           📜 View Rules
-        </button>
+        </a>
 
         <p className="internet-warning">Ensure a stable internet connection while playing to avoid disconnections.</p>
 

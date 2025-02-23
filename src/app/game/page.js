@@ -29,28 +29,6 @@ export default function Game() {
 
   const { unlockAudio } = useGlobalAudio();
 
-  useEffect(() => {
-    const preventZoom = (event) => {
-      if (event.ctrlKey || event.metaKey || event.deltaY !== undefined) {
-        event.preventDefault();
-      }
-    };
-
-    const disableKeyZoom = (event) => {
-      if (event.ctrlKey || event.metaKey) {
-        event.preventDefault();
-      }
-    };
-
-    document.addEventListener("wheel", preventZoom, { passive: false });
-    document.addEventListener("keydown", disableKeyZoom, { passive: false });
-
-    return () => {
-      document.removeEventListener("wheel", preventZoom);
-      document.removeEventListener("keydown", disableKeyZoom);
-    };
-  }, []);
-
   const handleStart = async (username, wallet) => {
     await unlockAudio();
     await startGame(username, wallet);

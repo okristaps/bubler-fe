@@ -26,6 +26,28 @@ export default function GameArea({
   usePreventNavigation();
 
   useEffect(() => {
+    const preventZoom = (event) => {
+      if (event.ctrlKey || event.metaKey || event.deltaY !== undefined) {
+        event.preventDefault();
+      }
+    };
+
+    const disableKeyZoom = (event) => {
+      if (event.ctrlKey || event.metaKey) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener("wheel", preventZoom, { passive: false });
+    document.addEventListener("keydown", disableKeyZoom, { passive: false });
+
+    return () => {
+      document.removeEventListener("wheel", preventZoom);
+      document.removeEventListener("keydown", disableKeyZoom);
+    };
+  }, []);
+
+  useEffect(() => {
     if (typeof window === "undefined") return;
     audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
 
