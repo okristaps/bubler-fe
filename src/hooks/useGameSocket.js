@@ -6,7 +6,7 @@ const initialState = {
   isDark: false,
   gameStatus: "",
   score: 0,
-  lives: 5,
+  lives: 10,
   elapsedTime: "0:00 / 5:00",
   connected: false,
   bubbles: [],

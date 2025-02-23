@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import "./game-page.css";
-import useGameWebSocket from "./useGameSocket";
+import useGameWebSocket from "../../hooks/useGameSocket";
 import GameLobby from "./components/lobby/lobby";
 import GameArea from "./components/game-area/game-area";
 import FinishedScreen from "./components/finished-screen/finished-screen";

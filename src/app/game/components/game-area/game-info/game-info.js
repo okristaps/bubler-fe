@@ -5,48 +5,57 @@ import "./game-stats.css";
 export default function GameStats({ score, elapsedTime, lives }) {
   const [displayTime, setDisplayTime] = useState(elapsedTime);
   const oldLivesRef = useRef(lives);
-
   const audioContextRef = useRef(null);
-  const livesDeductBufferRef = useRef(null);
+  const buffersRef = useRef({ livesAdd: null, livesDeduct: null });
+
+  const playBuffer = (buffer) => {
+    if (!audioContextRef.current || !buffer) return;
+    const source = audioContextRef.current.createBufferSource();
+    source.buffer = buffer;
+    source.connect(audioContextRef.current.destination);
+    source.start();
+  };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    if (typeof window === "undefined") return;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    audioContextRef.current = audioCtx;
 
-      fetch("/sounds/lives-deduct.mp3")
-        .then((response) => response.arrayBuffer())
-        .then((arrayBuffer) => audioContextRef.current.decodeAudioData(arrayBuffer))
-        .then((decodedData) => {
-          livesDeductBufferRef.current = decodedData;
-        })
-        .catch((err) => console.error("Lives deduction sound loading error:", err));
+    Promise.all([
+      fetch("/sounds/lives-add.mp3").then((r) => r.arrayBuffer()),
+      fetch("/sounds/lives-deduct.mp3").then((r) => r.arrayBuffer()),
+    ])
+      .then(([addData, deductData]) =>
+        Promise.all([audioCtx.decodeAudioData(addData), audioCtx.decodeAudioData(deductData)])
+      )
+      .then(([addBuffer, deductBuffer]) => {
+        buffersRef.current.livesAdd = addBuffer;
+        buffersRef.current.livesDeduct = deductBuffer;
+      })
+      .catch((err) => console.error("Audio loading error:", err));
 
-      const unlockAudio = () => {
-        if (livesDeductBufferRef.current) {
-          const source = audioContextRef.current.createBufferSource();
-          source.buffer = livesDeductBufferRef.current;
-          source.connect(audioContextRef.current.destination);
-          source.start(0, 0, 0.01);
-        }
-        window.removeEventListener("click", unlockAudio);
-        window.removeEventListener("touchstart", unlockAudio);
-      };
+    const unlockAudio = () => {
+      const { livesAdd, livesDeduct } = buffersRef.current;
+      const testBuffer = livesAdd || livesDeduct;
+      if (testBuffer) {
+        const source = audioCtx.createBufferSource();
+        source.buffer = testBuffer;
+        source.connect(audioCtx.destination);
+        source.start(0, 0, 0.01);
+      }
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("touchstart", unlockAudio);
+    };
 
-      window.addEventListener("click", unlockAudio, { once: true });
-      window.addEventListener("touchstart", unlockAudio, { once: true });
-    }
+    window.addEventListener("click", unlockAudio, { once: true });
+    window.addEventListener("touchstart", unlockAudio, { once: true });
   }, []);
 
   useEffect(() => {
-    if (lives < oldLivesRef.current) {
-      if (audioContextRef.current && livesDeductBufferRef.current) {
-        const source = audioContextRef.current.createBufferSource();
-        source.buffer = livesDeductBufferRef.current;
-        source.connect(audioContextRef.current.destination);
-        source.start();
-      }
-    }
-
+    const oldLives = oldLivesRef.current;
+    if (!audioContextRef.current) return;
+    if (lives > oldLives) playBuffer(buffersRef.current.livesAdd);
+    else if (lives < oldLives) playBuffer(buffersRef.current.livesDeduct);
     oldLivesRef.current = lives;
   }, [lives]);
 
