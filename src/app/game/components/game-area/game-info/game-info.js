@@ -76,7 +76,7 @@ export default function GameStats({ score, elapsedTime, lives }) {
       <div className="absolute bottom-5 ">
         <Image src="/vectors/scorebg.svg" alt="Score Background" width={300} height={80} objectFit="cover" />
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <span className="text-white font-bold text-l drop-shadow-md tracking-wide">{score}</span>
+          <span className="text-cyan-700 font-bold text-l drop-shadow-md tracking-wide">{score}</span>
         </div>
       </div>
 
