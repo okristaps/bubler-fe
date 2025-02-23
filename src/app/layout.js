@@ -340,6 +340,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden">
       <meta name="apple-mobile-web-app-title" content="Bubler" />
+      <link rel="apple-touch-startup-image"></link>
       <meta name="theme-color" content="#119dff" />
       <body className={`${bubbles.variable} font-fuzzy antialiased relative   overflow-x-hidden overflow-y-auto`}>
         <main>
