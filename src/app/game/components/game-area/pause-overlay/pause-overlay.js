@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./pause-overlay.css";
+import Image from "next/image";
 
 export default function PauseOverlay({ isPaused, onTogglePause, onEndGame }) {
   const [isMuted, setIsMuted] = useState(false);
@@ -32,11 +33,10 @@ export default function PauseOverlay({ isPaused, onTogglePause, onEndGame }) {
   return (
     <>
       {!isPaused && (
-        <button className="pause-overlay-button" onClick={onTogglePause}>
-          <img src="/game-icons/pause.png" alt="Pause" />
+        <button onClick={onTogglePause} className="absolute bottom-5 transition-transform duration-200 hover:scale-105">
+          <Image src="/vectors/pause.svg" alt="Pause" width={70} height={30} objectFit="cover" />
         </button>
       )}
-
       {isPaused && (
         <div className="pause-overlay">
           <div className="pause-overlay-content">

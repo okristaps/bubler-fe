@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import "./game-stats.css";
+import Image from "next/image";
 
 export default function GameStats({ score, elapsedTime, lives }) {
   const [displayTime, setDisplayTime] = useState(elapsedTime);
@@ -72,11 +73,26 @@ export default function GameStats({ score, elapsedTime, lives }) {
   return (
     <>
       <h1 className="top-middle">BUBLER</h1>
-      <div className="top-container">
-        <div className="stat-box time top-left">⏳ {displayTime}</div>
-        <div className="stat-box lives top-right">❤️ {lives}</div>
+      <div className="absolute bottom-5 ">
+        <Image src="/vectors/scorebg.svg" alt="Score Background" width={300} height={80} objectFit="cover" />
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+          <span className="text-white font-bold text-l drop-shadow-md tracking-wide">{score}</span>
+        </div>
       </div>
-      <div className="stat-box score bottom-center">🏆 {score}</div>
+
+      <div className="absolute top-0 right-[-80] ">
+        <Image src="/vectors/lives2.svg" alt="Score Background" width={200} height={30} objectFit="cover" />
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+          <span className="text-white font-bold text-sm mt-3 mr-5  drop-shadow-md tracking-wide">{lives}</span>
+        </div>
+      </div>
+
+      <div className="absolute top-14 right-[-30] ">
+        <Image src="/vectors/time2.svg" alt="Score Background" width={200} height={30} objectFit="cover" />
+        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+          <span className="text-white font-bold text-sm mt-1 ml-8 drop-shadow-md tracking-wide">{displayTime}</span>
+        </div>
+      </div>
     </>
   );
 }
