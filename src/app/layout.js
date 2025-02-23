@@ -1,6 +1,7 @@
 import { Fuzzy_Bubbles } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import Head from "next/head";
 
 const bubbles = Fuzzy_Bubbles({
   weight: ["400", "700"],
@@ -308,12 +309,12 @@ export const metadata = {
     },
     icons: {
       icon: [
-        { url: "/public/icons/192x192.png", sizes: "192x192", type: "image/png" },
-        { url: "/public/icons/256x256.png", sizes: "256x256", type: "image/png" },
-        { url: "/public/icons/384x384.png", sizes: "384x384", type: "image/png" },
-        { url: "/public/icons/512x512.png", sizes: "512x512", type: "image/png" },
+        { url: "icons/192x192.png", sizes: "192x192", type: "image/png" },
+        { url: "icons/256x256.png", sizes: "256x256", type: "image/png" },
+        { url: "icons/384x384.png", sizes: "384x384", type: "image/png" },
+        { url: "icons/512x512.png", sizes: "512x512", type: "image/png" },
       ],
-      apple: "/public/icons/512x512.png",
+      apple: "icons/512x512.png",
     },
     other: {
       google: "notranslate",
@@ -339,10 +340,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <meta name="apple-mobile-web-app-title" content="Bubler" />
-      <link rel="apple-touch-startup-image"></link>
-      <meta name="theme-color" content="#119dff" />
-      <body className={`${bubbles.variable} font-fuzzy antialiased relative   overflow-x-hidden overflow-y-auto`}>
+      <Head>
+        <meta name="apple-mobile-web-app-title" content="Bubler" />
+        <link rel="apple-touch-startup-image" href="/splash-screens/iPhone_16_Pro_Max_portrait.png" />
+        <meta name="theme-color" content="#119dff" />
+      </Head>
+      <body className={`${bubbles.variable} font-fuzzy antialiased relative overflow-x-hidden overflow-y-auto`}>
         <main>
           {children}
           <Analytics />
