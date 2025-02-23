@@ -1,16 +1,14 @@
 import { Fuzzy_Bubbles } from "next/font/google";
 import "./globals.css";
-
 import { Analytics } from "@vercel/analytics/react";
 
-import Footer from "@/components/footer";
 const bubbles = Fuzzy_Bubbles({
   weight: ["400", "700"],
   variable: "--font-fuzzy-bubbles",
   subsets: ["latin"],
 });
 
-const APP_NAME = "Bubker";
+const APP_NAME = "Bubler";
 const APP_DEFAULT_TITLE = "Bubler Club";
 const APP_TITLE_TEMPLATE = "Bubler";
 const APP_DESCRIPTION = "BUBLER: Meme Catcher on ICP Chain";
@@ -24,7 +22,7 @@ export const metadata = {
     title: "BUBLER: Meme Catcher on ICP Chain",
     description:
       "Catch BUBLER tokens in-game and win crypto rewards! Built on the ICP blockchain for fast transactions and endless fun.",
-    url: "https://bubler.club",
+    url: "https://bubler.club/",
     siteName: "BUBLER",
     images: [
       {
@@ -97,6 +95,18 @@ export const metadata = {
       },
       description: APP_DESCRIPTION,
     },
+    icons: {
+      icon: [
+        { url: "/public/icons/192x192.png", sizes: "192x192", type: "image/png" },
+        { url: "/public/icons/256x256.png", sizes: "256x256", type: "image/png" },
+        { url: "/public/icons/384x384.png", sizes: "384x384", type: "image/png" },
+        { url: "/public/icons/512x512.png", sizes: "512x512", type: "image/png" },
+      ],
+      apple: "/public/icons/512x512.png",
+    },
+    other: {
+      google: "notranslate",
+    },
   },
 
   additionalMetaTags: [
@@ -110,7 +120,7 @@ export const metadata = {
     },
     {
       name: "theme-color",
-      background_color: "#9a6026",
+      background_color: "#119dff",
     },
   ],
 };
@@ -118,6 +128,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="overflow-x-hidden">
+      <meta name="apple-mobile-web-app-title" content="Bubler" />
       <meta name="theme-color" content="#119dff" />
       <body className={`${bubbles.variable} font-fuzzy antialiased relative   overflow-x-hidden overflow-y-auto`}>
         <main>
