@@ -9,6 +9,7 @@ import RoadmapAndTokenomics from "../components/roadmap";
 import Landing from "@/components/landing";
 import HeaderBUBLER from "@/components/header";
 import Footer from "@/components/footer";
+import TokenLiveData from "@/components/token-live-data";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <div className="mt-20">
         <Landing />
         <AboutBUBLER />
+        <TokenLiveData />
         <RoadmapAndTokenomics />
         <GameplayHighlights />
         <FutureVision />
