@@ -80,7 +80,7 @@ export default function GameLobby({ startGame, connected }) {
               {...register("wallet", {
                 required: "Wallet is required",
                 pattern: {
-                  value: /^[a-zA-Z0-9]{10,}$/,
+                  value: /^(?:[a-zA-Z0-9-]{10,}|[a-fA-F0-9]{64})$/,
                   message: "Enter a valid public wallet address",
                 },
               })}
