@@ -1,10 +1,10 @@
 import BubbleBackground from "@/components/bubble-bg";
-import Leaderboard from "../components/leaderboard/leaderboard";
-
+import Leaderboard from "../game/components/leaderboard/leaderboard";
 export default function LeaderboardPage() {
   return (
-    <div className="min-h-screen  w-full overflow-y-auto pb-[40px]">
+    <div className="h-full w-full overflow-y-auto pb-[40px] mt-[20]">
       <Leaderboard />
+
       <BubbleBackground />
     </div>
   );

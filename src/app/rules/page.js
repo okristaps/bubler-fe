@@ -9,8 +9,6 @@ import RulesImage from "../../../public/image3.png";
 export default function RulesPage() {
   return (
     <div className="h-full">
-      <HeaderBUBLER />
-
       <div className="flex justify-center mt-20">
         <motion.div
           className="w-full md:w-1/2 flex justify-center md:ml-16"
@@ -77,8 +75,6 @@ export default function RulesPage() {
           </div>
         </div>
       </motion.section>
-
-      <Footer />
     </div>
   );
 }

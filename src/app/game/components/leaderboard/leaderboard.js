@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { dfxClient } from "@/utils/dfxClient";
 import "./leaderboard.css";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const truncateText = (text, maxLength = 15) => {
   return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
@@ -47,14 +49,14 @@ const Leaderboard = () => {
   }, [isWeekly]);
 
   return (
-    <>
-      <div className="leaderboard">
+    <div>
+      <div className="leaderboard ">
         <h1 className="leaderboard-title">Leaderboard</h1>
         <button className={`toggle-button ${isWeekly ? "weekly" : "all-time"}`} onClick={() => setIsWeekly(!isWeekly)}>
           {isWeekly ? "📅 Weekly Leaderboard" : "🏆 All-Time Leaderboard"}
         </button>
         {loading ? (
-          <div className="spinner"></div>
+          <div className="spinner mt-24"></div>
         ) : (
           <div className="leaders">
             {leaders.length > 0 ? (
@@ -80,7 +82,18 @@ const Leaderboard = () => {
       <button className="game-button" onClick={() => router.push("/game")}>
         ▶️ Play
       </button>
-    </>
+      <div className="mt-8 flex flex-row justify-center">
+        <Link href="/" passHref>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-blue-600 text-white font-semibold px-6 py-2 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            Back to Home
+          </motion.button>
+        </Link>
+      </div>
+    </div>
   );
 };
 

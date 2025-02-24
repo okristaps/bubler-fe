@@ -100,7 +100,7 @@ export default function GameLobby({ startGame, connected }) {
         <button
           className="leaderboard-button"
           style={{ marginTop: 20, marginBottom: 20 }}
-          onClick={() => router.push("/game/leaderboard")}
+          onClick={() => router.push("/leaderboard")}
         >
           📊 View Leaderboard
         </button>
