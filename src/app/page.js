@@ -7,8 +7,6 @@ import LegalDisclaimer from "../components/legal-disclaimer";
 import SocialsSection from "../components/socials";
 import RoadmapAndTokenomics from "../components/roadmap";
 import Landing from "@/components/landing";
-import HeaderBUBLER from "@/components/header";
-import Footer from "@/components/footer";
 import TokenLiveData from "@/components/token-live-data";
 
 export default function Home() {

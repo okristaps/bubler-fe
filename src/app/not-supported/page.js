@@ -1,5 +1,5 @@
 "use client";
-import Footer from "@/components/footer";
+
 import HeaderBUBLER from "@/components/header";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -9,8 +9,6 @@ import BUBLERImage from "../../../public/image3.png";
 export default function NotSupported() {
   return (
     <div className="h-full">
-      <HeaderBUBLER />
-
       <div className="flex justify-center mt-20">
         <motion.div
           className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0 md:ml-16"
@@ -56,8 +54,6 @@ export default function NotSupported() {
           </div>
         </div>
       </motion.section>
-
-      <Footer />
     </div>
   );
 }

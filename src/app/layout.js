@@ -3,8 +3,6 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import Head from "next/head";
 import { metadata } from "../../metadata";
-import HeaderBUBLER from "@/components/header";
-import Footer from "@/components/footer";
 import HeaderFooterWrapper from "@/components/layoutWrapper";
 
 const bubbles = Fuzzy_Bubbles({
