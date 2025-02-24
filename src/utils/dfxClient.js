@@ -3,7 +3,7 @@ import { idlFactory } from "../../declerations/bubler-be";
 
 class DfxClient {
   constructor() {
-    this.canisterId = process.env.NEXT_PUBLIC_CANISTER_ID ?? "123455";
+    this.canisterId = process.env.NEXT_PUBLIC_CANISTER_ID ?? "asrmz-lmaaa-aaaaa-qaaeq-cai";
     this.host = process.env.NEXT_PUBLIC_DFX_HOST || "https://ic0.app";
 
     this.agent = new HttpAgent({ host: this.host });
