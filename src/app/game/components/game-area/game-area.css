@@ -1,0 +1,99 @@
+
+.game-area {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: -4;
+}
+
+
+.game-area::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.3);  */
+  z-index: -3;
+}
+
+
+.frozen-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; 
+  background: url("../../../../../public/game-assets/frozen.png") no-repeat center center;
+  background-size: cover;
+  opacity: 0.1; 
+}
+
+.darkness-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  opacity: 0.99; 
+  pointer-events: none; 
+  z-index: 9999; 
+}
+
+  .bubble-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+  }
+  
+  .bubble-image {
+    object-fit: contain;
+    border-radius: 50%;
+  }
+  
+  /* Use transform via keyframes to animate the fall */
+  @keyframes fall {
+    from {
+      transform: translateY(-50px);
+    }
+    to {
+      transform: translateY(calc(100vh + 50px));
+    }
+  }
+  
+  
+
+  @keyframes pulseLogo {
+    0% { opacity: 0.1; transform: scale(1); }
+    50% { opacity: 0.2; transform: scale(1.05); }
+    100% { opacity: 0.1; transform: scale(1); }
+  }
+  .background-logo-container {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-image: url("../../../../../public/bubble2.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: translate(-50%, -50%);
+    opacity: 0.1;
+    animation: pulseLogo 5s infinite ease-in-out;
+    pointer-events: none;
+    z-index: -1;
+  }

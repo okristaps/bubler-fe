@@ -1,0 +1,24 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 175" width="500" height="175">
+	<title>New Project</title>
+	<defs>
+		<linearGradient id="g1" x2="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0,-117.786,420.386,0,258.912,148.205)">
+			<stop offset="0" stop-color="#6151ff"/>
+			<stop offset="1" stop-color="#7dcbff"/>
+		</linearGradient>
+	</defs>
+	<style>
+		.s0 { fill: url(#g1) } 
+		.s1 { fill: #211e4c } 
+		.s2 { fill: #ffffff } 
+		.s3 { opacity: .1;fill: #000000 } 
+	</style>
+	<g id="heart_amount">
+		<g id="bar">
+			<path id="&lt;Path&gt;" class="s0" d="m426.7 148.2h-361.5v-117.8h361.5c32.5 0 58.9 26.4 58.9 58.9 0 32.5-26.4 58.9-58.9 58.9z"/>
+			<path id="&lt;Compound Path&gt;" fill-rule="evenodd" class="s1" d="m491.6 89.3c0 39.1-31.8 70.9-70.9 70.9h-373.5v-141.8h373.5c39.1 0 70.9 31.8 70.9 70.9zm-432.4-58.9v117.8h361.5c32.5 0 58.9-26.4 58.9-58.9 0-32.5-26.4-58.9-58.9-58.9z"/>
+			<path id="&lt;Path&gt;" class="s1" d="m177.7 85.3c0 46.9-38 84.9-84.9 84.9-46.9 0-84.9-38-84.9-84.9 0-46.9 38-84.9 84.9-84.9 46.9 0 84.9 38 84.9 84.9z"/>
+			<path id="&lt;Path&gt;" class="s2" d="m165.8 85.3c0 40.3-32.7 73-73 73-40.3 0-73-32.7-73-73 0-40.3 32.7-73 73-73 40.3 0 73 32.7 73 73z"/>
+			<path id="&lt;Path&gt;" class="s3" d="m92.8 96.7c-28.5 0-54-10.4-71.3-26.9-1.1 5-1.7 10.2-1.7 15.5 0 40.3 32.7 73 73 73 40.3 0 73-32.7 73-73 0-5.3-0.6-10.5-1.7-15.5-17.3 16.5-42.8 26.9-71.3 26.9z"/>
+		</g>
+	</g>
+</svg>

@@ -1,0 +1,90 @@
+
+.pause-overlay {
+  position: fixed;
+  inset: 0; 
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9998; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.pause-overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+.pause-overlay-button {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 9999;
+
+  padding: 0.75rem 1rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background: none; 
+}
+
+.paused-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+
+.pause-overlay-button:hover {
+  transform: scale(1.4);
+}
+
+.pause-overlay-button img {
+  width: 64px; 
+  height: 64px; 
+}
+
+@media (max-width: 640px) {
+  .pause-overlay-button img {
+    width: calc(64px * 0.6667); 
+    height: calc(64px * 0.6667); 
+  }
+}
+
+
+.overlay-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 9999px;
+  background-color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.overlay-btn:hover {
+  transform: scale(1.05);
+}
+
+
+.mute-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mute-btn img {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.2s ease;
+}
+
+.mute-btn:hover img {
+  transform: scale(1.1);
+}
