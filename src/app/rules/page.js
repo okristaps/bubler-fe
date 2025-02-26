@@ -46,7 +46,8 @@ export default function RulesPage() {
             <li>🔹 Try to beat the highest score on the leaderboard!</li>
             <li>
               ⭐ Every week, the top 3 players will earn bonus $BUBLER tokens:
-              <br /> &nbsp;&nbsp;• 1st Place: 700K, 2nd Place: 500K, 3rd Place: 300K.
+              <br /> &nbsp;&nbsp;• 1st Place: 700K, 2nd Place: 500K, 3rd Place: 300K. Payouts will occur each monday
+              20:00 UTC+2
             </li>
           </ul>
 

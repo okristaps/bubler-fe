@@ -8,6 +8,7 @@ import SocialsSection from "../components/socials";
 import RoadmapAndTokenomics from "../components/roadmap";
 import Landing from "@/components/landing";
 import TokenLiveData from "@/components/token-live-data";
+import ICPInfo from "@/components/icp-info";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <AboutBUBLER />
       <TokenLiveData />
       <RoadmapAndTokenomics />
+      <ICPInfo />
       <GameplayHighlights />
       <FutureVision />
       <SocialsSection />

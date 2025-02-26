@@ -43,7 +43,7 @@ const Landing = () => {
             onClick={() => router.push("/game")}
             className="px-5 py-3 text-base sm:text-lg font-bold text-white bg-blue-500 hover:bg-blue-600 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
           >
-            Start Catching Memes
+            Play
           </button>
 
           <a
