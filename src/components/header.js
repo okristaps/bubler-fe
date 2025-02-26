@@ -8,7 +8,11 @@ const navLinks = [
   { label: "Game", href: "/game" },
   { label: "Rules", href: "/rules" },
   { label: "Leaderboard", href: "/leaderboard" },
-  { label: "Buy", href: "/buy", special: true },
+  {
+    label: "Buy",
+    href: "https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai",
+    special: true,
+  },
 ];
 
 const HeaderBUBLER = () => {
@@ -19,6 +23,7 @@ const HeaderBUBLER = () => {
       if (link.special) {
         return (
           <a
+            target="_blank"
             key={index}
             href={link.href}
             className={`${extraClass} px-4 py-2 bg-yellow-400 text-black font-bold rounded-full shadow-md hover:bg-yellow-500 transition text-center`}
