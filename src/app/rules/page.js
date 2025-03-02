@@ -49,6 +49,12 @@ export default function RulesPage() {
               <br /> &nbsp;&nbsp;• 1st Place: 700K, 2nd Place: 500K, 3rd Place: 300K. Payouts will occur each monday
               20:00 UTC+2
             </li>
+            <li>
+              🌟 Additional partner coin rewards:
+              <br /> &nbsp;&nbsp;• RETARF: 1st - 250K, 2nd - 100K, 3rd - 50K
+              <br /> &nbsp;&nbsp;• RUGGY: 1st - 60K, 2nd - 25K, 3rd - 15K
+              <br /> &nbsp;&nbsp;• AC: 1st - 10K, 2nd - 7K, 3rd - 3K
+            </li>
           </ul>
 
           <div className="mt-8">
