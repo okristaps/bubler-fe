@@ -15,7 +15,7 @@ const colors = ["#FFD700", "#C0C0C0", "#CD7F32", "#0078D7", "#0099BC"];
 const Leaderboard = () => {
   const [leaders, setLeaders] = useState([]);
   const [maxScore, setMaxScore] = useState(500);
-  const [isWeekly, setIsWeekly] = useState(false);
+  const [isWeekly, setIsWeekly] = useState(true);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
@@ -52,7 +52,9 @@ const Leaderboard = () => {
     <div>
       <div className="leaderboard ">
         <h1 className="leaderboard-title">Leaderboard</h1>
-        <button className={`toggle-button ${isWeekly ? "weekly" : "all-time"}`} onClick={() => setIsWeekly(!isWeekly)}>
+        <button
+          disabled={true}
+          className={`toggle-button ${isWeekly ? "weekly" : "all-time"}`} onClick={() => setIsWeekly(!isWeekly)}>
           {isWeekly ? "📅 Weekly Leaderboard" : "🏆 All-Time Leaderboard"}
         </button>
         {loading ? (
