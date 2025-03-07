@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 
 export default function HeaderFooterWrapper({ children }) {
   const pathname = usePathname();
-  const hideLayout = pathname === "/game";
+  const hideLayout = pathname === "/game" || pathname === "/404";
 
   return (
     <>
