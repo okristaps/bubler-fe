@@ -4,9 +4,9 @@ export default function manifest() {
     short_name: "Bubler",
     description: "BUBLER: Meme Catcher on ICP Chain",
     display: "standalone",
-    background_color: "#119dff",
+    background_color: "#0D0907",
     orientation: "portrait",
-    theme_color: "#119dff",
+    theme_color: "#0D0907",
     start_url: "https://bubler.club/",
     scope: "https://bubler.club/",
 

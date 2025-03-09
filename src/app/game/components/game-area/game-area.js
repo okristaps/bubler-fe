@@ -99,11 +99,11 @@ export default function GameArea({
         <BackgroundAudio />
 
         <GameInfo score={score} elapsedTime={elapsedTime} lives={lives} />
-        <BubbleBackground />
-
+        {/* <BubbleBackground /> */}
+        {/* 
         <div className="background-logo-container z-1">
           <img src="/image6.png" alt="Game Logo" className="background-logo" />
-        </div>
+        </div> */}
 
         <div className="bubble-container">
           {bubbles.map((bubble) => (

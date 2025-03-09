@@ -50,7 +50,7 @@ export default function PauseOverlay({ isPaused, onTogglePause, onEndGame }) {
     <>
       {!isPaused && (
         <button className="pause-overlay-button" onClick={onTogglePause}>
-          <img src="/game-icons/pause.png" alt="Pause" />
+          <img src="/vectors/BluePause.svg" alt="Pause" />
         </button>
       )}
 
