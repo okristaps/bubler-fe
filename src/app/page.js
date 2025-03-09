@@ -15,9 +15,9 @@ export default function Home() {
     <div className="mt-20">
       <Landing />
       <AboutBUBLER />
-      <TokenLiveData />
+      {/* <TokenLiveData /> */}
       <RoadmapAndTokenomics />
-      <ICPInfo />
+      {/* <ICPInfo /> */}
       <GameplayHighlights />
       <FutureVision />
       <SocialsSection />

@@ -17,38 +17,38 @@ const RoadmapAndTokenomics = () => {
       <div className="flex flex-col md:flex-row gap-10 md:gap-16">
         {/* ✅ Made Tokenomics wider (md:w-3/5) */}
         <motion.div
-          className="bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 border border-gray-700 text-center w-full md:w-3/5"
+          className="bg-[#001a1a] bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 border border-[#00f2fe] text-center w-full neon-glow"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
+          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] drop-shadow-md text-glow">
             Tokenomics
           </h2>
 
           <p className="mt-4 text-lg sm:text-xl text-gray-300 font-bold">
-            Total Supply: <span className="text-white">1 Billion (Fair Launch)</span>
+            Total Supply: <span className="text-[#00f2fe] text-glow">1 Billion (Fair Launch)</span>
           </p>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-200 text-lg sm:text-xl">
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-blue-300 font-bold">💧 Liquidity:</span> 50M
+          <div className="space-y-4 mt-6">
+            <div className="bg-[#002929] bg-opacity-70 p-4 rounded-xl border border-[#00f2fe] shadow-md">
+              <span className="text-[#00f2fe] font-bold text-glow">💧 Liquidity:</span> 50M
             </div>
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-purple-300 font-bold">🎮 Treasury (Game Rewards):</span> 75M
+            <div className="bg-[#002929] bg-opacity-70 p-4 rounded-xl border border-[#00f2fe] shadow-md">
+              <span className="text-[#00e4ff] font-bold text-glow">🎮 Treasury (Game Rewards):</span> 75M
             </div>
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-red-300 font-bold">👥 Treasury (Team):</span> 25M
+            <div className="bg-[#002929] bg-opacity-70 p-4 rounded-xl border border-[#00f2fe] shadow-md">
+              <span className="text-[#00f2fe] font-bold text-glow">👥 Treasury (Team):</span> 25M
             </div>
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-yellow-300 font-bold">📈 Free Market:</span> 850M
+            <div className="bg-[#002929] bg-opacity-70 p-4 rounded-xl border border-[#00f2fe] shadow-md">
+              <span className="text-[#00e4ff] font-bold text-glow">📈 Free Market:</span> 850M
             </div>
           </div>
         </motion.div>
 
         {/* ✅ Made Roadmap smaller (md:w-2/5) */}
-        <motion.div
+        {/* <motion.div
           className="bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 border border-gray-700 text-center w-full md:w-2/5"
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -76,7 +76,7 @@ const RoadmapAndTokenomics = () => {
               </button>
             </a>
           </div>
-        </motion.div>
+        </motion.div> */}
       </div>
     </motion.section>
   );

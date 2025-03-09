@@ -13,10 +13,10 @@
   font-size: 48px;
   font-weight: 800;
   text-transform: uppercase;
-  background: linear-gradient(to right, #ff0844, #ffb199);
+  background: linear-gradient(to right, #00f2fe, #0092ff);
   -webkit-background-clip: text;
   color: transparent;
-  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 4px 10px rgba(0, 242, 254, 0.5);
   margin-bottom: 10px;
 }
 
@@ -24,16 +24,16 @@
   font-size: 24px;
   font-weight: bold;
   color: #fff;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 41, 41, 0.3);
   padding: 10px 20px;
   border-radius: 10px;
   margin: 10px 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 10px rgba(0, 242, 254, 0.3);
   animation: fadeInUp 0.5s ease-in-out;
 }
 
 .play-again-btn {
-  background: linear-gradient(to right, #ff6f61, #ff4081);
+  background: linear-gradient(to right, #00f2fe, #0092ff);
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -43,15 +43,14 @@
   cursor: pointer;
   margin-top: 20px;
   transition: all 0.3s ease;
-  box-shadow: 0px 4px 15px rgba(255, 64, 129, 0.3);
+  box-shadow: 0px 4px 15px rgba(0, 242, 254, 0.3);
 }
 
 .play-again-btn:hover {
-  background: linear-gradient(to right, #e91e63, #ff4081);
+  background: linear-gradient(to right, #00e4ff, #0092ff);
   transform: scale(1.05);
-  box-shadow: 0px 6px 20px rgba(255, 64, 129, 0.5);
+  box-shadow: 0px 6px 20px rgba(0, 242, 254, 0.5);
 }
-
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -64,7 +63,7 @@
 }
 
 .game-button {
-  background: linear-gradient(45deg, #ff006e, #fb5607);
+  background: linear-gradient(45deg, #00f2fe, #0092ff);
   color: white;
   font-size: 16px;
   font-weight: bold;
@@ -76,9 +75,8 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0px 0px 10px rgba(255, 0, 110, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 242, 254, 0.5);
 }
-
 
 .button-container {
   display: flex;
@@ -87,9 +85,8 @@
   margin-top: 20px;
 }
 
-
 .leaderboard-button {
-  background: linear-gradient(to right, #ff6f61, #ff4081);
+  background: linear-gradient(to right, #00f2fe, #0092ff);
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -99,21 +96,17 @@
   min-width: 300px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0px 4px 15px rgba(255, 64, 129, 0.3);
-}
-
-.leaderboard-button {
-  background: linear-gradient(to right, #4caf50, #2e7d32);
+  box-shadow: 0px 4px 15px rgba(0, 242, 254, 0.3);
 }
 
 .game-button:hover {
-  background: linear-gradient(to right, #e91e63, #ff4081);
+  background: linear-gradient(to right, #00e4ff, #0092ff);
   transform: scale(1.05);
-  box-shadow: 0px 6px 20px rgba(255, 64, 129, 0.5);
+  box-shadow: 0px 6px 20px rgba(0, 242, 254, 0.5);
 }
 
 .leaderboard-button:hover {
-  background: linear-gradient(to right, #388e3c, #1b5e20);
+  background: linear-gradient(to right, #00e4ff, #0092ff);
   transform: scale(1.05);
-  box-shadow: 0px 6px 20px rgba(76, 175, 80, 0.5);
+  box-shadow: 0px 6px 20px rgba(0, 242, 254, 0.5);
 }

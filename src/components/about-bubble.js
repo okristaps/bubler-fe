@@ -8,31 +8,39 @@ const AboutBUBLER = () => {
   return (
     <motion.section
       id="about-BUBLER"
-      className="max-w-6xl mx-auto px-6 sm:px-8 "
+      className="max-w-6xl mx-auto px-6 sm:px-8"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      // viewport={{ once: true }}
     >
-      <div className="bg-blue-900 bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 border border-gray-700">
+      <div className="bg-[#001a1a] bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 border border-[#00f2fe] neon-glow">
         <div className="flex justify-center md:justify-start w-full md:w-1/3">
-          <Image src={BUBLERImage} alt="BUBLER Meme" width={400} height={400} className="rounded-xl" />
+          <Image
+            src={BUBLERImage}
+            alt="BUBLER Meme"
+            width={400}
+            height={400}
+            className="rounded-xl border-2 border-[#00f2fe] shadow-lg"
+            style={{
+              boxShadow: "0 0 20px rgba(0, 242, 254, 0.3)",
+            }}
+          />
         </div>
 
         <div className="w-full md:w-2/3 text-center md:text-left">
-          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
+          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] drop-shadow-lg text-glow">
             What is BUBLER?
           </h2>
           <p className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
-            🐸 <span className="font-bold">BUBLER the Meme Catcher</span> isn’t your average token. It’s a meme-powered
-            adventure with <span className="text-yellow-300">gameplay utility</span>! Hunt, catch, and collect BUBLER
-            tokens in our fast-paced game, where skill meets luck.
+            🐸 <span className="font-bold text-[#00e4ff] text-glow">BUBLER the Meme Catcher</span> isn't your average
+            token. It's a meme-powered adventure with <span className="text-[#00f2fe] text-glow">gameplay utility</span>
+            ! Hunt, catch, and collect BUBLER tokens in our fast-paced game, where skill meets luck.
           </p>
           <p className="mt-2 text-lg sm:text-xl text-gray-300">
-            Every time BUBLER <span className="text-yellow-300">drops in-game</span>,{" "}
-            <span className="font-bold">score the highest points</span> and claim your crypto rewards! Built on the
-            blazing-fast <span className="text-blue-300">ICP chain</span>, BUBLER combines viral fun with seamless
-            transactions.
+            Every time BUBLER <span className="text-[#00e4ff] text-glow">drops in-game</span>,{" "}
+            <span className="font-bold text-[#00f2fe] text-glow">score the highest points</span> and claim your crypto
+            rewards! Built on the blazing-fast <span className="text-[#00e4ff] text-glow">ICP chain</span>, BUBLER
+            combines viral fun with seamless transactions.
           </p>
         </div>
       </div>
