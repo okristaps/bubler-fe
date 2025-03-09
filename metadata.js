@@ -321,7 +321,7 @@ export const metadata = {
     },
     {
       name: "theme-color",
-      background_color: "#119dff",
+      background_color: "#0c0c12",
     },
   ],
 };

@@ -46,13 +46,13 @@ top: 15px;
 }
 
 .pause-overlay-button img {
-  width: 64px; 
-  height: 64px; 
+  width: 60px; 
+  height: 60px; 
 }
 
 @media (max-width: 640px) {
   .pause-overlay-button{
-    top: 20px;
+    top: 18px;
 
   }
   .pause-overlay-button img {

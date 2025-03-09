@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <Head>
         <meta name="apple-mobile-web-app-title" content="Bubler" />
         <link rel="apple-touch-startup-image" href="/splash-screens/iPhone_16_Pro_Max_portrait.png" />
-        <meta name="theme-color" content="#151922" />
+        <meta name="theme-color" content="#0c0c12" />
       </Head>
       <body className={`${bubbles.variable} font-fuzzy antialiased relative overflow-x-hidden overflow-y-auto`}>
         <HeaderFooterWrapper>

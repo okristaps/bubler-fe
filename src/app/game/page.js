@@ -43,22 +43,22 @@ export default function Game() {
       </Head>
 
       <div className="game-container">
-        {gameState === "" && <GameLobby startGame={handleStart} connected={connected} />}
-        {gameState === "playing" && (
-          <GameArea
-            isDark={isDark}
-            isFrozen={isFrozen}
-            score={score}
-            lives={lives}
-            elapsedTime={elapsedTime}
-            bubbles={bubbles}
-            popBubble={popBubble}
-            isPaused={isPaused}
-            resumeGame={resumeGame}
-            pauseGame={pauseGame}
-          />
-        )}
-        {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />}
+        {/* {gameState === "" && <GameLobby startGame={handleStart} connected={connected} />} */}
+        {/* {gameState === "playing" && ( */}
+        <GameArea
+          isDark={isDark}
+          isFrozen={isFrozen}
+          score={score}
+          lives={lives}
+          elapsedTime={elapsedTime}
+          bubbles={bubbles}
+          popBubble={popBubble}
+          isPaused={isPaused}
+          resumeGame={resumeGame}
+          pauseGame={pauseGame}
+        />
+        {/* )} */}
+        {/* {gameState === "finished" && <FinishedScreen score={score} elapsedTime={elapsedTime} resetGame={resetGame} />} */}
       </div>
     </>
   );

@@ -5,8 +5,8 @@ export default function manifest() {
     description: "BUBLER: The Ultimate Meme Catcher Game",
     start_url: "/",
     display: "standalone",
-    background_color: "#002c2e",
-    theme_color: "#00f2fe",
+    background_color: "#0c0c12",
+    theme_color: "#0c0c12",
     icons: [
       {
         src: "/favicon.ico",
