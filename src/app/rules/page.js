@@ -9,7 +9,7 @@ export default function RulesPage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-[#001a1a] py-8 sm:py-12">
+    <div className="min-h-screen bg-[#001a1a] py-8 sm:py-12 mt-20">
       <div className="flex justify-center">
         <motion.div
           className="w-full md:w-1/2 flex justify-center"

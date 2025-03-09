@@ -43,65 +43,28 @@ const Landing = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
-              Welcome to{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] relative">
-                BUBLER!
-                <div className="absolute inset-0 bg-[#00f2fe] blur-xl opacity-20"></div>
-              </span>
-            </h1>
-
-            <motion.p
-              className="mt-4 text-lg sm:text-xl text-[#00e4ff]/80 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-            >
-              The playful meme token on the <span className="text-[#00f2fe] font-semibold">$ICP</span> blockchain that's
-              here to revolutionize crypto gaming! 🚀
-            </motion.p>
-
-            <motion.p
-              className="mt-3 text-lg sm:text-xl text-[#00e4ff]/80 leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              Dive into a world where memes aren't just for laughs—they're your ticket to{" "}
-              <span className="text-[#00f2fe] font-semibold">real rewards</span>.
-            </motion.p>
-
-            <motion.div
-              className="mt-8 sm:mt-12 flex flex-col sm:flex-row justify-center md:justify-start gap-4 sm:gap-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative group"
-                onClick={() => router.push("/game")}
-              >
-                <div className="absolute inset-0 bg-[#00f2fe] rounded-lg blur-lg opacity-50 group-hover:opacity-70 transition-opacity"></div>
-                <div className="relative px-8 py-4 bg-gradient-to-r from-[#00f2fe] to-[#0092ff] rounded-lg text-white font-bold text-lg shadow-lg shadow-[#00f2fe]/20 hover:shadow-[#00f2fe]/40 transition-all duration-300">
-                  PLAY NOW 🎮
-                </div>
-              </motion.button>
-
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative group"
-                href="https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai"
-                target="_blank"
-              >
-                <div className="absolute inset-0 bg-[#002929] rounded-lg blur-lg opacity-50 group-hover:opacity-70 transition-opacity"></div>
-                <div className="relative px-8 py-4 bg-[#002929] text-[#00e4ff] rounded-lg font-bold text-lg border border-[#00f2fe]/30 hover:border-[#00f2fe] transition-all duration-300">
-                  BUY NOW 💰
-                </div>
-              </motion.a>
-            </motion.div>
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#00f2fe] mb-6 tracking-wider uppercase text-glow">
+                BUBLER
+              </h1>
+              <p className="text-xl sm:text-2xl text-[#00f2fe]/90 mb-8">
+                The playful meme game that's here to revolutionize gaming with epic rewards and endless fun!
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href="/game"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#00f2fe] to-[#0092ff] hover:from-[#00e4ff] hover:to-[#0092ff] rounded-xl text-white font-bold text-lg sm:text-xl tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  Play Now 🎮
+                </a>
+                <a
+                  href="#"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#9333ea] to-[#4f46e5] hover:from-[#a855f7] hover:to-[#6366f1] rounded-xl text-white font-bold text-lg sm:text-xl tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  Buy Now 💰
+                </a>
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.section>

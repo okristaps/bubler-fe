@@ -25,8 +25,7 @@ const GameplayHighlights = () => {
                 </h3>
                 <p className="text-[#00f2fe]/90 text-lg">
                   When BUBLER falls, grab it fast! The meme catcher who snags BUBLER mid-drop earns{" "}
-                  <span className="font-bold">maximum points</span>, convertible into{" "}
-                  <span className="font-bold">$ICP</span> or other rewards.
+                  <span className="font-bold">maximum points</span> and unlocks exclusive rewards.
                 </p>
               </div>
             </div>
@@ -37,8 +36,8 @@ const GameplayHighlights = () => {
                   Play-to-Earn Redefined
                 </h3>
                 <p className="text-[#00f2fe]/90 text-lg">
-                  Turn your gaming prowess into tangible crypto payouts.{" "}
-                  <span className="font-bold">More BUBLER catches = bigger rewards</span>
+                  Turn your gaming prowess into amazing rewards.{" "}
+                  <span className="font-bold">More BUBLER catches = bigger prizes</span>
                 </p>
               </div>
             </div>

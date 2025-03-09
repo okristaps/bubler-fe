@@ -37,9 +37,11 @@ const LegalDisclaimer = () => {
               <p className="text-[#00f2fe]/90 text-lg text-center md:text-left">
                 "
                 <span className="font-bold">
-                  None of the information provided by us in the supply or in connection with our services
+                  BUBLER is a gaming platform designed for entertainment purposes. While we strive to provide an
+                  engaging and rewarding experience
                 </span>
-                constitutes legal, financial, business, or professional advice. Please consult a qualified advisor."
+                , participation in our game should be approached responsibly. Players are encouraged to familiarize
+                themselves with our terms of service and game mechanics before participating."
               </p>
             </div>
           </div>

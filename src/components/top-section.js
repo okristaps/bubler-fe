@@ -6,12 +6,11 @@ const TopSection = () => {
         <div className="bottom-4 right-4 w-12 h-12 sm:w-16 sm:h-16 bg-[#0092ff] blur-3xl opacity-30 animate-pulse"></div>
 
         <div className="text-center">
-          <h1 className="text-5xl sm:text-4xl md:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] drop-shadow-lg animate-bounce text-glow">
-            BUBLER
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#00f2fe] tracking-wider uppercase text-glow">
+            The Ultimate Meme Catcher
           </h1>
-
-          <p className="text-xl sm:text-2xl md:text-3xl font-bold mt-4">
-            The Meme Catcher on <span className="text-[#00f2fe] text-glow">ICP Chain</span>
+          <p className="text-xl sm:text-2xl text-[#00f2fe]/90 mt-4">
+            The playful meme game that's here to revolutionize gaming with epic rewards and endless fun!
           </p>
           <p className="mt-2 text-base sm:text-lg md:text-xl text-gray-200 italic">
             Where Memes Meet Gameplay Rewards! 🚀🎮
