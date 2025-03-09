@@ -3,29 +3,46 @@ import { motion } from "framer-motion";
 
 const GameplayHighlights = () => {
   return (
-    <motion.section id="gameplay-highlights" className="max-w-6xl mx-auto px-6 sm:px-8 mt-10">
+    <motion.section id="gameplay-highlights" className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
       <motion.div
-        className="bg-[#001a1a] bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 border border-[#00f2fe] text-center neon-glow"
+        className="bg-[#002c2e] rounded-2xl p-6 sm:p-8 relative overflow-hidden"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] drop-shadow-lg text-glow">
-          Gameplay Highlights
-        </h2>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00f2fe]/10 to-transparent"></div>
 
-        <div className="mt-6 space-y-6 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
-          <p>
-            🌟 <span className="font-bold text-[#00e4ff] text-glow">Catch the Drop, Win Big:</span> When BUBLER falls,
-            grab it fast! The meme catcher who snags BUBLER mid-drop earns{" "}
-            <span className="text-[#00f2fe] font-bold text-glow">maximum points</span>, convertible into{" "}
-            <span className="text-[#00e4ff] text-glow">$ICP</span> or other rewards.
-          </p>
-          <p>
-            🎯 <span className="font-bold text-[#00e4ff] text-glow">Play-to-Earn Redefined:</span> Turn your gaming
-            prowess into tangible crypto payouts.{" "}
-            <span className="text-[#00f2fe] text-glow">More BUBLER catches = bigger rewards!</span>
-          </p>
+        <div className="relative z-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#00f2fe] tracking-wider uppercase mb-8 text-right">
+            Gameplay Highlights
+          </h2>
+
+          <div className="space-y-6">
+            <div className="bg-[#003e42] rounded-xl p-6 relative">
+              <div className="text-right">
+                <h3 className="text-xl sm:text-2xl text-[#00f2fe] font-bold uppercase tracking-wide mb-2">
+                  Catch the Drop, Win Big
+                </h3>
+                <p className="text-[#00f2fe]/90 text-lg">
+                  When BUBLER falls, grab it fast! The meme catcher who snags BUBLER mid-drop earns{" "}
+                  <span className="font-bold">maximum points</span>, convertible into{" "}
+                  <span className="font-bold">$ICP</span> or other rewards.
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-[#003e42] rounded-xl p-6 relative">
+              <div className="text-right">
+                <h3 className="text-xl sm:text-2xl text-[#00f2fe] font-bold uppercase tracking-wide mb-2">
+                  Play-to-Earn Redefined
+                </h3>
+                <p className="text-[#00f2fe]/90 text-lg">
+                  Turn your gaming prowess into tangible crypto payouts.{" "}
+                  <span className="font-bold">More BUBLER catches = bigger rewards</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </motion.div>
     </motion.section>

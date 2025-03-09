@@ -6,38 +6,42 @@ import Image from "next/image";
 
 const LegalDisclaimer = () => {
   return (
-    <motion.section id="legal-disclaimer" className="max-w-6xl mx-auto px-6 sm:px-8 mt-10">
+    <motion.section id="legal-disclaimer" className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
       <motion.div
-        className="bg-[#001a1a] bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 border border-[#00f2fe] flex flex-col md:flex-row items-center gap-8 md:text-left text-center neon-glow"
+        className="bg-[#002c2e] rounded-2xl p-6 sm:p-8 relative overflow-hidden"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <div className="w-full md:w-1/3 flex justify-center md:justify-end">
-          <Image
-            src={BUBLERImage}
-            alt="BUBLER Meme"
-            width={400}
-            height={400}
-            className="rounded-xl border-2 border-[#00f2fe] shadow-lg"
-            style={{
-              boxShadow: "0 0 20px rgba(0, 242, 254, 0.3)",
-            }}
-          />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00f2fe]/10 to-transparent"></div>
 
-        <div className="w-full md:w-2/3">
-          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] drop-shadow-lg text-glow">
-            Legal Disclaimer
-          </h2>
-          <div className="mt-6 space-y-6 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
-            <p>
-              "
-              <span className="font-semibold text-[#00e4ff] text-glow">
-                None of the information provided by us in the supply or in connection with our services
-              </span>
-              constitutes legal, financial, business, or professional advice. Please consult a qualified advisor."
-            </p>
+        <div className="relative z-10 flex flex-col md:flex-row items-start gap-8">
+          <div className="w-full md:w-1/3 flex justify-center">
+            <Image
+              src={BUBLERImage}
+              alt="BUBLER Meme"
+              width={400}
+              height={400}
+              className="rounded-xl"
+              style={{
+                filter: "drop-shadow(0 0 10px rgba(0, 242, 254, 0.3))",
+              }}
+            />
+          </div>
+
+          <div className="w-full md:w-2/3">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#00f2fe] tracking-wider uppercase mb-8 text-center md:text-left">
+              Legal Disclaimer
+            </h2>
+            <div className="bg-[#003e42] rounded-xl p-6 relative">
+              <p className="text-[#00f2fe]/90 text-lg text-center md:text-left">
+                "
+                <span className="font-bold">
+                  None of the information provided by us in the supply or in connection with our services
+                </span>
+                constitutes legal, financial, business, or professional advice. Please consult a qualified advisor."
+              </p>
+            </div>
           </div>
         </div>
       </motion.div>
