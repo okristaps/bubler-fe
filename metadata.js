@@ -1,6 +1,6 @@
-const APP_NAME = "Bubler";
-const APP_DEFAULT_TITLE = "Bubler Club";
-const APP_TITLE_TEMPLATE = "Bubler";
+const APP_NAME = "Odincash";
+const APP_DEFAULT_TITLE = "Odincash";
+const APP_TITLE_TEMPLATE = "Odincash";
 const APP_DESCRIPTION = "ODINCASH: Meme Catcher on ICP Chain";
 
 export const metadata = {
@@ -12,7 +12,7 @@ export const metadata = {
     title: "ODINCASH: Meme Catcher on ICP Chain",
     description:
       "Catch ODINCASH tokens in-game and win crypto rewards! Built on the ICP blockchain for fast transactions and endless fun.",
-    url: "https://odincash.club/",
+    url: "https://odincash.org/",
     siteName: "ODINCASH",
     images: [
       {
@@ -30,7 +30,7 @@ export const metadata = {
     title: "ODINCASH: Meme Catcher on ICP Chain",
     description:
       "Catch ODINCASH tokens and win crypto rewards in this meme-powered game on the ICP blockchain. Play now!",
-    image: "https://odincash.club/image3.png",
+    image: "https://odincash.org/image3.png",
   },
 
   robots: "index, follow",
@@ -40,13 +40,13 @@ export const metadata = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "ODINCASH Meme Catcher Game",
-    url: "https://odincash.club",
+    url: "https://odincash.org",
     description: "ODINCASH is an exciting meme-powered game where you can earn crypto rewards by catching memes!",
-    image: "https://odincash.club/image3.png",
+    image: "https://odincash.org/image3.png",
     publisher: {
       "@type": "Organization",
       name: "ODINCASH Team",
-      logo: "https://odincash.club/image3.png",
+      logo: "https://odincash.org/image3.png",
     },
     sameAs: [
       "https://www.facebook.com/bublergame",
