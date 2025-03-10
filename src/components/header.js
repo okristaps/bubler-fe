@@ -26,7 +26,7 @@ const HeaderBUBLER = () => {
             target="_blank"
             key={index}
             href={link.href}
-            className={`${extraClass} px-4 py-2 bg-yellow-400 text-black font-bold rounded-full shadow-md hover:bg-yellow-500 transition text-center`}
+            className={`${extraClass} px-4 py-2 bg-gradient-to-r from-[#00f2fe] to-[#0092ff] text-white font-bold rounded-full shadow-md hover:from-[#00e4ff] hover:to-[#0092ff] transition text-center neon-glow`}
           >
             {link.label}
           </a>
@@ -36,7 +36,7 @@ const HeaderBUBLER = () => {
         <a
           key={index}
           href={link.href}
-          className={`${extraClass} text-base sm:text-lg mt-1 font-medium text-gray-300 text-center hover:text-white transition`}
+          className={`${extraClass} text-base sm:text-lg mt-1 font-medium text-gray-300 text-center hover:text-[#00f2fe] hover:text-glow transition`}
         >
           {link.label}
         </a>
@@ -44,10 +44,10 @@ const HeaderBUBLER = () => {
     });
 
   return (
-    <header className="fixed top-0 left-0 w-full py-4 px-6 sm:px-8 bg-gradient-to-b from-[#0B0F19] to-[#121826] text-white shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full py-4 px-6 sm:px-8 bg-gradient-to-b from-[#002929] to-[#001a1a] text-white shadow-md z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <motion.h1
-          className="text-2xl sm:text-3xl md:mx-6 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-purple-400 drop-shadow-lg"
+          className="text-2xl sm:text-3xl md:mx-6 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] drop-shadow-lg text-glow"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -66,7 +66,7 @@ const HeaderBUBLER = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed top-0 right-0 h-full w-2/3 bg-[#0B0F19] shadow-md sm:hidden flex flex-col items-center py-8 space-y-6 z-50"
+            className="fixed top-0 right-0 h-full w-2/3 bg-[#001a1a] shadow-md sm:hidden flex flex-col items-center py-8 space-y-6 z-50"
           >
             <button className="absolute top-4 right-4 text-white focus:outline-none" onClick={() => setMenuOpen(false)}>
               <X size={24} />

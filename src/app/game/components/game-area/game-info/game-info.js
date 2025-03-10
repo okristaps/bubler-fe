@@ -72,25 +72,26 @@ export default function GameStats({ score, elapsedTime, lives }) {
 
   return (
     <>
-      <h1 className="top-middle">BUBLER</h1>
-      <div className="absolute bottom-5 ">
-        <Image src="/vectors/scorebg.svg" alt="Score Background" width={300} height={80} objectFit="cover" />
+      <div className="absolute top-5 ">
+        <Image src="/vectors/Score.svg" alt="Score Background" width={200} height={80} objectFit="cover" />
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <span className="text-cyan-700 font-bold text-l drop-shadow-md tracking-wide">{score}</span>
+          <span className="text-white font-bold text-l drop-shadow-md tracking-wide">{score}</span>
         </div>
       </div>
 
-      <div className="absolute top-0 right-[-80px] ">
-        <Image src="/vectors/lives2.svg" alt="Score Background" width={200} height={30} objectFit="cover" />
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <span className="text-white font-bold text-sm mt-3 mr-5  drop-shadow-md tracking-wide">{lives}</span>
+      <div className="absolute top-7 right-3">
+        <div className="relative">
+          <Image src="/vectors/TransparentHeart.svg" alt="Score Background" width={60} height={30} objectFit="cover" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-white font-bold text-sm drop-shadow-md tracking-wide">{lives}</span>
+          </div>
         </div>
       </div>
 
-      <div className="absolute top-14 right-[-30px] ">
-        <Image src="/vectors/time2.svg" alt="Score Background" width={200} height={30} objectFit="cover" />
-        <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <span className="text-white font-bold text-sm mt-1 ml-8 drop-shadow-md tracking-wide">{displayTime}</span>
+      <div className="absolute top-[70px] w-[100%] flex flex-row items-center justify-center">
+        <div className="flex items-center gap-2">
+          <Image src="/vectors/BlueHourglass.svg" alt="Score Background" width={15} height={30} objectFit="cover" />
+          <span className="text-white font-bold text-sm">{displayTime}</span>
         </div>
       </div>
     </>

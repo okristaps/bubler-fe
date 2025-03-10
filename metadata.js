@@ -46,7 +46,7 @@ export const metadata = {
     publisher: {
       "@type": "Organization",
       name: "BUBLER Team",
-      logo: "https://your-site-url.com/image3.png",
+      logo: "https://bubler.club/image3.png",
     },
     sameAs: [
       "https://www.facebook.com/bublergame",
@@ -321,7 +321,7 @@ export const metadata = {
     },
     {
       name: "theme-color",
-      background_color: "#119dff",
+      background_color: "#0c0c12",
     },
   ],
 };

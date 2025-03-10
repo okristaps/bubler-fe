@@ -10,6 +10,22 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: {
+          DEFAULT: "#00f2fe",
+          dark: "#00d4e0",
+          darker: "#00b6c2",
+        },
+        accent: {
+          DEFAULT: "#00e4ff",
+          dark: "#00c6e0",
+          darker: "#00a8c2",
+        },
+        neon: {
+          cyan: "#00f2fe",
+          blue: "#0092ff",
+          teal: "#00e4ff",
+          glow: "rgba(0, 242, 254, 0.5)",
+        },
         blue: {
           50: "#eff6ff",
           100: "#dbeafe",

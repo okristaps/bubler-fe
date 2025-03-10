@@ -2,60 +2,73 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import BUBLERImage from "../../public/image3.png";
+import BUBLERImage from "../../public/byb.jpg";
 import { useRouter } from "next/navigation";
 
 const Landing = () => {
   const router = useRouter();
 
   return (
-    <motion.section
-      className="relative max-w-6xl mx-auto text-center text-white flex flex-col md:flex-row-reverse items-center justify-between  sm:px-8  sm:py-8"
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-    >
-      <motion.div
-        className="w-full md:w-1/2 flex justify-center mb-8 md:mb-0 md:ml-16"
-        animate={{ scale: [1, 1.05, 1] }}
-        transition={{ duration: 6, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+    <div className=" relative overflow-hidden">
+      <motion.section
+        className="relative max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 text-center text-white flex flex-col md:flex-row-reverse items-center justify-between gap-8 sm:gap-12"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
       >
-        <Image
-          src={BUBLERImage}
-          alt="BUBLER Meme"
-          width={350}
-          height={350}
-          className="rounded-full sm:w-[450px] w-[250px]"
-        />
-      </motion.div>
+        <motion.div
+          className="w-full md:w-1/2 flex justify-center relative"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 6, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+        >
+          <div className="absolute inset-0 bg-[#00f2fe] rounded-full blur-2xl opacity-20 animate-pulse"></div>
 
-      <div className="w-full md:w-1/2 text-center md:text-left p-4 sm:p-8">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight drop-shadow-lg">
-          Welcome to <span className="text-yellow-400">BUBLER!</span>
-        </h1>
-        <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">
-          The playful meme token on the <span className="text-yellow-300">$ICP</span> blockchain that’s here to
-          revolutionize crypto gaming! 🚀 Dive into a world where memes aren’t just for laughs—they’re your ticket to
-          real rewards.
-        </p>
-        <div className="mt-6 flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0">
-          <button
-            onClick={() => router.push("/game")}
-            className="px-5 py-3 text-base sm:text-lg font-bold text-white bg-blue-500 hover:bg-blue-600 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
-          >
-            Play
-          </button>
+          <div className="relative">
+            <Image
+              src={BUBLERImage}
+              alt="BUBLER Meme"
+              width={450}
+              height={450}
+              className="rounded-full sm:w-[400px] w-[280px] border-2 border-[#00f2fe]/30 relative z-10"
+              priority
+            />
 
-          <a
-            className="px-5 py-3 text-base sm:text-lg font-bold text-black bg-yellow-400 hover:bg-yellow-500 rounded-full shadow-lg hover:scale-105 transition-transform duration-300"
-            target="_blank"
-            href="https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai"
+            {/* <div className="absolute inset-0 bg-gradient-to-r from-[#00f2fe]/20 to-[#0092ff]/20 rounded-full z-0 animate-pulse"></div> */}
+          </div>
+        </motion.div>
+
+        <div className="w-full md:w-1/2 text-center md:text-left relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Buy Here
-          </a>
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#00f2fe] mb-6 tracking-wider uppercase text-glow">
+                BUBLER
+              </h1>
+              <p className="text-xl sm:text-2xl text-[#00f2fe]/90 mb-8">
+                The playful meme game that's here to revolutionize gaming with epic rewards and endless fun!
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href="/game"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#00f2fe] to-[#0092ff] hover:from-[#00e4ff] hover:to-[#0092ff] rounded-xl text-white font-bold text-lg sm:text-xl tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  Play Now 🎮
+                </a>
+                <a
+                  href="#"
+                  className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#9333ea] to-[#4f46e5] hover:from-[#a855f7] hover:to-[#6366f1] rounded-xl text-white font-bold text-lg sm:text-xl tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  Buy Now 💰
+                </a>
+              </div>
+            </div>
+          </motion.div>
         </div>
-      </div>
-    </motion.section>
+      </motion.section>
+    </div>
   );
 };
 

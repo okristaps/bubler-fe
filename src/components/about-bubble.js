@@ -8,32 +8,75 @@ const AboutBUBLER = () => {
   return (
     <motion.section
       id="about-BUBLER"
-      className="max-w-6xl mx-auto px-6 sm:px-8 "
+      className="max-w-6xl mx-auto px-4 sm:px-6 py-12"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      // viewport={{ once: true }}
     >
-      <div className="bg-blue-900 bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 flex flex-col md:flex-row items-center gap-6 md:gap-8 border border-gray-700">
-        <div className="flex justify-center md:justify-start w-full md:w-1/3">
-          <Image src={BUBLERImage} alt="BUBLER Meme" width={400} height={400} className="rounded-xl" />
-        </div>
+      <div className="bg-[#002c2e] rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#00f2fe]/10 to-transparent"></div>
 
-        <div className="w-full md:w-2/3 text-center md:text-left">
-          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
+        <div className="relative z-10">
+          {/* Mobile Header */}
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#00f2fe] tracking-wider uppercase mb-8 md:hidden text-center">
             What is BUBLER?
           </h2>
-          <p className="mt-4 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
-            🐸 <span className="font-bold">BUBLER the Meme Catcher</span> isn’t your average token. It’s a meme-powered
-            adventure with <span className="text-yellow-300">gameplay utility</span>! Hunt, catch, and collect BUBLER
-            tokens in our fast-paced game, where skill meets luck.
-          </p>
-          <p className="mt-2 text-lg sm:text-xl text-gray-300">
-            Every time BUBLER <span className="text-yellow-300">drops in-game</span>,{" "}
-            <span className="font-bold">score the highest points</span> and claim your crypto rewards! Built on the
-            blazing-fast <span className="text-blue-300">ICP chain</span>, BUBLER combines viral fun with seamless
-            transactions.
-          </p>
+
+          <div className="flex flex-col md:flex-row items-center gap-8">
+            {/* Image Section */}
+            <div className="w-[280px] md:w-[200px] lg:w-[240px] flex-shrink-0 flex justify-center mx-auto">
+              <motion.div
+                animate={{ scale: [1, 1.02, 1] }}
+                transition={{ duration: 4, repeat: Infinity, repeatType: "loop", ease: "easeInOut" }}
+                className="w-full"
+              >
+                <Image
+                  src={BUBLERImage}
+                  alt="BUBLER Meme"
+                  width={280}
+                  height={280}
+                  className="rounded-xl w-full h-auto"
+                  style={{
+                    filter: "drop-shadow(0 0 10px rgba(0, 242, 254, 0.3))",
+                  }}
+                  priority
+                />
+              </motion.div>
+            </div>
+
+            {/* Content Section */}
+            <div className="flex-1">
+              {/* Desktop Header - Hidden on mobile */}
+              <h2 className="hidden md:block text-3xl sm:text-4xl font-bold text-[#00f2fe] tracking-wider uppercase mb-8">
+                What is BUBLER?
+              </h2>
+
+              <div className="bg-[#003e42] rounded-xl p-6 relative">
+                <p className="text-[#00f2fe]/90 text-lg mb-6 text-center md:text-left">
+                  <span className="font-bold tracking-wide uppercase">BUBLER the Meme Catcher</span> is a revolutionary
+                  gaming experience that turns meme culture into thrilling gameplay. Dive into a world where quick
+                  reflexes and strategic timing unlock incredible rewards.
+                </p>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-[#00f2fe] opacity-70 mt-2.5"></div>
+                    <p className="text-[#00f2fe]/90 text-lg flex-1 text-center md:text-left">
+                      Master the art of the catch! Time your moves perfectly to snag BUBLER at the perfect moment and
+                      climb the global leaderboards with <span className="font-bold">maximum score multipliers</span>
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-2 h-2 rounded-full bg-[#00f2fe] opacity-70 mt-2.5"></div>
+                    <p className="text-[#00f2fe]/90 text-lg flex-1 text-center md:text-left">
+                      Experience lightning-fast gameplay on our <span className="font-bold">next-gen platform</span>,
+                      where every successful catch brings you closer to legendary status in the BUBLER universe
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </motion.section>

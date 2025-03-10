@@ -18,7 +18,20 @@ html, body {
     height: 100vh;
     display: flex;
     justify-content: center;
+    
     align-items: center;
-    /* background: linear-gradient(to bottom, #3b82f6, #1e3a8a); */
-    transform: scale(1); 
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('/byb.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: scale(1);
+    position: relative;
+}
+
+/* Ensure all direct children of game-container are above the background */
+.game-container > * {
+    /* position: relative; */
+    z-index: 1;
 }

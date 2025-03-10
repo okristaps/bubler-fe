@@ -7,74 +7,67 @@ const RoadmapAndTokenomics = () => {
   return (
     <motion.section
       id="roadmap-tokenomics"
-      className="max-w-6xl mx-auto px-6 sm:px-8 mt-10"
+      className="max-w-6xl mx-auto px-4 sm:px-6 pb-12"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
       viewport={{ once: true }}
     >
-      {/* ✅ Added gap-10 for mobile & gap-16 for desktop */}
-      <div className="flex flex-col md:flex-row gap-10 md:gap-16">
-        {/* ✅ Made Tokenomics wider (md:w-3/5) */}
+      <div className="flex flex-col md:flex-row gap-8">
         <motion.div
-          className="bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 border border-gray-700 text-center w-full md:w-3/5"
+          className="bg-[#012e2f] rounded-2xl p-6 sm:p-8 w-full relative overflow-hidden"
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
-            Tokenomics
-          </h2>
+          {/* Background Effects */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00f2fe]/5 to-transparent"></div>
 
-          <p className="mt-4 text-lg sm:text-xl text-gray-300 font-bold">
-            Total Supply: <span className="text-white">1 Billion (Fair Launch)</span>
-          </p>
+          <div className="relative z-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#00f2fe] tracking-wider uppercase mb-8">Tokenomics</h2>
 
-          <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6 text-gray-200 text-lg sm:text-xl">
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-blue-300 font-bold">💧 Liquidity:</span> 50M
+            <div className="flex flex-col gap-2">
+              <div className="bg-[#014d4e] rounded-xl p-4 sm:p-6">
+                <div className="flex items-center justify-between">
+                  <span className="text-lg sm:text-xl text-[#00f2fe] uppercase tracking-wide">Total Supply</span>
+                  <span className="text-xl sm:text-2xl text-[#00f2fe] font-bold">1 Billion</span>
+                </div>
+                <div className="text-sm text-[#00f2fe]/70 mt-1">Fair Launch</div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
+                <div className="bg-[#014d4e] rounded-xl p-4">
+                  <div className="flex flex-col">
+                    <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Liquidity</span>
+                    <span className="text-[#00f2fe] text-xl font-bold mt-1">50M</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#014d4e] rounded-xl p-4">
+                  <div className="flex flex-col">
+                    <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Game Rewards</span>
+                    <span className="text-[#00f2fe] text-xl font-bold mt-1">75M</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#014d4e] rounded-xl p-4">
+                  <div className="flex flex-col">
+                    <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Team Treasury</span>
+                    <span className="text-[#00f2fe] text-xl font-bold mt-1">25M</span>
+                  </div>
+                </div>
+
+                <div className="bg-[#014d4e] rounded-xl p-4">
+                  <div className="flex flex-col">
+                    <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Free Market</span>
+                    <span className="text-[#00f2fe] text-xl font-bold mt-1">850M</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 text-sm text-[#00f2fe]/50 uppercase tracking-wider">// Distribution Details</div>
             </div>
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-purple-300 font-bold">🎮 Treasury (Game Rewards):</span> 75M
-            </div>
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-red-300 font-bold">👥 Treasury (Team):</span> 25M
-            </div>
-            <div className="bg-gray-800 bg-opacity-70 p-4 rounded-xl border border-gray-700 shadow-md">
-              <span className="text-yellow-300 font-bold">📈 Free Market:</span> 850M
-            </div>
-          </div>
-        </motion.div>
-
-        {/* ✅ Made Roadmap smaller (md:w-2/5) */}
-        <motion.div
-          className="bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl p-6 sm:p-10 border border-gray-700 text-center w-full md:w-2/5"
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
-            Our Roadmap
-          </h2>
-
-          <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-200">
-            🚀 <span className="font-bold">BUBLER is just getting started!</span> Our mission is to create a meme-fueled
-            gaming revolution with real crypto utility.
-          </p>
-          <p className="mt-2 text-lg sm:text-xl text-gray-300">
-            Stay tuned for exciting updates, token integration, NFT rewards, and much more! The future of play-to-earn
-            is here. 🐸🔥
-          </p>
-
-          <div className="mt-6 flex justify-center">
-            <a href="/pdf/roadmap.pdf" download="BUBLER_Roadmap.pdf">
-              <button className="flex items-center justify-center gap-2 px-6 py-3 sm:px-8 sm:py-4 text-lg sm:text-xl font-bold text-white bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 rounded-full shadow-lg transition-transform duration-300 transform hover:scale-105 active:scale-95">
-                <Download size={24} />
-                Download Roadmap
-              </button>
-            </a>
           </div>
         </motion.div>
       </div>
