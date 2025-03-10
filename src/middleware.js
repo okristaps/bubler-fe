@@ -8,9 +8,9 @@ export function middleware(req) {
   const userAgent = req.headers.get("user-agent") || "";
   const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop|Windows Phone|BlackBerry/i.test(userAgent);
 
-  if (!isMobile) {
-    return NextResponse.redirect(new URL("/not-supported", req.url));
-  }
+  // if (!isMobile) {
+  //   return NextResponse.redirect(new URL("/not-supported", req.url));
+  // }
 
   return NextResponse.next();
 }

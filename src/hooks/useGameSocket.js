@@ -41,7 +41,7 @@ export default function useGameWebSocket() {
 
       const WS_URL =
         process.env.NODE_ENV === "development" ? "ws://127.0.0.1:8787" : "wss://bubler-ws.okristaps1.workers.dev";
-
+      console.log("WS_URL", WS_URL);
       const ws = new WebSocket(WS_URL);
       socketRef.current = ws;
 
