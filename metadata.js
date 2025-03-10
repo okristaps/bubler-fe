@@ -1,17 +1,17 @@
 const APP_NAME = "Odincash";
 const APP_DEFAULT_TITLE = "Odincash";
 const APP_TITLE_TEMPLATE = "Odincash";
-const APP_DESCRIPTION = "ODINCASH: Meme Catcher on ICP Chain";
+const APP_DESCRIPTION = "ODINCASH: Meme Catcher on blockchain";
 
 export const metadata = {
-  title: "ODINCASH: Meme Catcher on ICP Chain",
+  title: "ODINCASH: Meme Catcher on BlockChain",
   description:
-    "ODINCASH is a meme-powered adventure with gameplay utility! Catch ODINCASH tokens in-game for crypto rewards on the blazing-fast ICP chain. Join the fun now!",
+    "ODINCASH is a meme-powered adventure with gameplay utility! Catch ODINCASH tokens in-game for crypto rewards on the blazing-fast  blockchain. Join the fun now!",
   manifest: "/manifest.json",
   openGraph: {
-    title: "ODINCASH: Meme Catcher on ICP Chain",
+    title: "ODINCASH: Meme Catcher on BlockChain",
     description:
-      "Catch ODINCASH tokens in-game and win crypto rewards! Built on the ICP blockchain for fast transactions and endless fun.",
+      "Catch ODINCASH tokens in-game and win crypto rewards! Built on the blockchain for fast transactions and endless fun.",
     url: "https://odincash.org/",
     siteName: "ODINCASH",
     images: [
@@ -27,9 +27,8 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "ODINCASH: Meme Catcher on ICP Chain",
-    description:
-      "Catch ODINCASH tokens and win crypto rewards in this meme-powered game on the ICP blockchain. Play now!",
+    title: "ODINCASH: Meme Catcher on BlockChain",
+    description: "Catch ODINCASH tokens and win crypto rewards in this meme-powered game on the  blockchain. Play now!",
     image: "https://odincash.org/image3.png",
   },
 
@@ -313,7 +312,7 @@ export const metadata = {
   additionalMetaTags: [
     {
       name: "keywords",
-      content: "ODINCASH, meme game, crypto rewards, ICP blockchain, play-to-earn, meme token",
+      content: "ODINCASH, meme game, crypto rewards,  blockchain, play-to-earn, meme token",
     },
     {
       name: "author",
