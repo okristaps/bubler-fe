@@ -31,30 +31,31 @@ const RoadmapAndTokenomics = () => {
               <div className="bg-[#014d4e] rounded-xl p-4 sm:p-6">
                 <div className="flex items-center justify-between">
                   <span className="text-lg sm:text-xl text-[#00f2fe] uppercase tracking-wide">Total Supply</span>
-                  <span className="text-xl sm:text-2xl text-[#00f2fe] font-bold">1 Billion</span>
+                  <span className="text-xl sm:text-2xl text-[#00f2fe] font-bold">21M</span>
                 </div>
                 <div className="text-sm text-[#00f2fe]/70 mt-1">Fair Launch</div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
-                <div className="bg-[#014d4e] rounded-xl p-4">
+                {/* <div className="bg-[#014d4e] rounded-xl p-4">
                   <div className="flex flex-col">
                     <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Liquidity</span>
                     <span className="text-[#00f2fe] text-xl font-bold mt-1">50M</span>
                   </div>
                 </div>
 
+                
                 <div className="bg-[#014d4e] rounded-xl p-4">
                   <div className="flex flex-col">
                     <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Game Rewards</span>
                     <span className="text-[#00f2fe] text-xl font-bold mt-1">75M</span>
                   </div>
-                </div>
+                </div> */}
 
                 <div className="bg-[#014d4e] rounded-xl p-4">
                   <div className="flex flex-col">
                     <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Team Treasury</span>
-                    <span className="text-[#00f2fe] text-xl font-bold mt-1">25M</span>
+                    <span className="text-[#00f2fe] text-xl font-bold mt-1">20%</span>
                   </div>
                 </div>
 

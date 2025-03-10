@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import BUBLERImage from "../../public/image9.png";
+import BUBLERImage from "../../public/btc.png";
 import Image from "next/image";
 
 const LegalDisclaimer = () => {
@@ -19,7 +19,7 @@ const LegalDisclaimer = () => {
           <div className="w-full md:w-1/3 flex justify-center">
             <Image
               src={BUBLERImage}
-              alt="BUBLER Meme"
+              alt="ODINCASH Meme"
               width={400}
               height={400}
               className="rounded-xl"
@@ -37,7 +37,7 @@ const LegalDisclaimer = () => {
               <p className="text-[#00f2fe]/90 text-lg text-center md:text-left">
                 "
                 <span className="font-bold">
-                  BUBLER is a gaming platform designed for entertainment purposes. While we strive to provide an
+                  ODINCASH is a gaming platform designed for entertainment purposes. While we strive to provide an
                   engaging and rewarding experience
                 </span>
                 , participation in our game should be approached responsibly. Players are encouraged to familiarize

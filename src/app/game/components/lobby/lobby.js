@@ -48,7 +48,7 @@ export default function GameLobby({ startGame, connected }) {
     <div>
       <div className="game-lobby-container">
         <h1 className="text-[59px] text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-pink-500 drop-shadow-2xl animate-bounce">
-          BUBLER
+          ODINCASH
         </h1>
         <p className="game-subtitle">Enter your player details to start!</p>
 

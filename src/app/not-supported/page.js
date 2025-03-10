@@ -17,7 +17,7 @@ export default function NotSupported() {
         >
           <Image
             src={BUBLERImage}
-            alt="BUBLER Meme"
+            alt="ODINCASH Meme"
             width={450}
             height={350}
             className="rounded-full sm:w-[550px] w-[250px]"
@@ -38,7 +38,7 @@ export default function NotSupported() {
           <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
             This game is only available on mobile devices.
             <br />
-            Please visit <span className="text-blue-300 font-bold">bubler.club</span> on your mobile phone to play.
+            Please visit <span className="text-blue-300 font-bold">odincash.club</span> on your mobile phone to play.
           </p>
 
           <div className="mt-6">

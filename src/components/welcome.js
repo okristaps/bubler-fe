@@ -12,7 +12,7 @@ const WelcomeBUBLER = () => {
     >
       <div className="relative z-10 p-6 bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl border border-gray-700">
         <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-purple-300 drop-shadow-md">
-          Welcome to BUBLER!
+          Welcome to ODINCASH!
         </h2>
         <p className="mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
           The playful meme token on the <span className="text-yellow-300">$ICP</span> blockchain that’s here to

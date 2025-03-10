@@ -23,7 +23,7 @@ const TopSection = () => {
 
       <section className="text-center mt-12 px-6 sm:px-8">
         <h2 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#00f2fe] to-[#0092ff] drop-shadow-lg text-glow">
-          Welcome to BUBLER!
+          Welcome to ODINCASH!
         </h2>
         <p className="mt-2 text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed">
           The playful meme token on the <span className="text-[#00f2fe] text-glow">$ICP</span> blockchain that's here to

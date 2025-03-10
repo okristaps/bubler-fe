@@ -26,7 +26,7 @@ const Landing = () => {
           <div className="relative">
             <Image
               src={BUBLERImage}
-              alt="BUBLER Meme"
+              alt="ODINCASH Meme"
               width={450}
               height={450}
               className="rounded-full sm:w-[400px] w-[280px] border-2 border-[#00f2fe]/30 relative z-10"
@@ -45,7 +45,7 @@ const Landing = () => {
           >
             <div className="text-center max-w-3xl mx-auto">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#00f2fe] mb-6 tracking-wider uppercase text-glow">
-                BUBLER
+                ODINCASH
               </h1>
               <p className="text-xl sm:text-2xl text-[#00f2fe]/90 mb-8">
                 The playful meme game that's here to revolutionize gaming with epic rewards and endless fun!

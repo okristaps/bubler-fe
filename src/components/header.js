@@ -52,7 +52,7 @@ const HeaderBUBLER = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          BUBLER
+          ODINCASH
         </motion.h1>
         <button className="sm:hidden text-white focus:outline-none" onClick={() => setMenuOpen((prev) => !prev)}>
           {menuOpen ? <X size={24} /> : <Menu size={24} />}

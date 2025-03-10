@@ -1,25 +1,25 @@
 const APP_NAME = "Bubler";
 const APP_DEFAULT_TITLE = "Bubler Club";
 const APP_TITLE_TEMPLATE = "Bubler";
-const APP_DESCRIPTION = "BUBLER: Meme Catcher on ICP Chain";
+const APP_DESCRIPTION = "ODINCASH: Meme Catcher on ICP Chain";
 
 export const metadata = {
-  title: "BUBLER: Meme Catcher on ICP Chain",
+  title: "ODINCASH: Meme Catcher on ICP Chain",
   description:
-    "BUBLER is a meme-powered adventure with gameplay utility! Catch BUBLER tokens in-game for crypto rewards on the blazing-fast ICP chain. Join the fun now!",
+    "ODINCASH is a meme-powered adventure with gameplay utility! Catch ODINCASH tokens in-game for crypto rewards on the blazing-fast ICP chain. Join the fun now!",
   manifest: "/manifest.json",
   openGraph: {
-    title: "BUBLER: Meme Catcher on ICP Chain",
+    title: "ODINCASH: Meme Catcher on ICP Chain",
     description:
-      "Catch BUBLER tokens in-game and win crypto rewards! Built on the ICP blockchain for fast transactions and endless fun.",
-    url: "https://bubler.club/",
-    siteName: "BUBLER",
+      "Catch ODINCASH tokens in-game and win crypto rewards! Built on the ICP blockchain for fast transactions and endless fun.",
+    url: "https://odincash.club/",
+    siteName: "ODINCASH",
     images: [
       {
-        url: "https:// bubler.club/image3.png",
+        url: "https:// odincash.club/image3.png",
         width: 1200,
         height: 630,
-        alt: "BUBLER Meme Game - Gameplay Highlights",
+        alt: "ODINCASH Meme Game - Gameplay Highlights",
       },
     ],
     type: "website",
@@ -27,10 +27,10 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "BUBLER: Meme Catcher on ICP Chain",
+    title: "ODINCASH: Meme Catcher on ICP Chain",
     description:
-      "Catch BUBLER tokens and win crypto rewards in this meme-powered game on the ICP blockchain. Play now!",
-    image: "https://bubler.club/image3.png",
+      "Catch ODINCASH tokens and win crypto rewards in this meme-powered game on the ICP blockchain. Play now!",
+    image: "https://odincash.club/image3.png",
   },
 
   robots: "index, follow",
@@ -39,14 +39,14 @@ export const metadata = {
   structuredData: {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "BUBLER Meme Catcher Game",
-    url: "https://bubler.club",
-    description: "BUBLER is an exciting meme-powered game where you can earn crypto rewards by catching memes!",
-    image: "https://bubler.club/image3.png",
+    name: "ODINCASH Meme Catcher Game",
+    url: "https://odincash.club",
+    description: "ODINCASH is an exciting meme-powered game where you can earn crypto rewards by catching memes!",
+    image: "https://odincash.club/image3.png",
     publisher: {
       "@type": "Organization",
-      name: "BUBLER Team",
-      logo: "https://bubler.club/image3.png",
+      name: "ODINCASH Team",
+      logo: "https://odincash.club/image3.png",
     },
     sameAs: [
       "https://www.facebook.com/bublergame",
@@ -313,11 +313,11 @@ export const metadata = {
   additionalMetaTags: [
     {
       name: "keywords",
-      content: "BUBLER, meme game, crypto rewards, ICP blockchain, play-to-earn, meme token",
+      content: "ODINCASH, meme game, crypto rewards, ICP blockchain, play-to-earn, meme token",
     },
     {
       name: "author",
-      content: "BUBLER Team",
+      content: "ODINCASH Team",
     },
     {
       name: "theme-color",

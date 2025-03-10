@@ -76,16 +76,18 @@ export default function RulesPage() {
 
               <div className="bg-[#001a1a] rounded-xl border border-[#00f2fe]/30 p-4 sm:p-6">
                 <h3 className="text-xl sm:text-2xl font-semibold text-[#00f2fe] mb-4">Weekly Rewards</h3>
-                <p className="text-[#00e4ff]/90 mb-4">Every week, the top 3 players will earn bonus $BUBLER tokens:</p>
+                <p className="text-[#00e4ff]/90 mb-4">
+                  Every week, the top 3 players will earn bonus $ODINCASH tokens:
+                </p>
                 <ul className="space-y-2 text-[#00e4ff]/80">
                   <li>
-                    • 1st Place: <span className="text-[#00f2fe] font-semibold">700K</span>
+                    • 1st Place: <span className="text-[#00f2fe] font-semibold">15K</span>
                   </li>
                   <li>
-                    • 2nd Place: <span className="text-[#00f2fe] font-semibold">500K</span>
+                    • 2nd Place: <span className="text-[#00f2fe] font-semibold">10K</span>
                   </li>
                   <li>
-                    • 3rd Place: <span className="text-[#00f2fe] font-semibold">300K</span>
+                    • 3rd Place: <span className="text-[#00f2fe] font-semibold">5K</span>
                   </li>
                 </ul>
                 <p className="text-sm text-[#00e4ff]/60 mt-2">Payouts will occur each Monday 20:00 UTC+2</p>
@@ -96,11 +98,11 @@ export default function RulesPage() {
                 <ul className="space-y-3 text-[#00e4ff]/90">
                   <li className="flex items-start space-x-3">
                     <span className="text-[#00f2fe]">★</span>
-                    <span>Purchase extra features (TIME, LIFE, FREEZE, and MYSTERY BOX) using $BUBLER tokens.</span>
+                    <span>Purchase extra features (TIME, LIFE, FREEZE, and MYSTERY BOX) using $ODINCASH tokens.</span>
                   </li>
                   <li className="flex items-start space-x-3">
                     <span className="text-[#00f2fe]">★</span>
-                    <span>All $BUBLER tokens spent on these features will be added to the prize pool.</span>
+                    <span>All $ODINCASH tokens spent on these features will be added to the prize pool.</span>
                   </li>
                 </ul>
               </div>

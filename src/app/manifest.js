@@ -1,8 +1,8 @@
 export default function manifest() {
   return {
-    name: "BUBLER",
-    short_name: "BUBLER",
-    description: "BUBLER: The Ultimate Meme Catcher Game",
+    name: "ODINCASH",
+    short_name: "ODINCASH",
+    description: "ODINCASH: The Ultimate Meme Catcher Game",
     start_url: "/",
     display: "standalone",
     background_color: "#0c0c12",

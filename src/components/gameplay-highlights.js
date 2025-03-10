@@ -24,7 +24,7 @@ const GameplayHighlights = () => {
                   Catch the Drop, Win Big
                 </h3>
                 <p className="text-[#00f2fe]/90 text-lg">
-                  When BUBLER falls, grab it fast! The meme catcher who snags BUBLER mid-drop earns{" "}
+                  When ODINCASH falls, grab it fast! The meme catcher who snags ODINCASH mid-drop earns{" "}
                   <span className="font-bold">maximum points</span> and unlocks exclusive rewards.
                 </p>
               </div>
@@ -37,7 +37,7 @@ const GameplayHighlights = () => {
                 </h3>
                 <p className="text-[#00f2fe]/90 text-lg">
                   Turn your gaming prowess into amazing rewards.{" "}
-                  <span className="font-bold">More BUBLER catches = bigger prizes</span>
+                  <span className="font-bold">More ODINCASH catches = bigger prizes</span>
                 </p>
               </div>
             </div>
