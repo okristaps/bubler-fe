@@ -62,7 +62,7 @@ const RoadmapAndTokenomics = () => {
                 <div className="bg-[#014d4e] rounded-xl p-4">
                   <div className="flex flex-col">
                     <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Free Market</span>
-                    <span className="text-[#00f2fe] text-xl font-bold mt-1">850M</span>
+                    <span className="text-[#00f2fe] text-xl font-bold mt-1">80%</span>
                   </div>
                 </div>
               </div>
