@@ -53,9 +53,11 @@ const AboutBUBLER = () => {
 
               <div className="bg-[#003e42] rounded-xl p-6 relative">
                 <p className="text-[#00f2fe]/90 text-lg mb-6 text-center md:text-left">
-                  <span className="font-bold tracking-wide uppercase">ODINCASH the Meme Catcher</span> is a
-                  revolutionary gaming experience that turns meme culture into thrilling gameplay. Dive into a world
-                  where quick reflexes and strategic timing unlock incredible rewards.
+                  <span className="font-bold tracking-wide uppercase">
+                    ODINCASH the crypto bubble catcher, powered by BITCOIN
+                  </span>
+                  is a revolutionary gaming experience that turns crypto culture into thrilling gameplay. Dive into a
+                  world where quick reflexes and strategic timing unlock incredible rewards.
                 </p>
 
                 <div className="space-y-4">

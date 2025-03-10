@@ -17,7 +17,7 @@ export default function Home() {
       {/* <TokenLiveData /> */}
       <RoadmapAndTokenomics />
       <GameplayHighlights />
-      <FutureVision />
+      {/* <FutureVision /> */}
       <SocialsSection />
       <LegalDisclaimer />
     </div>
