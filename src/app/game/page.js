@@ -41,7 +41,7 @@ export default function Game() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0" />
         <meta name="theme-color" content="#ADD8E6" />
       </Head>
-
+      //
       <div className="game-container">
         {gameState === "" && <GameLobby startGame={handleStart} connected={connected} />}
         {gameState === "playing" && (
