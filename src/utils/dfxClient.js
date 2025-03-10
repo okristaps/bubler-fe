@@ -1,5 +1,5 @@
 import { Actor, HttpAgent } from "@dfinity/agent";
-import { idlFactory } from "../../declerations/odincash-be";
+import { idlFactory } from "../../declerations/bubler-be";
 
 class DfxClient {
   constructor() {

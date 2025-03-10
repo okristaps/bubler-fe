@@ -44,7 +44,7 @@ const RoadmapAndTokenomics = () => {
                   </div>
                 </div>
 
-                
+
                 <div className="bg-[#014d4e] rounded-xl p-4">
                   <div className="flex flex-col">
                     <span className="text-[#00f2fe] text-sm uppercase tracking-wider opacity-70">Game Rewards</span>
@@ -66,8 +66,6 @@ const RoadmapAndTokenomics = () => {
                   </div>
                 </div>
               </div>
-
-              <div className="mt-6 text-sm text-[#00f2fe]/50 uppercase tracking-wider">// Distribution Details</div>
             </div>
           </div>
         </motion.div>
