@@ -40,7 +40,7 @@ export default function useGameWebSocket() {
       if (!username || !wallet || connected) return;
 
       const WS_URL =
-        process.env.NODE_ENV === "development" ? "ws://127.0.0.1:8787" : "wss://odincash-ws.okristaps1.workers.dev";
+        process.env.NODE_ENV === "development" ? "ws://127.0.0.1:8787" : "wss://bubler-ws.okristaps1.workers.dev";
 
       const ws = new WebSocket(WS_URL);
       socketRef.current = ws;
