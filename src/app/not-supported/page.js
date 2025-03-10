@@ -4,7 +4,7 @@ import HeaderBUBLER from "@/components/header";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import BUBLERImage from "../../../public/image3.png";
+import BUBLERImage from "../../../public/odin.png";
 
 export default function NotSupported() {
   return (
