@@ -25,7 +25,7 @@ const SocialsSection = () => {
 
               <div className="flex flex-col items-center space-y-4">
                 <a
-                  href="http://t.me/BUBLER_ai"
+                  href="https://t.me/+96KiprqGj302Yzdk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full max-w-xs px-6 py-3 bg-[#003e42] hover:bg-[#004a4e] transition-all duration-300 rounded-lg text-[#00f2fe] font-semibold text-lg hover:scale-105 border border-[#00f2fe]/30 flex justify-center items-center gap-2"
@@ -33,7 +33,7 @@ const SocialsSection = () => {
                   🔹 Join Telegram
                 </a>
                 <a
-                  href="http://X.com/BUBLER_ai"
+                  href="https://x.com/BUBLER_AI"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full max-w-xs px-6 py-3 bg-[#003e42] hover:bg-[#004a4e] transition-all duration-300 rounded-lg text-[#00f2fe] font-semibold text-lg hover:scale-105 border border-[#00f2fe]/30 flex justify-center items-center gap-2"
