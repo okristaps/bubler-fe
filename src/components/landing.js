@@ -58,7 +58,7 @@ const Landing = () => {
                   Play Now 🎮
                 </a>
                 <a
-                  href="#"
+                  href="https://odin.fun/token/29ed"
                   className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#9333ea] to-[#4f46e5] hover:from-[#a855f7] hover:to-[#6366f1] rounded-xl text-white font-bold text-lg sm:text-xl tracking-wide transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   Buy Now 💰

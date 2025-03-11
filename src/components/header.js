@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Leaderboard", href: "/leaderboard" },
   {
     label: "Buy",
-    // href: "https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=2zq2x-miaaa-aaaam-qdfia-cai",
+    href: "https://odin.fun/token/29ed",
     special: true,
   },
 ];
